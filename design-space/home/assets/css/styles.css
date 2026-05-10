@@ -873,3 +873,124 @@ p:last-child { margin-bottom: 0; }
 .president__link::after { content: "\2192"; transition: transform var(--transition-base); }
 .president__link:hover { color: var(--color-link-hover); }
 .president__link:hover::after { transform: translateX(3px); }
+
+
+/* ────────────────────────────────────────────────────────────
+   5. DECISION  (intro left + 2x2 card grid right)
+   "How can we help you do business better?"
+   ──────────────────────────────────────────────────────────── */
+
+.decision {
+  background: var(--color-surface-page);
+  padding-block: calc(var(--space-2xl) * 1.75);
+}
+
+.decision__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .decision__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+.decision__intro h2 {
+  font-size: var(--heading-1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-md);
+  max-width: 16ch;
+}
+.decision__intro p {
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 36ch;
+  margin: 0 0 var(--space-lg);
+}
+.decision__intro-link {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-cta);
+  font-size: var(--body-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.decision__intro-link::after { content: "\2192"; transition: transform var(--transition-base); }
+.decision__intro-link:hover { color: var(--color-cta-hover); }
+.decision__intro-link:hover::after { transform: translateX(3px); }
+
+.decision__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+@media (max-width: 540px) {
+  .decision__cards { grid-template-columns: 1fr; }
+}
+
+/* Each card is a clickable block. Top: small icon (using brand
+   triangle SVG as a mark). Middle: title + body. Bottom: arrow CTA. */
+.decision__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-aqua-soft);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: background var(--transition-fast), transform var(--transition-base);
+}
+.decision__card:hover {
+  background: var(--color-surface-aqua);
+  transform: translateY(-2px);
+}
+.decision__card:hover .decision__card-cta { color: var(--color-cta); }
+.decision__card:hover .decision__card-cta::after { transform: translateX(3px); }
+
+.decision__card-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: var(--space-md);
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  -webkit-mask-image: url("../images/triangles/Triangles-01.svg");
+  mask-image: url("../images/triangles/Triangles-01.svg");
+  color: var(--brand-teal-deep);
+}
+.decision__card--alt .decision__card-mark { color: var(--brand-sail); }
+
+.decision__card h3 {
+  font-size: var(--heading-3);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-sm);
+}
+.decision__card p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 var(--space-lg);
+  flex: 1;
+}
+.decision__card-cta {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--body-sm);
+  color: var(--color-link);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--transition-fast);
+}
+.decision__card-cta::after { content: "\2192"; transition: transform var(--transition-base); }
