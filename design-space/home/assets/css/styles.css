@@ -1219,3 +1219,216 @@ p:last-child { margin-bottom: 0; }
   flex-wrap: wrap;
   align-items: center;
 }
+
+
+/* ────────────────────────────────────────────────────────────
+   8. JOIN / CTA  (contained gradient card, overlaps footer)
+   Reuses the Clip 10 pattern: Mission gradient card with white
+   watermark of the ACOCI icon, sunset primary CTA. The card
+   straddles the boundary between the section above (white) and
+   the footer (Mission gradient with wave at top).
+   ──────────────────────────────────────────────────────────── */
+
+.join {
+  background: var(--color-surface-page);
+  padding: calc(var(--space-2xl) * 1.25) var(--space-lg) 0;
+  position: relative;
+  z-index: 2;  /* keeps the card above the footer's wave */
+}
+
+.join__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  background: var(--gradient-mission);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-md);
+  padding: calc(var(--space-2xl) * 1.5) var(--space-lg);
+  text-align: center;
+  /* Negative margin-bottom pulls the card down over the footer
+     so it visually pierces the footer's top wave. */
+  margin-bottom: calc(-1 * var(--hero-wave-height) - var(--space-2xl));
+}
+
+.join__watermark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: -1;
+  pointer-events: none;
+}
+.join__watermark img {
+  width: auto;
+  max-height: 22rem;
+  opacity: 0.10;
+}
+
+.join__inner {
+  position: relative;
+  max-width: 42rem;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--space-md);
+}
+.join__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--body-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+.join__title {
+  font-family: var(--font-heading);
+  font-size: var(--heading-1);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text-on-dark);
+  margin: 0;
+}
+.join__copy {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: var(--body-lg);
+  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 36rem;
+}
+.join__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   9. FOOTER  (Mission gradient, wave at top matches hero)
+   ──────────────────────────────────────────────────────────── */
+
+.site-footer {
+  position: relative;
+  background: var(--gradient-mission);
+  color: var(--color-text-on-dark);
+  /* Top padding generous because the Join card overlaps from above
+     AND the wave sits at the top — content needs room below both. */
+  padding-top: calc(var(--hero-wave-height) + var(--space-2xl) * 2);
+  padding-bottom: var(--space-2xl);
+}
+
+.site-footer__wave {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--hero-wave-height);
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+  transform: scaleY(-1);  /* inverted hero wave — the gradient comes UP from the footer */
+}
+.site-footer__wave svg {
+  display: block; width: 100%; height: 100%;
+}
+
+.site-footer__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+@media (max-width: 880px) {
+  .site-footer__top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .site-footer__top { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.site-footer__brand img {
+  height: 3.5rem;
+  width: auto;
+  display: block;
+}
+.site-footer__tagline {
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.5;
+  font-size: var(--body-base);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.site-footer__col h4 {
+  color: var(--color-text-on-dark);
+  font-family: var(--font-heading);
+  font-size: var(--body-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin: 0 0 var(--space-md);
+}
+.site-footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+.site-footer__col a {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--body-base);
+  transition: color var(--transition-fast);
+}
+.site-footer__col a:hover { color: var(--brand-aqua-light); }
+
+.site-footer__contact-line {
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+  font-size: var(--body-base);
+  line-height: 1.5;
+}
+.site-footer__contact-line + .site-footer__contact-line { margin-top: var(--space-xs); }
+.site-footer__contact-line a {
+  color: var(--brand-aqua-light);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: var(--body-sm);
+  color: rgba(255, 255, 255, 0.60);
+}
+.site-footer__bottom a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+}
+.site-footer__bottom a:hover { color: var(--brand-aqua-light); }
+.site-footer__legal {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
