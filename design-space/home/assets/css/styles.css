@@ -771,3 +771,105 @@ p:last-child { margin-bottom: 0; }
   color: inherit;
   display: block;
 }
+
+
+/* ────────────────────────────────────────────────────────────
+   4. PRESIDENT'S NOTE  (soft aqua-soft bg, no shadow)
+   ──────────────────────────────────────────────────────────── */
+
+.president {
+  background: var(--color-surface-aqua-soft);
+  padding-block: calc(var(--space-2xl) * 1.5);
+}
+
+.president__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: var(--space-2xl);
+  align-items: center;
+}
+@media (max-width: 880px) {
+  .president__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+/* Portrait — gentle radius (per NEXT.md: 'go easy on the
+   photo's border-radius'), no shadow. */
+.president__portrait {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  max-width: 22rem;
+  margin-inline: auto;
+  width: 100%;
+  background: var(--color-surface-aqua-mid);
+}
+.president__portrait img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.president__copy { padding-inline: var(--space-md); }
+
+.president__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--body-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-primary-deep);
+  margin: 0 0 var(--space-md);
+}
+
+.president__quote {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--heading-3);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  max-width: 36ch;
+}
+.president__quote::before {
+  content: "\201C";
+  display: inline;
+  margin-right: 0.05em;
+  color: var(--brand-teal-deep);
+}
+.president__quote::after {
+  content: "\201D";
+  display: inline;
+}
+
+.president__attribution {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  margin: 0 0 var(--space-md);
+  flex-wrap: wrap;
+}
+.president__name {
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: var(--body-base);
+}
+.president__title {
+  color: var(--color-text-muted);
+  font-size: var(--body-sm);
+}
+
+.president__link {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-link);
+  font-size: var(--body-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.president__link::after { content: "\2192"; transition: transform var(--transition-base); }
+.president__link:hover { color: var(--color-link-hover); }
+.president__link:hover::after { transform: translateX(3px); }
