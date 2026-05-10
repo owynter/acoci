@@ -520,3 +520,99 @@ p:last-child { margin-bottom: 0; }
     animation: none;
   }
 }
+
+
+/* ────────────────────────────────────────────────────────────
+   2. ABOUT  (continues on aqua surface from the hero wave)
+   ──────────────────────────────────────────────────────────── */
+
+.about {
+  position: relative;
+  background: var(--brand-aqua);
+  padding-top: var(--space-2xl);
+  padding-bottom: calc(var(--space-2xl) * 1.5);
+  overflow: hidden;
+}
+
+.about__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--space-2xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 880px) {
+  .about__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+.about__copy h2 {
+  font-size: var(--heading-1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-md);
+  max-width: 18ch;
+}
+.about__copy p {
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 50ch;
+  margin: 0 0 var(--space-lg);
+}
+
+/* Triangle composition on the right.
+   Uses the canonical brand triangle SVGs as mask-images so we
+   can recolor them via tokens. Three triangles overlap to create
+   an architectural figure that anchors the right side of the
+   section. The composition is fully decorative; no text inside. */
+.about__figure {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+.about__tri {
+  position: absolute;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.about__tri--big {
+  -webkit-mask-image: url("../images/triangles/Triangles-02.svg");
+  mask-image: url("../images/triangles/Triangles-02.svg");
+  aspect-ratio: 675.86 / 1514.8;
+  color: var(--brand-teal-deep);
+  height: 100%;
+  left: 8%;
+  top: 0;
+  opacity: 0.92;
+}
+.about__tri--mid {
+  -webkit-mask-image: url("../images/triangles/Triangles-02.svg");
+  mask-image: url("../images/triangles/Triangles-02.svg");
+  aspect-ratio: 675.86 / 1514.8;
+  color: var(--brand-sail);
+  height: 80%;
+  left: 32%;
+  top: 12%;
+  opacity: 0.78;
+  transform: rotate(180deg);
+}
+.about__tri--small {
+  -webkit-mask-image: url("../images/triangles/Triangles-03.svg");
+  mask-image: url("../images/triangles/Triangles-03.svg");
+  aspect-ratio: 271.09 / 930.91;
+  color: var(--brand-aqua-light);
+  height: 55%;
+  right: 12%;
+  bottom: 4%;
+}
