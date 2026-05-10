@@ -146,6 +146,7 @@
      The mid/deep/navy values exist ONLY as gradient stops for the
      Mission gradient — they are not standalone surface colors. */
   --brand-sail:           #48A8E0;
+  --brand-sail-soft:      #E6F0F9;  /* sail tint — bluer cousin of aqua-soft, used for surface bands */
   --brand-blue-mid:       #0074B7;  /* gradient stop */
   --brand-blue-deep:      #003B73;  /* gradient stop */
   --brand-navy:           #002244;  /* gradient stop (deepest) */
@@ -194,6 +195,7 @@
   --color-surface-aqua:        var(--brand-aqua);     /* section bg — aqua       */
   --color-surface-aqua-soft:   var(--brand-aqua-soft);/* tint / hairline         */
   --color-surface-aqua-mid:    var(--brand-aqua-mid);
+  --color-surface-sail-soft:   var(--brand-sail-soft);/* bluer alt to aqua-soft  */
   --color-border:         var(--brand-border);
   --color-overlay:        var(--brand-overlay);
 

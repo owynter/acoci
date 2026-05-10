@@ -847,15 +847,20 @@ p:last-child { margin-bottom: 0; }
 .decision__card {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface-aqua-soft);
+  background: var(--color-surface-page);
+  border: 1px solid var(--color-border);
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   color: var(--color-text);
-  transition: background var(--transition-fast), transform var(--transition-base);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
 }
 .decision__card:hover {
-  background: var(--color-surface-aqua);
-  transform: translateY(-2px);
+  border-color: var(--brand-teal);
+  box-shadow: 0 14px 30px rgba(15, 30, 45, 0.08);
+  transform: translateY(-3px);
 }
 .decision__card:hover .decision__card-cta { color: var(--color-cta); }
 .decision__card:hover .decision__card-cta::after { transform: translateX(3px); }
@@ -986,10 +991,25 @@ p:last-child { margin-bottom: 0; }
    ──────────────────────────────────────────────────────────── */
 
 .events {
+  position: relative;
   background: var(--color-surface-page);
   padding-block: calc(var(--space-2xl) * 1.5);
 }
+/* Soft-blue band sitting behind the accordion — bluer cousin of v1's
+   aqua-soft band. The head sits on white; the cards "land" on color.
+   Generous top inset so the band's edge never bisects an open card. */
+.events::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(var(--space-2xl) * 2.5);
+  bottom: 0;
+  background: var(--color-surface-sail-soft);
+  z-index: 0;
+}
 .events__inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-inner);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
@@ -1027,14 +1047,27 @@ p:last-child { margin-bottom: 0; }
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
-/* Accordion row */
+/* Accordion row — white card sitting on the soft-blue band, with a
+   soft hairline border + soft shadow. Border tightens to teal on hover
+   (matches v1 .event-item chrome). */
 .events__row {
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-page);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(15, 30, 45, 0.04);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-base);
 }
-.events__row[open] { background: var(--color-surface-aqua-soft); }
+.events__row:hover { border-color: var(--brand-teal); }
+.events__row[open] {
+  box-shadow: 0 8px 20px rgba(15, 30, 45, 0.06);
+}
 
 .events__summary {
   display: grid;
