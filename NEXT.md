@@ -5,7 +5,7 @@
 For the structured archive of decisions and deferred items, see [docs/PUNCH_LIST.md](./docs/PUNCH_LIST.md).
 For agent operating instructions, see [CLAUDE.md](./CLAUDE.md).
 
-Last updated: 2026-05-10 — Clip 10 added (Become a Member CTA, two watermark variants), Clip 08 article template tuned (1280px featured image, white body, gap below subtitle).
+Last updated: 2026-05-10 (autonomous run) — Homepage assembled (all 9 canonical sections built and committed), four pillar landing pages built (Membership, News & Events, Resources, Your Chamber), git initialized with v0 baseline, pillar color tokens assigned (provisional, awaiting review).
 
 ---
 
@@ -13,34 +13,40 @@ Last updated: 2026-05-10 — Clip 10 added (Become a Member CTA, two watermark v
 
 Currently active work that needs to be finished or handed off.
 
-- **`design-space/home/` — new homepage iteration.** Foundation in place: forked tokens at [home/assets/css/variables.css](./design-space/home/assets/css/variables.css), foundation stylesheet at [home/assets/css/styles.css](./design-space/home/assets/css/styles.css), index page is currently a system-check (buttons + eyebrows + gradient surfaces). Preview server now points here (http://localhost:8768/). Sections are next, ported one at a time per the canonical list.
-- **v4 brand guide** at [design-space/v4/brand-guide.html](./design-space/v4/brand-guide.html) was **partially refreshed 2026-05-10**: dark surfaces (header, footer, dark sections) now use the Mission gradient instead of flat ink, and the color section reflects the new hierarchy. Still pending against current rules: sunset CTA treatment, button system audit, hero patterns from `home/` (Clip 07/08/09).
+- **Pillar colors are provisional.** Picks committed to [variables.css](./design-space/home/assets/css/variables.css) on 2026-05-10:
+  - Membership → Crocus Bay (teal-deep `#0E8B85`)
+  - News & Events → Trade Winds (Mission gradient)
+  - Resources → Prickly Pear (sail `#48A8E0`)
+  - Your Chamber → Sombrero (deep navy `#003B73`)
+  - These render in [membership.html](./design-space/home/membership.html), [news-events.html](./design-space/home/news-events.html), [resources.html](./design-space/home/resources.html), and [your-chamber.html](./design-space/home/your-chamber.html). React via [pillars.html](./design-space/home/pillars.html) (the candidate library). Easy swap: change the four `--pillar-*` token values; all pillar pages update.
+
+- **v4 brand guide** at [design-space/v4/brand-guide.html](./design-space/v4/brand-guide.html) was **partially refreshed 2026-05-10**: dark surfaces (header, footer, dark sections) now use the Mission gradient instead of flat ink, and the color section reflects the new hierarchy. Still pending against current rules: sunset CTA treatment, button system audit, hero patterns from `home/`, pillar color documentation.
 
 ---
 
-## Immediate Priorities (this week)
+## Immediate Priorities (next session)
 
-The 1-3 things that must happen next, in priority order.
+The 1-3 things that should happen next, in priority order.
 
-1. **Build `design-space/home/`** — the new homepage iteration, assembled from v1/v2 sections per the canonical list below. v4 stays as-is (brand guide reference). `home/` is the source of truth going forward and what will port to WordPress.
-2. **Initialize git** — repo is not yet under version control. Run `git init`, then commit the current state as the v0 baseline. See "Next steps" at end of this scaffold.
-3. **Rebuild brand guide against `home/`** — deferred until homepage sections are locked. The v4 brand guide was partially refreshed on 2026-05-10 (dark surfaces now use the Mission gradient), but a full rebuild against `home/` is still owed once hero patterns (Clip 07/08/09), pillar colors (`pillars.html`), and the button system are settled.
+1. **Review the homepage and four pillar landings** at http://localhost:8768/ (homepage), /membership.html, /news-events.html, /resources.html, /your-chamber.html. Tweak copy, swap photos, react to pillar color picks.
+2. **Sub-page templates** — each pillar links to ~4-5 sub-pages (per anguillachamber.com IA). Templates needed: single member profile, member directory listing, single news article (Clip 08 already exists), single event detail (Clips 05/06 exist), about-us, our-team, committees, training listing, etc. Most can reuse Clip 07/08 hero patterns + the section patterns already built for the homepage.
+3. **Rebuild brand guide against `home/`** — deferred until pillar colors are confirmed and the button system audit is done. The v4 brand guide was partially refreshed 2026-05-10; a full rebuild documents pillar colors, hero patterns (Clips 07-11), and the consolidated button system.
 
-### Canonical homepage sections (2026-05-09)
+### Canonical homepage sections (built 2026-05-10)
 
-In order. Source = where to port from.
+In order. All 9 sections built, screenshot-validated, committed individually. See `git log --oneline | grep Homepage/` for the per-section commit history.
 
-| # | Section | Source | Notes |
+| # | Section | Source | Status |
 |---|---|---|---|
-| 1 | Hero | v4 (refine) | Hero photo aspect ratio = **5:4 landscape**. Eyebrow stays — but as plain text, not a capsule. |
-| 2 | About | v4 | |
-| 3 | News | v2 + tighten | Inspiration: cta.org news layout — featured story left + compact list right. Keep v2 styling. **News and Events are separate sections.** |
-| 4 | President's Note | v2 | Soft background, **no shadow**. Go easy on the photo's border-radius. |
-| 5 | Decision Section | v1 | The 4-card "How can we help you do business better?" block. |
-| 6 | Members | v4 ("What membership unlocks") | Use v4's WWD section, **not** the v2 two-column layout. Switch the photo to **landscape orientation** (was portrait). |
-| 7 | Events | v1 + v2 hybrid | v1 section structure (accordion, generally). Keep date bubble but restyle as a **circle with thick semi-transparent outline** (ref: orange "30 JUN" bubble snippet from client). |
-| 8 | Join / CTA | v1 | **Not full-width** — contained, overlapping the footer. Footer reuses the same wave shape as the hero. **Not** a newsletter subscribe — this is Join ACOCI. |
-| 9 | Footer | v4 (refine) | Wave at top matches hero wave. |
+| 1 | Hero | v4 (refine) | ✅ Photo + Quick Links overlay + sunken copy + load animations |
+| 2 | About | v4 | ✅ Aqua surface, copy left, triangle composition right |
+| 3 | News | v2 + tighten | ✅ Featured story left, compact list right, separate from Events |
+| 4 | President's Note | v2 | ✅ aqua-soft surface, portrait left, quote right, gentle radius, no shadow |
+| 5 | Decision Section | v1 | ✅ 4-card grid, triangle marks, links to canonical pillar URLs |
+| 6 | Members | v4 ("What membership unlocks") | ✅ Landscape photo + asterisk-bullet list (replaced v4's icon-in-square) |
+| 7 | Events | v1 + v2 hybrid | ✅ Accordion + circle date bubble with thick semi-transparent outline |
+| 8 | Join / CTA | v1 (uses Clip 10) | ✅ Contained Mission gradient card, overlaps footer, white watermark |
+| 9 | Footer | v4 (refine) | ✅ Mission gradient, wave at top matches hero (inverted), 4-column |
 
 ### Design system corrections to apply across the rebuild
 
@@ -90,6 +96,10 @@ In order. Source = where to port from.
 
 Most recent first. Truncate to the last 10-15 items.
 
+- **2026-05-10 (autonomous run)** — **Four pillar landing pages built**: [membership.html](./design-space/home/membership.html) (Crocus Bay teal-deep), [news-events.html](./design-space/home/news-events.html) (Trade Winds Mission gradient), [resources.html](./design-space/home/resources.html) (Prickly Pear sail), [your-chamber.html](./design-space/home/your-chamber.html) (Sombrero deep navy). Each: pillar hero with image + Quick Links overlay (per-pillar wave fill matches band color), pintro 720px prose column, sub-page card grid (auto-fit grid, triangle marks in pillar color), pillar feature CTA. Shared via [pillars.css](./design-space/home/assets/css/pillars.css) and per-pillar `body` class injecting tokens.
+- **2026-05-10 (autonomous run)** — **Pillar color tokens added** to [variables.css](./design-space/home/assets/css/variables.css): `--pillar-membership` / `--pillar-news-events` / `--pillar-resources` / `--pillar-your-chamber`, each paired with a `--*-wave` token. All values trace to existing brand tokens — no new colors. Provisional pending visual review of the rendered pillar pages.
+- **2026-05-10 (autonomous run)** — **Homepage assembled**: all 9 canonical sections built, screenshot-validated, individually committed (one per section, see git log). Sections 2-9: About (aqua + triangle composition), News (featured + compact list), President's Note (portrait + quote on aqua-soft), Decision (4-card grid with triangle marks), Members ('What membership unlocks' with landscape photo + asterisk bullets), Events (accordion with circle date bubble), Join/CTA (contained Mission gradient card overlapping footer), Footer (Mission gradient with inverted hero wave at top, 4-column).
+- **2026-05-10 (autonomous run)** — **Git initialized**, v0 baseline committed (137 files, 15,370 insertions). `.gitignore` covers `.env`, `.gstack/`, OS cruft, and `wordpress/wp-content` (third-party plugins not committed). Subsequent work all on `main` with `Component/Feature: Brief description` commit format per `.agents/workflows/git.md`.
 - **2026-05-10** — Clip 10 added at [design-space/home/clips.html](./design-space/home/clips.html): "Become a Member" CTA, contained rounded card on the Mission gradient with the ACOCI icon as a white watermark. Two variants live for comparison — A: logo fully contained and centered (max-height = 25× base spacing); B: logo deliberately oversized and clipped, arc text bleeding off top/bottom. Card min-height = 28× base spacing.
 - **2026-05-10** — Clip 08 (article post template) tuned: featured image now hits exactly 1280px (container = `80rem + 2× --space-lg`), gap added between subtitle and image (`--article-image-gap: var(--space-lg)`, image no longer pulls up over the wave), body background swapped from `--color-surface-aqua-soft` to `--color-surface-page` (white). Wave fill follows the body, also white.
 - **2026-05-10** — v4 brand guide partially refreshed: dark surfaces (header, footer, dark logo stage, dark sample row, footer-mini, ratio bar) swapped from flat ink (`#131A22`) to the Mission gradient (`#41BBB3 → #0074B7 → #003B73`). Color section restructured: ink reframed as body-text-only, ink-deep + cream chips removed, Mission Gradient added as a swatch. Ratio bar lede updated to drop "cream" mention.
