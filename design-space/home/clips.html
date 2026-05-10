@@ -1,0 +1,3482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Section Clips (scratch)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  /* ──────────────────────────────────────────────────────────
+     CLIPS SCRATCH — page-only chrome
+     This stylesheet is local to clips.html. Anything that earns
+     a place in the homepage gets promoted into styles.css.
+     ────────────────────────────────────────────────────────── */
+
+  .clips-page { background: var(--color-surface-page); }
+
+  /* ── Page intro ── */
+  .clips-page__intro {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg) var(--space-md);
+  }
+  .clips-page__intro h1 {
+    font-size: var(--heading-2);
+    margin-bottom: var(--space-sm);
+  }
+  .clips-page__intro p {
+    color: var(--color-text-muted);
+    max-width: 50ch;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP WRAPPER + HEADER
+     Each clip is wrapped in <article class="clip"> with a
+     <header class="clip-header"> that explains the source,
+     intent, and what we changed.
+     ────────────────────────────────────────────────────────── */
+
+  .clip {
+    border-top: 1px solid var(--color-border);
+    padding: calc(var(--space-2xl) * 1.25) 0 var(--space-2xl);
+  }
+
+  .clip-header {
+    max-width: var(--container-inner);
+    margin: 0 auto var(--space-2xl);
+    padding: 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .clip-header { grid-template-columns: 1fr; gap: var(--space-md); }
+  }
+
+  .clip-header__index {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .clip-header__title {
+    font-size: var(--heading-3);
+    line-height: 1.1;
+    margin: 0;
+    max-width: 18ch;
+  }
+
+  .clip-header__body {
+    color: var(--color-text-muted);
+    font-size: var(--body-base);
+    line-height: 1.6;
+  }
+  .clip-header__body p { margin: 0 0 var(--space-sm); max-width: 60ch; }
+  .clip-header__body p:last-child { margin-bottom: 0; }
+  .clip-header__body strong {
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    letter-spacing: -0.005em;
+    font-weight: 700;
+  }
+  .clip-header__body code {
+    background: var(--color-surface-aqua-soft);
+    padding: 0.05em 0.45em;
+    border-radius: var(--radius-xs);
+    font-size: 0.92em;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 01 — Membership benefits (asymmetric two-column)
+     Source: U.S. Chamber-style "investment that starts to pay off"
+     ────────────────────────────────────────────────────────── */
+
+  .clip01 {
+    position: relative;
+    background: var(--color-surface-page);
+    overflow: hidden;
+    padding-block: var(--space-xl);
+  }
+
+  .clip01__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg) 0 calc(var(--space-lg) + clamp(2rem, 8vw, 7rem));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: calc(var(--space-xl) * 1.25);
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 860px) {
+    .clip01__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      padding: 0 var(--space-lg);
+    }
+  }
+
+  .clip01__headline {
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-lg);
+    max-width: 14ch;
+  }
+  .clip01__lede {
+    color: var(--color-text-muted);
+    max-width: 38ch;
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+
+  .clip01__benefits {
+    display: grid;
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .clip01__benefit {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-md);
+    row-gap: var(--space-xs);
+  }
+  .clip01__benefit-mark {
+    grid-row: 1 / span 2;
+    width: 1.4em;
+    height: 1.4em;
+    color: var(--color-primary);
+    margin-top: 0.15em;
+    flex: none;
+  }
+  .clip01__benefit h3 {
+    font-size: var(--heading-3);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .clip01__benefit p {
+    grid-column: 2;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  /* Decorative shape cluster — bottom-left, bleed off page */
+  .clip01__decor {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: clamp(160px, 22vw, 300px);
+    aspect-ratio: 1 / 0.75;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .clip01__decor-shape { position: absolute; }
+  .clip01__decor-shape--navy {
+    left: 6%; bottom: 38%; width: 55%; aspect-ratio: 1;
+    background: var(--brand-blue-deep);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+  }
+  .clip01__decor-shape--teal {
+    left: -8%; bottom: -8%; width: 78%; aspect-ratio: 1;
+    background: var(--brand-teal);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+  }
+  .clip01__decor-shape--aqua {
+    left: 38%; bottom: -2%; width: 56%; aspect-ratio: 1;
+    background: var(--brand-aqua-mid);
+    clip-path: polygon(100% 100%, 0 100%, 100% 0);
+    opacity: 0.85;
+  }
+  @media (max-width: 860px) {
+    .clip01__decor { width: 140px; opacity: 0.55; }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 02 — Three module composite from AZ Chamber
+       2a. "Top Reasons to Join" — 3-up cards with photo
+       2b. "Become a Member" — full-bleed dark CTA strip
+       2c. Member testimonial — single quote card
+     Each is a separate sub-section so we can pick & choose.
+     ────────────────────────────────────────────────────────── */
+
+  /* ── 2a. Reasons grid ── */
+  .clip02-reasons {
+    background: var(--color-surface-aqua-soft);
+    padding: var(--space-2xl) 0;
+  }
+  .clip02-reasons__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .clip02-reasons__title {
+    font-size: var(--heading-2);
+    text-align: center;
+    margin: 0 0 var(--space-2xl);
+    letter-spacing: -0.02em;
+  }
+  .clip02-reasons__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 860px) {
+    .clip02-reasons__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  }
+
+  .clip02-reason {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .clip02-reason__media {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    background: var(--color-surface-aqua-mid);
+  }
+  .clip02-reason__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .clip02-reason h3 {
+    font-size: var(--heading-3);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--space-sm);
+  }
+  .clip02-reason p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0 0 var(--space-lg);
+    max-width: 32ch;
+  }
+  .clip02-reason .btn { margin-top: auto; }
+
+  /* ── 2b. Become a Member — dark CTA strip ── */
+  .clip02-cta {
+    background: var(--gradient-mission);
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0;
+  }
+  .clip02-cta__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .clip02-cta__inner { grid-template-columns: 1fr; gap: var(--space-lg); }
+  }
+  .clip02-cta__media {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .clip02-cta__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .clip02-cta__copy h3 {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    max-width: 16ch;
+  }
+  .clip02-cta__copy p {
+    color: var(--color-text-on-dark-muted);
+    line-height: 1.6;
+    max-width: 48ch;
+    margin: 0 0 var(--space-md);
+  }
+  .clip02-cta__copy p:last-of-type { margin-bottom: var(--space-lg); }
+
+  /* ── 2c. Testimonial card ── */
+  .clip02-testimonial {
+    background: var(--color-surface-page);
+    padding: var(--space-2xl) 0;
+  }
+  .clip02-testimonial__card {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: var(--space-xl) calc(var(--space-xl) * 1.25);
+    background: var(--color-surface-page);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  .clip02-testimonial__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .clip02-testimonial__avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-aqua-mid);
+    flex: none;
+    overflow: hidden;
+  }
+  .clip02-testimonial__avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .clip02-testimonial__name {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .clip02-testimonial__org {
+    color: var(--color-primary-deep);
+    font-weight: 600;
+    margin: 0;
+    font-size: var(--body-base);
+  }
+  .clip02-testimonial blockquote {
+    margin: 0;
+    font-size: var(--body-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+    font-style: normal;
+  }
+  .clip02-testimonial blockquote p { margin: 0 0 var(--space-md); }
+  .clip02-testimonial blockquote p:last-child { margin-bottom: 0; }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 03 — Mega menu pattern
+     Source: Chicagoland Chamber megamenu (Membership, Advocacy,
+       Events & Programming, About — all share one shape)
+     Featured panel left + categorized link columns right.
+     Always-open here (not interactive) so the design is visible.
+     ────────────────────────────────────────────────────────── */
+
+  .clip03 {
+    background: var(--color-surface-aqua-soft);
+    padding: var(--space-2xl) 0;
+  }
+  .clip03__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  /* Faux nav bar — gives the mega menu context. */
+  .clip03__nav {
+    background: var(--color-surface-page);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+  .clip03__brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    font-size: var(--body-lg);
+  }
+  .clip03__nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1;
+  }
+  .clip03__nav-links a {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--body-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    padding: var(--space-sm) 0;
+    position: relative;
+  }
+  .clip03__nav-links a.is-open {
+    color: var(--color-primary-deep);
+  }
+  .clip03__nav-links a.is-open::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--color-primary);
+  }
+
+  /* Mega menu container */
+  .clip03__menu {
+    display: grid;
+    grid-template-columns: minmax(0, 0.32fr) minmax(0, 1fr);
+    background: var(--color-surface-page);
+    border: 1px solid var(--color-border);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    min-height: 22rem;
+  }
+
+  @media (max-width: 860px) {
+    .clip03__menu { grid-template-columns: 1fr; }
+  }
+
+  /* Featured panel (left) */
+  .clip03__feature {
+    position: relative;
+    background: var(--color-surface-aqua-soft);
+    padding: var(--space-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .clip03__feature-eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--body-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-primary-deep);
+    margin: 0 0 var(--space-sm);
+  }
+  .clip03__feature-title {
+    font-size: var(--heading-2);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    max-width: 10ch;
+  }
+  .clip03__feature-body {
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+    line-height: 1.55;
+    margin: 0 0 var(--space-lg);
+    max-width: 28ch;
+    position: relative;
+    z-index: 1;
+  }
+  .clip03__feature .btn { align-self: flex-start; position: relative; z-index: 1; }
+
+  /* Wave-and-shapes decoration in the featured panel.
+     ACOCI translation of Chicagoland's skyline + triangles —
+     uses the homepage wave motif and Mission gradient family. */
+  .clip03__feature-decor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 7rem;
+    pointer-events: none;
+  }
+  .clip03__feature-wave {
+    position: absolute;
+    inset: 0;
+    color: var(--brand-aqua-mid);
+    opacity: 0.55;
+  }
+  .clip03__feature-shape {
+    position: absolute;
+    bottom: 0;
+  }
+  .clip03__feature-shape--teal {
+    right: 12%;
+    width: 38%;
+    aspect-ratio: 1;
+    background: var(--brand-teal);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+  .clip03__feature-shape--navy {
+    right: 0;
+    width: 22%;
+    aspect-ratio: 1;
+    background: var(--brand-blue-deep);
+    clip-path: polygon(0 100%, 100% 100%, 100% 30%);
+  }
+  .clip03__feature-shape--sail {
+    right: 4%;
+    width: 28%;
+    aspect-ratio: 1;
+    background: var(--brand-sail);
+    clip-path: polygon(0 100%, 100% 100%, 30% 30%);
+    opacity: 0.85;
+  }
+
+  /* Link columns (right) */
+  .clip03__columns {
+    padding: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+  @media (max-width: 540px) {
+    .clip03__columns { grid-template-columns: 1fr; }
+  }
+
+  .clip03__group h4 {
+    font-size: var(--body-base);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    letter-spacing: -0.005em;
+  }
+  .clip03__group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: calc(var(--space-sm) * 0.85);
+  }
+  .clip03__group a {
+    color: var(--color-text);
+    font-size: var(--body-base);
+    line-height: 1.4;
+    display: inline-block;
+    padding: 2px 0;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast), background-size var(--transition-base);
+  }
+  .clip03__group a:hover {
+    color: var(--color-primary-deep);
+    background-size: 100% 2px;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 04 — News/blog archive
+     Source: Chicagoland Chamber Newsroom
+     Filter chip row + 3-up card grid with corner-fold + bottom-slab
+     accents that alternate per card.
+     ────────────────────────────────────────────────────────── */
+
+  .clip04 {
+    background: var(--color-surface-page);
+    padding: var(--space-2xl) 0;
+  }
+  .clip04__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .clip04__title {
+    font-size: var(--heading-1);
+    margin: 0 0 var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  /* Filter chip row */
+  .clip04__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0 0 var(--space-2xl);
+    padding: 0 0 var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .clip04__filter {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--body-sm);
+    color: var(--color-text-muted);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    transition: color var(--transition-fast), background var(--transition-fast);
+    cursor: pointer;
+  }
+  .clip04__filter:hover {
+    color: var(--color-primary-deep);
+    background: var(--color-surface-aqua-soft);
+  }
+  .clip04__filter.is-active {
+    background: var(--color-cta);
+    color: var(--color-text-on-dark);
+  }
+  .clip04__filter.is-active:hover {
+    background: var(--color-cta-hover);
+  }
+
+  /* Card grid */
+  .clip04__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 860px) {
+    .clip04__grid { grid-template-columns: 1fr; }
+  }
+
+  /* The card itself — staggered accent slabs.
+     Each card has two decorative blocks behind the content:
+       --accent-corner: small slab top-left of the photo (corner fold)
+       --accent-slab:   big slab bottom-right of the whole card
+     Colors flow from CSS custom props per card variant. */
+  .clip04__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    --accent-corner: var(--brand-teal);
+    --accent-slab:   var(--brand-aqua-mid);
+  }
+  .clip04__card--variant-2 {
+    --accent-corner: var(--brand-sail);
+    --accent-slab:   var(--brand-teal);
+  }
+  .clip04__card--variant-3 {
+    --accent-corner: var(--brand-aqua-mid);
+    --accent-slab:   var(--brand-sail);
+  }
+
+  /* Bottom-right slab — sits BEHIND the card. Narrow strip,
+     hugs the bottom-right corner. */
+  .clip04__card::before {
+    content: "";
+    position: absolute;
+    right: -14px;
+    bottom: -14px;
+    width: 35%;
+    height: 50%;
+    background: var(--accent-slab);
+    z-index: 0;
+  }
+
+  /* Top-left corner fold — sits OUTSIDE the card, top-left.
+     Bigger flag shape so it actually reads. */
+  .clip04__card::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 70px;
+    height: 70px;
+    background: var(--accent-corner);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 3;
+  }
+
+  .clip04__card-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-aqua-mid);
+    overflow: hidden;
+    z-index: 1;
+  }
+  .clip04__card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .clip04__card-body {
+    position: relative;
+    z-index: 2;
+    background: var(--color-surface-page);
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .clip04__card-cat {
+    font-family: var(--font-heading);
+    font-size: var(--body-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary-deep);
+    margin: 0 0 var(--space-sm);
+  }
+  .clip04__card-title {
+    font-size: var(--heading-4);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--space-lg);
+  }
+  .clip04__card-link {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 05 — Event detail page
+     Source: Chicagoland Chamber single-event page
+     Teal flat hero → wave divider → aqua-soft body.
+     White content card straddles the hero/body boundary.
+     Reuses the corner-fold + slab pattern from Clip 04 on the
+     registration sidebar and the Upcoming Events grid.
+     ────────────────────────────────────────────────────────── */
+
+  .clip05 {
+    background: var(--color-surface-aqua-soft);
+    padding: 0 0 var(--space-2xl);
+    overflow: hidden;
+  }
+
+  /* Teal hero band */
+  .clip05__hero {
+    position: relative;
+    background: var(--brand-teal-deep);
+    min-height: 22rem;
+    padding-top: var(--space-2xl);
+  }
+  .clip05__hero-crumbs {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-sm);
+  }
+  .clip05__hero-crumbs a {
+    color: var(--color-text-on-dark-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .clip05__hero-crumbs a:hover { color: var(--color-text-on-dark); }
+
+  /* Wave at the bottom of the hero — fill = aqua-soft so the
+     wave pushes the teal into the body below, mirroring the
+     homepage hero treatment. */
+  .clip05__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    line-height: 0;
+  }
+  .clip05__wave svg {
+    display: block;
+    width: 100%;
+    height: clamp(60px, 9vw, 130px);
+  }
+
+  /* Content card — straddles the hero/body boundary, no shadow. */
+  .clip05__card {
+    max-width: var(--container-inner);
+    margin: -10rem auto 0;
+    background: var(--color-surface-page);
+    padding: calc(var(--space-2xl) * 0.85) calc(var(--space-2xl) * 1.1) var(--space-2xl);
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    gap: calc(var(--space-xl) * 1.25);
+  }
+  @media (max-width: 960px) {
+    .clip05__card {
+      grid-template-columns: 1fr;
+      padding: var(--space-xl);
+      margin-top: -8rem;
+    }
+  }
+
+  /* Main column ─────────────────────────────────────────────── */
+
+  .clip05__date {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-link);
+    margin: 0 0 var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .clip05__date-dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .clip05__title {
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-lg);
+    max-width: 22ch;
+  }
+
+  .clip05__hosted {
+    margin: 0 0 var(--space-lg);
+    color: var(--color-text);
+  }
+  .clip05__hosted a { color: var(--color-link); font-weight: 600; }
+
+  .clip05__lede {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0 0 var(--space-2xl);
+    max-width: 56ch;
+  }
+
+  .clip05__section-title {
+    font-size: var(--heading-3);
+    margin: 0 0 var(--space-md);
+  }
+
+  /* Speakers list */
+  .clip05__speakers {
+    list-style: none;
+    margin: 0 0 var(--space-2xl);
+    padding: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+  .clip05__speaker {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .clip05__speaker-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-aqua-mid);
+    overflow: hidden;
+  }
+  .clip05__speaker-avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .clip05__speaker-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+  .clip05__speaker-role {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+  }
+
+  .clip05__hosted-block {
+    margin: 0 0 var(--space-xl);
+    color: var(--color-text);
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .clip05__hosted-block a { color: var(--color-link); }
+
+  /* Sponsor row — placeholder logos */
+  .clip05__sponsors {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin: 0 0 var(--space-2xl);
+  }
+  .clip05__sponsor-logo {
+    height: 2.5rem;
+    padding: 0 var(--space-md);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: var(--body-base);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+  }
+  .clip05__sponsor-logo:last-child { border-right: none; }
+
+  .clip05__presenting-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin: 0 0 var(--space-md);
+    color: var(--color-text);
+  }
+  .clip05__presenting-logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: var(--heading-3);
+    color: var(--color-text-muted);
+    letter-spacing: -0.02em;
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .clip05__additional p {
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.65;
+  }
+  .clip05__additional strong {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+  .clip05__additional a { color: var(--color-link); }
+
+  /* Sidebar — registration card with corner-fold + slab accent */
+  .clip05__rail { position: relative; }
+  .clip05__reg {
+    position: relative;
+    background: var(--color-surface-page);
+    border: 1px solid var(--color-border);
+    padding: var(--space-xl);
+    --accent-corner: var(--brand-teal);
+    --accent-slab:   var(--brand-sail);
+  }
+  .clip05__reg::before {
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    width: 38%;
+    height: 50%;
+    background: var(--accent-slab);
+    z-index: -1;
+  }
+  .clip05__reg::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 64px;
+    height: 64px;
+    background: var(--accent-corner);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 1;
+  }
+  .clip05__reg-format {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    font-weight: 700;
+    margin: 0 0 var(--space-sm);
+    letter-spacing: -0.01em;
+  }
+  .clip05__reg-note {
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-lg);
+    font-size: var(--body-sm);
+  }
+  .clip05__reg-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: var(--space-lg);
+  }
+  .clip05__reg-row dt {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .clip05__reg-row dd {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  /* Upcoming events grid — reuses Clip 04 card pattern */
+  .clip05__upcoming {
+    max-width: var(--container-inner);
+    margin: var(--space-2xl) auto 0;
+    padding: 0 var(--space-lg);
+  }
+  .clip05__upcoming-title {
+    font-size: var(--heading-2);
+    margin: 0 0 var(--space-xl);
+    letter-spacing: -0.02em;
+  }
+  .clip05__upcoming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+    list-style: none;
+    margin: 0 0 var(--space-2xl);
+    padding: 0;
+  }
+  @media (max-width: 860px) {
+    .clip05__upcoming-grid { grid-template-columns: 1fr; }
+  }
+  .clip05__upcoming-actions {
+    text-align: center;
+  }
+
+  /* Reuse Clip 04 card structure for upcoming events.
+     Card variants here use the same accent rotation. */
+  .clip05__event-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    --accent-corner: var(--brand-sail);
+    --accent-slab:   var(--brand-teal);
+  }
+  .clip05__event-card--variant-2 {
+    --accent-corner: var(--brand-teal);
+    --accent-slab:   var(--brand-aqua-mid);
+  }
+  .clip05__event-card--variant-3 {
+    --accent-corner: var(--brand-aqua-mid);
+    --accent-slab:   var(--brand-sail);
+  }
+  .clip05__event-card::before {
+    content: "";
+    position: absolute;
+    right: -14px;
+    bottom: -14px;
+    width: 35%;
+    height: 50%;
+    background: var(--accent-slab);
+    z-index: 0;
+  }
+  .clip05__event-card::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 70px;
+    height: 70px;
+    background: var(--accent-corner);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 3;
+  }
+  .clip05__event-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-aqua-mid);
+    overflow: hidden;
+    z-index: 1;
+  }
+  .clip05__event-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .clip05__event-body {
+    position: relative;
+    z-index: 2;
+    background: var(--color-surface-page);
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .clip05__event-date {
+    font-family: var(--font-heading);
+    font-size: var(--body-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-link);
+    margin: 0 0 var(--space-sm);
+  }
+  .clip05__event-title {
+    font-size: var(--heading-4);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--space-lg);
+  }
+  .clip05__event-link {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 06 — Event detail page (ACA-style variant)
+     Source: Anguilla Compliance Association event page
+     Geometric angled hero, structured sidebar as key/value list,
+     speakers as logo+name+role grid, share row, membership CTA.
+     ────────────────────────────────────────────────────────── */
+
+  .clip06 {
+    background: var(--color-surface-page);
+    padding: 0 0 var(--space-2xl);
+  }
+
+  /* Geometric hero — flat color band with a diagonal lighter
+     overlay on the right side. Uses Mission gradient palette. */
+  .clip06__hero {
+    position: relative;
+    background: var(--brand-blue-mid);
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0;
+    overflow: hidden;
+  }
+  .clip06__hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--brand-sail);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 0.95;
+    z-index: 0;
+  }
+  .clip06__hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .clip06__hero-inner { grid-template-columns: 1fr; }
+    .clip06__hero::after { display: none; }
+  }
+  .clip06__hero-date {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-on-dark);
+    margin: 0 0 var(--space-md);
+    font-size: var(--body-base);
+  }
+  .clip06__hero-title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 22ch;
+  }
+
+  /* Body grid — main column + structured sidebar */
+  .clip06__body {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg) 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    gap: calc(var(--space-xl) * 1.5);
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .clip06__body { grid-template-columns: 1fr; }
+  }
+
+  /* "Back to Events" link, right-aligned at the top of the body */
+  .clip06__back {
+    grid-column: 1 / -1;
+    text-align: right;
+    margin-bottom: var(--space-lg);
+  }
+  .clip06__back a {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-cta);
+    font-size: var(--body-base);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .clip06__back a::before {
+    content: "←";
+    font-size: 1.1em;
+  }
+  .clip06__back a:hover { color: var(--color-cta-hover); }
+
+  /* Main column ─────────────────────────────────────────────── */
+
+  .clip06__section {
+    margin-bottom: var(--space-2xl);
+  }
+  .clip06__section-title {
+    font-size: var(--heading-3);
+    color: var(--color-link);
+    margin: 0 0 var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .clip06__lede {
+    color: var(--color-text);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* Speakers grid — logo + name + role, 2-up */
+  .clip06__speakers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 540px) {
+    .clip06__speakers { grid-template-columns: 1fr; }
+  }
+  .clip06__speaker {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: var(--space-md);
+    align-items: center;
+  }
+  .clip06__speaker-logo {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-aqua-soft);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-subtle);
+    font-family: var(--font-heading);
+    font-size: var(--body-xs);
+  }
+  .clip06__speaker-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin: 0 0 2px;
+    line-height: 1.2;
+    color: var(--color-text);
+    font-size: var(--body-base);
+  }
+  .clip06__speaker-role {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+    line-height: 1.4;
+  }
+
+  /* Share-this-event row */
+  .clip06__share {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin: var(--space-2xl) 0 0;
+  }
+  .clip06__share-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: var(--body-sm);
+  }
+  .clip06__share-icons {
+    display: flex;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .clip06__share-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    color: var(--color-cta);
+    transition: color var(--transition-fast);
+  }
+  .clip06__share-icons a:hover { color: var(--color-cta-hover); }
+  .clip06__share-icons svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
+
+  /* Sidebar — structured key/value list with corner-fold + slab */
+  .clip06__rail { position: relative; }
+  .clip06__details {
+    position: relative;
+    background: var(--color-surface-page);
+    border: 1px solid var(--color-border);
+    padding: var(--space-xl);
+    --accent-corner: var(--brand-teal);
+    --accent-slab:   var(--brand-sail);
+  }
+  .clip06__details::before {
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    width: 38%;
+    height: 35%;
+    background: var(--accent-slab);
+    z-index: -1;
+  }
+  .clip06__details::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 64px;
+    height: 64px;
+    background: var(--accent-corner);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 1;
+  }
+
+  .clip06__detail-block + .clip06__detail-block {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  .clip06__detail-title {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    font-weight: 700;
+    color: var(--color-link);
+    margin: 0 0 var(--space-sm);
+    letter-spacing: -0.005em;
+  }
+  .clip06__detail-block p {
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .clip06__detail-block a:not(.btn) {
+    color: var(--color-cta);
+    font-weight: 600;
+  }
+  .clip06__detail-block a:not(.btn):hover { color: var(--color-cta-hover); }
+  .clip06__detail-or {
+    color: var(--color-text-muted);
+    margin: var(--space-sm) 0;
+    font-size: var(--body-sm);
+  }
+
+  /* Membership CTA panel — soft background with photo placeholder */
+  .clip06__membership {
+    margin-top: var(--space-2xl);
+    background: var(--color-surface-aqua-soft);
+  }
+  .clip06__membership-inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+  }
+  @media (max-width: 860px) {
+    .clip06__membership-inner { grid-template-columns: 1fr; }
+  }
+  .clip06__membership-copy {
+    padding: var(--space-2xl) var(--space-xl) var(--space-2xl) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 860px) {
+    .clip06__membership-copy { padding: var(--space-xl); }
+  }
+  .clip06__membership-copy h3 {
+    font-size: var(--heading-2);
+    margin: 0 0 var(--space-md);
+    letter-spacing: -0.02em;
+  }
+  .clip06__membership-copy p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0 0 var(--space-lg);
+    max-width: 42ch;
+  }
+  .clip06__membership-media {
+    background: var(--brand-aqua-mid);
+    min-height: 16rem;
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-aqua-mid) 0%,
+      var(--brand-teal) 100%
+    );
+    overflow: hidden;
+  }
+  .clip06__membership-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 16rem;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 07 — Hero variants
+     A library of section heroes, each with the wave divider.
+     Two types:
+       Type A — Anchor heroes (decorative). Hold optional breadcrumb
+                only. Wave fill = white because a white content card
+                sits on top, straddling the boundary.
+       Type B — Content heroes. Hold eyebrow + title + lede.
+                Wave fill = aqua-soft (page background) so content
+                flows naturally below.
+     Each labeled with its intended page.
+     ────────────────────────────────────────────────────────── */
+
+  .clip07 {
+    background: var(--color-surface-aqua-soft);
+  }
+
+  /* Variant label sits ABOVE each hero so the page stays
+     scan-able without breaking the hero itself. */
+  .clip07__label {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg) var(--space-sm);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .clip07__label-tag {
+    font-family: var(--font-heading);
+    font-size: var(--body-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-aqua-soft);
+    color: var(--color-primary-deep);
+  }
+  .clip07__label-tag--type-a {
+    background: var(--brand-aqua);
+    color: var(--color-primary-deep);
+  }
+  .clip07__label-tag--type-b {
+    background: var(--color-cta);
+    color: var(--color-text-on-dark);
+  }
+  .clip07__label-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.005em;
+  }
+  .clip07__label-purpose {
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+  }
+
+  /* ── Hero geometry tokens ──
+     Three values drive the entire hero/wave/card system.
+     Promote into variables.css when this pattern is locked.
+     - --c7hero-wave-h: matches the homepage hero wave (9rem) so
+       the curve shape is identical everywhere.
+     - --c7hero-overlap: the gap between hero content (breadcrumbs
+       or title) and the top edge of the content card. The card's
+       top always lands this far below the hero content,
+       regardless of viewport or wave shape.
+  */
+  .clip07 {
+    --c7hero-wave-h: 9rem;
+    --c7hero-overlap: var(--space-xl);
+  }
+
+  /* ── Base hero shape ── */
+  .c7hero {
+    position: relative;
+    overflow: visible;
+    padding: var(--space-2xl) 0 calc(var(--c7hero-wave-h) + var(--c7hero-overlap));
+    color: var(--color-text-on-dark);
+  }
+  .c7hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .c7hero__crumbs {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-base);  /* bumped from body-sm per spec */
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .c7hero__crumbs a {
+    color: var(--color-text-on-dark-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .c7hero__crumbs a:hover { color: var(--color-text-on-dark); }
+
+  .c7hero__eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-on-dark-muted);
+  }
+  .c7hero__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-lg);
+    max-width: 22ch;
+  }
+  .c7hero__lede {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  /* Wave at the bottom of every c7hero.
+     Pinned to the hero's bottom edge with a fixed height. */
+  .c7hero__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--c7hero-wave-h);
+    line-height: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .c7hero__wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── Type A: Anchor hero with white card ──
+     Card pulls itself up by (wave-height + overlap) so its top
+     lands exactly --c7hero-overlap below the breadcrumbs.
+     Wave is z-index 3 so it sits ON TOP of the card, decorating
+     the card's top portion with the curve. Card content is
+     z-index 2 (below wave). Card's padding-top reserves room
+     so the actual content starts below the wave. */
+  .c7hero--anchor + .c7anchor-card {
+    max-width: var(--container-inner);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(-1 * (var(--c7hero-wave-h) + var(--c7hero-overlap)));
+    background: var(--color-surface-page);
+    padding: calc(var(--c7hero-wave-h) + var(--space-xl))
+             calc(var(--space-xl) * 1.25)
+             var(--space-2xl);
+    position: relative;
+    z-index: 2;
+  }
+  /* Bump the wave above the card so the curve decorates the
+     card top instead of being covered by it. */
+  .c7hero--anchor .c7hero__wave { z-index: 3; }
+  .c7anchor-card__title {
+    font-size: var(--heading-2);
+    margin: 0 0 var(--space-sm);
+    letter-spacing: -0.02em;
+  }
+  .c7anchor-card__body {
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 55ch;
+    line-height: 1.6;
+  }
+
+  /* ── Type B: Content hero, content flows below ── */
+  .c7below {
+    background: var(--color-surface-aqua-soft);
+    padding: var(--space-xl) 0 var(--space-2xl);
+  }
+  .c7below__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    color: var(--color-text-muted);
+  }
+
+  /* ── Surface color variants ── */
+
+  /* A1: Teal-deep — Membership pages */
+  .c7hero--teal-deep { background: var(--brand-teal-deep); }
+
+  /* A2: Sail blue — Advocacy / Policy */
+  .c7hero--sail { background: var(--brand-sail); }
+
+  /* A3: Blue-mid — Events */
+  .c7hero--blue-mid { background: var(--brand-blue-mid); }
+
+  /* A4: Mission gradient — News / featured pages */
+  .c7hero--mission { background: var(--gradient-mission); }
+
+  /* B-light variants — text becomes dark */
+  .c7hero--aqua,
+  .c7hero--aqua-soft {
+    color: var(--color-text);
+  }
+  .c7hero--aqua .c7hero__title,
+  .c7hero--aqua-soft .c7hero__title {
+    color: var(--color-heading);
+  }
+  .c7hero--aqua .c7hero__eyebrow,
+  .c7hero--aqua-soft .c7hero__eyebrow {
+    color: var(--color-primary-deep);
+  }
+  .c7hero--aqua .c7hero__lede,
+  .c7hero--aqua-soft .c7hero__lede {
+    color: var(--color-text-muted);
+  }
+  .c7hero--aqua .c7hero__crumbs,
+  .c7hero--aqua-soft .c7hero__crumbs,
+  .c7hero--aqua .c7hero__crumbs a,
+  .c7hero--aqua-soft .c7hero__crumbs a {
+    color: var(--color-text-muted);
+  }
+
+  .c7hero--aqua      { background: var(--brand-aqua); }      /* B5: Member directory */
+  .c7hero--aqua-soft { background: var(--brand-aqua-soft); } /* B6: About / quiet pages */
+
+  /* Wave fill helpers — set via currentColor on the wave element.
+     Two strategies:
+     - Type A (anchor): wave fill = HERO color, so the curve reads
+       as the hero band hanging down OVER the card top in a wave
+       shape. The card itself is white and sits behind the wave.
+     - Type B (content): wave fill = page bg (aqua-soft), so the
+       wave reads as the page bg pushing UP into the hero, ending
+       the colored band with a curve. Content flows below.
+  */
+  .c7hero__wave--white     { color: var(--color-surface-page); }
+  .c7hero__wave--aqua-soft { color: var(--color-surface-aqua-soft); }
+
+  /* Per-hero wave-fill convenience classes — paired with each
+     surface variant for Type A use. */
+  .c7hero__wave--teal-deep { color: var(--brand-teal-deep); }
+  .c7hero__wave--sail      { color: var(--brand-sail); }
+  .c7hero__wave--blue-mid  { color: var(--brand-blue-mid); }
+  .c7hero__wave--mission   { color: var(--brand-blue-deep); } /* end of mission gradient */
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 08 — Article / blog post template
+     Hero band holds tags + title + dek (taller than anchor heroes).
+     Featured image straddles the wave/body boundary, taking the
+     place of the white card from the anchor pattern. Author and
+     share row sit below the image on the page body. Article body
+     is a 720px reading column, centered.
+     Reuses --c7hero-wave-h and --c7hero-overlap from Clip 07 so
+     the wave geometry is identical sitewide.
+     ────────────────────────────────────────────────────────── */
+
+  .clip08 {
+    --c7hero-wave-h: 9rem;
+    --c7hero-overlap: var(--space-xl);
+    --article-image-w: calc(80rem + var(--space-lg) * 2);   /* image hits 1280px after side padding */
+    --article-prose-w: 45rem;   /*  720px — readability column */
+    --article-image-gap: var(--space-lg);  /* breathing room between subtitle and image */
+
+    background: var(--color-surface-page);
+    padding-bottom: var(--space-2xl);
+  }
+
+  /* Hero — same geometry as c7hero, but holds real content.
+     Uses the Mission gradient by default; can be swapped per
+     post category. */
+  .clip08__hero {
+    position: relative;
+    overflow: visible;
+    background: var(--gradient-mission);
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0
+             calc(var(--c7hero-wave-h) + var(--c7hero-overlap));
+  }
+  .clip08__hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--article-image-w);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .clip08__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .clip08__tags a {
+    color: var(--brand-aqua-light);
+    text-decoration: none;
+  }
+  .clip08__tags a:hover { color: var(--color-text-on-dark); }
+  .clip08__tags li + li::before {
+    content: "·";
+    margin-right: var(--space-md);
+    color: var(--color-text-on-dark-muted);
+  }
+
+  .clip08__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    /* No max-width — title fills the article-image-w column. */
+  }
+  .clip08__dek {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* Wave — same as Clip 07. Fill = aqua-soft (page bg pushes
+     UP into the hero, ending it with a curve). Image (next)
+     pierces through both wave and band as the focal point. */
+  .clip08__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--c7hero-wave-h);
+    line-height: 0;
+    z-index: 2;
+    pointer-events: none;
+    color: var(--color-surface-page);
+  }
+  .clip08__wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Featured image — straddles the wave/body boundary.
+     Same overlap math as Clip 07: margin-top = -(wave-h + overlap)
+     so the image's top edge lands --c7hero-overlap below the hero
+     title block. z-index 3 places it over the wave and the band. */
+  .clip08__featured {
+    position: relative;
+    z-index: 3;
+    max-width: var(--article-image-w);
+    margin: calc(-1 * var(--c7hero-wave-h) + var(--article-image-gap))
+            auto 0;
+    padding: 0 var(--space-lg);
+  }
+  .clip08__featured-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--color-surface-aqua-mid);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-aqua-mid) 0%,
+      var(--brand-sail) 100%
+    );
+  }
+  .clip08__featured-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Author + share row — sits in the readability column,
+     just below the image. Hairlines top and bottom. */
+  .clip08__meta {
+    max-width: var(--article-prose-w);
+    margin: var(--space-2xl) auto 0;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .clip08__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .clip08__author-avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-aqua-mid);
+    flex: none;
+  }
+  .clip08__author-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+  .clip08__author-meta {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+  }
+
+  .clip08__share {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .clip08__share-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+  }
+  .clip08__share-icons {
+    display: flex;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .clip08__share-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-cta);
+    transition: color var(--transition-fast);
+  }
+  .clip08__share-icons a:hover { color: var(--color-cta-hover); }
+  .clip08__share-icons svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+  /* Article body — 720px reading column, centered. */
+  .clip08__body {
+    max-width: var(--article-prose-w);
+    margin: var(--space-2xl) auto 0;
+    padding: 0 var(--space-lg);
+    color: var(--color-text);
+    font-size: var(--body-lg);
+    line-height: 1.75;
+  }
+  .clip08__body p { margin: 0 0 var(--space-lg); }
+  .clip08__body h2 {
+    font-size: var(--heading-3);
+    margin: var(--space-2xl) 0 var(--space-md);
+    letter-spacing: -0.015em;
+  }
+  .clip08__body a {
+    color: var(--color-link);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+  }
+  .clip08__body a:hover { color: var(--color-link-hover); }
+  .clip08__body strong { font-weight: 700; }
+
+  @media (max-width: 760px) {
+    .clip08__meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 09 — Triangle decoration on hero variants
+     Three approaches for layering the brand triangle SVGs
+     into the heroes. Triangles are the canonical ACOCI graphic
+     element from the brand kit; CSS recolors them via mask-image
+     so we can use any palette token without editing the SVGs.
+     ────────────────────────────────────────────────────────── */
+
+  .clip09 {
+    --c7hero-wave-h: 9rem;
+    --c7hero-overlap: var(--space-xl);
+    background: var(--color-surface-aqua-soft);
+  }
+
+  .tri {
+    position: absolute;
+    pointer-events: none;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+  .tri--big {
+    -webkit-mask-image: url("assets/images/triangles/Triangles-02.svg");
+    mask-image: url("assets/images/triangles/Triangles-02.svg");
+    aspect-ratio: 675.86 / 1514.8;
+  }
+  .tri--small {
+    -webkit-mask-image: url("assets/images/triangles/Triangles-03.svg");
+    mask-image: url("assets/images/triangles/Triangles-03.svg");
+    aspect-ratio: 271.09 / 930.91;
+  }
+  .tri--pair {
+    -webkit-mask-image: url("assets/images/triangles/Triangles-01.svg");
+    mask-image: url("assets/images/triangles/Triangles-01.svg");
+    aspect-ratio: 1029.57 / 1514.8;
+  }
+
+  /* Hero variant for Clip 09 — same geometry as c7hero. */
+  .c9hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0
+             calc(var(--c7hero-wave-h) + var(--c7hero-overlap));
+  }
+  .c9hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .c9hero__decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .c9hero__eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-on-dark-muted);
+  }
+  .c9hero__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-lg);
+    max-width: 22ch;
+  }
+  .c9hero__lede {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    max-width: 50ch;
+    margin: 0;
+  }
+  .c9hero__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--c7hero-wave-h);
+    line-height: 0;
+    z-index: 3;
+    pointer-events: none;
+    color: var(--color-surface-aqua-soft);
+  }
+  .c9hero__wave svg { display: block; width: 100%; height: 100%; }
+
+  .c9hero--teal-deep { background: var(--brand-teal-deep); }
+  .c9hero--sail      { background: var(--brand-sail); }
+  .c9hero--mission   { background: var(--gradient-mission); }
+  .c9hero--aqua      { background: var(--brand-aqua); color: var(--color-text); }
+  .c9hero--aqua .c9hero__title    { color: var(--color-heading); }
+  .c9hero--aqua .c9hero__eyebrow  { color: var(--color-primary-deep); }
+  .c9hero--aqua .c9hero__lede     { color: var(--color-text-muted); }
+
+  /* ── Approach A: Subtle backdrop. White-on-color triangles
+     anchored top-right, bleeding off the corner. ── */
+  .c9hero--approach-a .tri--big {
+    color: rgba(255, 255, 255, 0.10);
+    height: 160%;
+    right: -8%;
+    top: -30%;
+  }
+  .c9hero--approach-a .tri--small {
+    color: rgba(255, 255, 255, 0.18);
+    height: 90%;
+    right: 12%;
+    bottom: -10%;
+  }
+
+  /* ── Approach B: Stronger color cluster. Two triangles in
+     contrasting brand colors, top-right, with one rotated. ── */
+  .c9hero--approach-b .tri--big {
+    color: var(--brand-teal);
+    opacity: 0.32;
+    height: 200%;
+    right: -10%;
+    top: -55%;
+  }
+  .c9hero--approach-b .tri--small {
+    color: var(--brand-aqua-light);
+    opacity: 0.55;
+    height: 110%;
+    right: 6%;
+    top: -20%;
+    transform: rotate(180deg);
+  }
+
+  /* ── Approach C: Composite SVG (preserves the canonical
+     two-triangle relationship from the brand kit) plus a
+     sunset accent. ── */
+  .c9hero--approach-c .tri--pair {
+    color: var(--brand-teal);
+    opacity: 0.30;
+    height: 170%;
+    right: -3%;
+    top: -35%;
+  }
+  .c9hero--approach-c .tri--small {
+    color: var(--color-cta);
+    opacity: 0.70;
+    height: 60%;
+    right: 6%;
+    bottom: 10%;
+    transform: rotate(180deg);
+  }
+
+  /* On light heroes, swap to darker triangle colors. */
+  .c9hero--aqua.c9hero--approach-a .tri--big   { color: var(--brand-teal);     opacity: 0.18; }
+  .c9hero--aqua.c9hero--approach-a .tri--small { color: var(--brand-sail);     opacity: 0.30; }
+  .c9hero--aqua.c9hero--approach-b .tri--big   { color: var(--brand-teal);     opacity: 0.25; }
+  .c9hero--aqua.c9hero--approach-b .tri--small { color: var(--brand-blue-mid); opacity: 0.42; }
+  .c9hero--aqua.c9hero--approach-c .tri--pair  { color: var(--brand-teal);     opacity: 0.22; }
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP 10 — Become a Member, contained gradient card
+     Source: ACOCI's existing "Become a Member" section. Card
+     treatment borrowed from v2's "About ACOCI" — gradient lives
+     inside a max-width rounded rectangle with horizontal page
+     padding, not full-bleed.
+     - Background is the mission gradient (teal→blue→navy).
+     - Smaller radius than v2's --r-xl per design direction.
+     - Sunset owns the primary action; secondary is a white-
+       outline ghost on the dark surface.
+     - Watermark is the ACOCI mark in white at low opacity,
+       clipped by the card's rounded corners.
+     ────────────────────────────────────────────────────────── */
+  .clip10 {
+    padding: var(--space-xl) var(--space-lg);
+    background: var(--color-surface-page);
+  }
+  .clip10__card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    max-width: var(--container-inner);
+    min-height: calc(var(--base-sp) * 28);
+    margin: 0 auto;
+    background: var(--gradient-mission);
+    color: var(--color-text-on-dark);
+    border-radius: var(--radius-md);
+    padding: calc(var(--space-2xl) * 1.25) var(--space-lg);
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+  .clip10__watermark {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: var(--z-below);
+    pointer-events: none;
+  }
+  /* Variant A — watermark fully contained inside the card.
+     Width and height capped so the full circle always sits
+     with margin top and bottom, vertically centered by the
+     watermark container's place-items: center. */
+  .clip10__card--contained .clip10__watermark img {
+    width: auto;
+    max-height: calc(var(--base-sp) * 25);
+    opacity: 0.10;
+  }
+  /* Variant B — watermark deliberately oversized, clipped by
+     the rounded card. Width-driven so it bleeds off top and
+     bottom and the arc text reads at the edges. */
+  .clip10__card--bleed .clip10__watermark img {
+    width: 56rem;
+    max-width: none;
+    height: auto;
+    opacity: 0.10;
+  }
+  /* Variant label — small caption above each card. */
+  .clip10__variant-label {
+    max-width: var(--container-inner);
+    margin: 0 auto var(--space-sm);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+  }
+  .clip10__variant + .clip10__variant { margin-top: var(--space-lg); }
+  .clip10__inner {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-md);
+  }
+  .clip10__title {
+    font-family: var(--font-heading);
+    font-size: var(--heading-2);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-text-on-dark);
+    margin: 0;
+  }
+  .clip10__copy {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 42rem;
+  }
+  .clip10__copy + .clip10__copy { margin-top: calc(var(--space-sm) * -0.25); }
+  .clip10__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-sm);
+  }
+  @media (max-width: 30rem) {
+    .clip10__actions .btn { width: 100%; }
+  }
+</style>
+</head>
+<body class="clips-page">
+
+  <header class="clips-page__intro">
+    <p class="eyebrow">Scratch</p>
+    <h1>Section clips</h1>
+    <p>
+      A staging page for sections lifted from elsewhere on the web, redrawn in
+      ACOCI tokens with ACOCI copy. Each entry is for considering whether the
+      <em>module</em> belongs on the homepage — design choices here are
+      intentionally generic so we can evaluate intent before form.
+    </p>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 01
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 01</p>
+        <h2 class="clip-header__title">Membership benefits, asymmetric two-column.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> U.S. Chamber-style "investment that starts to pay off" block.</p>
+        <p><strong>Why this is interesting:</strong> the asymmetric layout (one tall headline left, three benefit blocks right) gives the page a confident voice. The repeated star/asterisk motif anchors the right column without leaning on capsule eyebrows. The decorative geometric shapes bleeding off bottom-left add personality without becoming a full-bleed background.</p>
+        <p><strong>Translated:</strong> lime → <code>--color-primary</code> (teal); mid-blue CTA → <code>--color-cta</code> (sunset); navy + lime decorative shapes → Mission gradient family (<code>--brand-blue-deep</code>, <code>--brand-teal</code>, <code>--brand-aqua-mid</code>). Asterisk redrawn as a clean three-bar mark.</p>
+      </div>
+    </header>
+
+    <section class="clip01">
+      <div class="clip01__inner">
+
+        <div class="clip01__copy">
+          <h2 class="clip01__headline">Chamber membership starts paying off the day you join.</h2>
+          <p class="clip01__lede">
+            Connect with the leaders shaping Anguilla&rsquo;s economy. Learn what&rsquo;s
+            working from the people doing it, and grow your business through the
+            events, programs, and advocacy of the island&rsquo;s only cross-sector
+            chamber.
+          </p>
+          <a class="btn btn--primary" href="#join">Why ACOCI</a>
+        </div>
+
+        <ul class="clip01__benefits" role="list">
+
+          <li class="clip01__benefit">
+            <svg class="clip01__benefit-mark" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(60 12 12)"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(120 12 12)"/>
+            </svg>
+            <h3>Networked for influence</h3>
+            <p>
+              ACOCI members sit at the table with Anguilla&rsquo;s most active
+              business leaders, regulators, and government partners.
+            </p>
+          </li>
+
+          <li class="clip01__benefit">
+            <svg class="clip01__benefit-mark" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(60 12 12)"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(120 12 12)"/>
+            </svg>
+            <h3>Make your mark on the island&rsquo;s economy</h3>
+            <p>
+              Join a community of operators driving pro-business, pro-growth
+              policy across tourism, trade, finance, and the built environment.
+            </p>
+          </li>
+
+          <li class="clip01__benefit">
+            <svg class="clip01__benefit-mark" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(60 12 12)"/>
+              <rect x="10.5" y="2" width="3" height="20" rx="1.2" transform="rotate(120 12 12)"/>
+            </svg>
+            <h3>Be heard on the policy that affects your business</h3>
+            <p>
+              Members are consulted directly on legislation, regulation, and the
+              decisions that shape Anguilla&rsquo;s commercial environment.
+            </p>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="clip01__decor" aria-hidden="true">
+        <span class="clip01__decor-shape clip01__decor-shape--navy"></span>
+        <span class="clip01__decor-shape clip01__decor-shape--teal"></span>
+        <span class="clip01__decor-shape clip01__decor-shape--aqua"></span>
+      </div>
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 02 — three sub-modules from a single source
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 02</p>
+        <h2 class="clip-header__title">"Top reasons to join" — three modules from one page.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> Arizona Chamber of Commerce membership page. The visual treatment is generic, but the <em>information architecture</em> is worth considering for ACOCI&rsquo;s homepage.</p>
+        <p><strong>What&rsquo;s worth keeping:</strong> three discrete content modules &mdash; a 3-up &ldquo;Top reasons to join&rdquo; grid that ladders to deeper pages, a dedicated &ldquo;Become a member&rdquo; CTA strip with secondary copy, and a member testimonial that does work the chamber can&rsquo;t do for itself.</p>
+        <p><strong>Watch out:</strong> three image-cards with title-and-button is the most predictable section on the chamber-website internet. If we use it, the photos and copy have to be specific to Anguilla &mdash; not stock-shot conferences.</p>
+      </div>
+    </header>
+
+    <!-- ── 2a. Top Reasons to Join — 3-up grid ── -->
+    <section class="clip02-reasons">
+      <div class="clip02-reasons__inner">
+        <h2 class="clip02-reasons__title">Top reasons to join ACOCI</h2>
+        <ul class="clip02-reasons__grid" role="list">
+
+          <li class="clip02-reason">
+            <div class="clip02-reason__media" aria-hidden="true">
+              <img src="assets/images/clips-membership-policy.jpg" alt="">
+            </div>
+            <h3>Policy &amp; advocacy</h3>
+            <p>ACOCI represents Anguilla&rsquo;s business community to government on the regulations and policies that shape your operating environment.</p>
+            <a class="btn btn--primary" href="#advocacy">Our advocacy work</a>
+          </li>
+
+          <li class="clip02-reason">
+            <div class="clip02-reason__media" aria-hidden="true">
+              <img src="assets/images/clips-membership-networking.jpg" alt="">
+            </div>
+            <h3>Events &amp; networking</h3>
+            <p>Mixers, member breakfasts, and committee work that put you in the room with the people running Anguilla&rsquo;s economy.</p>
+            <a class="btn btn--primary" href="#events">Browse events</a>
+          </li>
+
+          <li class="clip02-reason">
+            <div class="clip02-reason__media" aria-hidden="true">
+              <img src="assets/images/clips-membership-workshop.jpg" alt="">
+            </div>
+            <h3>Education &amp; growth</h3>
+            <p>Workshops, training, and access to the network of operators, advisors, and partners that help your business grow.</p>
+            <a class="btn btn--primary" href="#programs">Programs</a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 2b. Become a Member — dark CTA strip ── -->
+    <section class="clip02-cta">
+      <div class="clip02-cta__inner">
+        <div class="clip02-cta__media" aria-hidden="true">
+          <img src="assets/images/clips-membership-handshake.jpg" alt="">
+        </div>
+        <div class="clip02-cta__copy">
+          <h3>Become an ACOCI member</h3>
+          <p>
+            Joining the Anguilla Chamber of Commerce &amp; Industry connects your
+            business to the network of operators, professionals, and institutions
+            shaping the island&rsquo;s economy.
+          </p>
+          <p>
+            From the smallest sole trader to the largest employer, every ACOCI
+            member gets a seat at the table.
+          </p>
+          <a class="btn btn--primary" href="#join">Membership details</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2c. Member testimonial ── -->
+    <section class="clip02-testimonial" id="clip02-testimonial">
+      <div class="clip02-testimonial__card">
+        <div class="clip02-testimonial__head">
+          <div class="clip02-testimonial__avatar" aria-hidden="true">
+            <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
+          </div>
+          <div>
+            <p class="clip02-testimonial__name">Member name here</p>
+            <p class="clip02-testimonial__org">Member business / sector</p>
+          </div>
+        </div>
+        <blockquote>
+          <p>
+            &ldquo;ACOCI&rsquo;s advocacy is critical to the businesses operating on
+            Anguilla. When the chamber engages on legislation and regulation, the
+            people writing those rules listen &mdash; and the operators they affect
+            actually get a voice.&rdquo;
+          </p>
+          <p>
+            &ldquo;That kind of representation is the difference between a business
+            community that reacts to change and one that helps shape it.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 03 — Mega menu
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 03</p>
+        <h2 class="clip-header__title">Mega menu &mdash; featured panel + categorized columns.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> Chicagoland Chamber of Commerce. The same shape repeats across Membership, Advocacy, Events &amp; Programming, and About &mdash; one pattern, four contexts.</p>
+        <p><strong>Why this is interesting:</strong> ACOCI has many overlapping links and groupings (advocacy work + committees, events + programs, member directory + benefits + grants). A mega menu turns that depth into something browsable instead of buried in a 4-deep dropdown. The featured-panel left gives every menu a hero CTA &mdash; "Join the Chamber", "Latest position papers", "Upcoming events" &mdash; so the menu sells, not just navigates.</p>
+        <p><strong>Translated:</strong> photo-bleed background dropped (heavy, generic). Blue/lime CTA &rarr; <code>--color-cta</code> (sunset). Skyline silhouette &rarr; ACOCI&rsquo;s wave motif (same one used at the bottom of the hero) plus the geometric shape cluster from Clip 01. Faux nav bar shown above so the menu has context; in production this drops on hover/click.</p>
+      </div>
+    </header>
+
+    <section class="clip03">
+      <div class="clip03__inner">
+
+        <div class="clip03__nav" aria-hidden="true">
+          <span class="clip03__brand">ACOCI</span>
+          <ul class="clip03__nav-links" role="list">
+            <li><a href="#">About</a></li>
+            <li><a href="#" class="is-open">Membership</a></li>
+            <li><a href="#">Advocacy</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+        </div>
+
+        <div class="clip03__menu" role="region" aria-label="Membership menu (preview)">
+
+          <!-- Featured panel -->
+          <div class="clip03__feature">
+            <p class="clip03__feature-eyebrow">Membership</p>
+            <h3 class="clip03__feature-title">Join the community.</h3>
+            <p class="clip03__feature-body">
+              ACOCI represents Anguilla&rsquo;s licensed business community
+              &mdash; from sole traders to the island&rsquo;s largest employers.
+            </p>
+            <a class="btn btn--primary" href="#join">Become a member</a>
+
+            <div class="clip03__feature-decor" aria-hidden="true">
+              <svg class="clip03__feature-wave" viewBox="0 0 400 100" preserveAspectRatio="none">
+                <path d="M0 60 C 50 30, 100 90, 150 60 C 200 30, 250 90, 300 60 C 350 30, 400 80, 400 60 L 400 100 L 0 100 Z" fill="currentColor"/>
+              </svg>
+              <span class="clip03__feature-shape clip03__feature-shape--teal"></span>
+              <span class="clip03__feature-shape clip03__feature-shape--sail"></span>
+              <span class="clip03__feature-shape clip03__feature-shape--navy"></span>
+            </div>
+          </div>
+
+          <!-- Link columns -->
+          <div class="clip03__columns">
+
+            <div class="clip03__group">
+              <h4>Membership</h4>
+              <ul role="list">
+                <li><a href="#">Why join ACOCI</a></li>
+                <li><a href="#">Membership tiers &amp; fees</a></li>
+                <li><a href="#">Apply for membership</a></li>
+                <li><a href="#">Renew your membership</a></li>
+                <li><a href="#">Member benefits</a></li>
+              </ul>
+            </div>
+
+            <div class="clip03__group">
+              <h4>Resources &amp; directory</h4>
+              <ul role="list">
+                <li><a href="#">Member business directory</a></li>
+                <li><a href="#">Member discounts &amp; offers</a></li>
+                <li><a href="#">Grants &amp; funding</a></li>
+                <li><a href="#">Workforce &amp; training</a></li>
+                <li><a href="#">Resource library</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 04 — News/blog archive
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 04</p>
+        <h2 class="clip-header__title">News archive &mdash; filter chips + alternating accent cards.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> Chicagoland Chamber Newsroom landing page.</p>
+        <p><strong>Why this is interesting:</strong> two patterns worth keeping. First, the <em>filter chip row</em> &mdash; categories sit above the grid as flat chips, with the active one filled. Easy scanning, no separate sidebar. Second, each news card has a <em>corner fold</em> at the top-left of its photo and a <em>colored slab</em> peeking from the bottom-right. The accent colors alternate per card &mdash; the page gets visual rhythm without any card needing a different layout.</p>
+        <p><strong>Translated:</strong> active filter chip &rarr; <code>--color-cta</code> (sunset), since "filter is on" is a real action. Card accent rotation cycles through teal, sail, aqua-mid &mdash; sunset is intentionally <em>excluded</em> from the decoration so it stays reserved for CTAs. Eyebrows are plain uppercase teal text (no capsules). The "Read more" link uses the existing <code>.btn--tertiary</code> from the foundation.</p>
+      </div>
+    </header>
+
+    <section class="clip04">
+      <div class="clip04__inner">
+        <h2 class="clip04__title">Newsroom</h2>
+
+        <ul class="clip04__filters" role="list">
+          <li><button type="button" class="clip04__filter is-active">All</button></li>
+          <li><button type="button" class="clip04__filter">Advocacy &amp; Public Policy</button></li>
+          <li><button type="button" class="clip04__filter">Chamber News</button></li>
+          <li><button type="button" class="clip04__filter">Event Recap</button></li>
+          <li><button type="button" class="clip04__filter">Member News</button></li>
+          <li><button type="button" class="clip04__filter">Statements &amp; Releases</button></li>
+          <li><button type="button" class="clip04__filter">Thought Leadership</button></li>
+        </ul>
+
+        <ul class="clip04__grid" role="list">
+
+          <li>
+            <article class="clip04__card clip04__card--variant-1">
+              <div class="clip04__card-media" aria-hidden="true">
+                <img src="assets/images/clips-news-policy-documents.jpg" alt="">
+              </div>
+              <div class="clip04__card-body">
+                <p class="clip04__card-cat">Advocacy &amp; Public Policy</p>
+                <h3 class="clip04__card-title">ACOCI weighs in on proposed business licence reforms ahead of next session.</h3>
+                <a class="btn btn--tertiary clip04__card-link" href="#">Read more</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="clip04__card clip04__card--variant-2">
+              <div class="clip04__card-media" aria-hidden="true">
+                <img src="assets/images/clips-news-small-business-week.jpg" alt="">
+              </div>
+              <div class="clip04__card-body">
+                <p class="clip04__card-cat">Chamber News</p>
+                <h3 class="clip04__card-title">Anguilla Small Business Week 2026: how to get involved.</h3>
+                <a class="btn btn--tertiary clip04__card-link" href="#">Read more</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="clip04__card clip04__card--variant-3">
+              <div class="clip04__card-media" aria-hidden="true">
+                <img src="assets/images/clips-news-hospitality-operator.jpg" alt="">
+              </div>
+              <div class="clip04__card-body">
+                <p class="clip04__card-cat">Member News</p>
+                <h3 class="clip04__card-title">Member spotlight: a new generation of operators reshaping island hospitality.</h3>
+                <a class="btn btn--tertiary clip04__card-link" href="#">Read more</a>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 05 — Single event detail page
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 05</p>
+        <h2 class="clip-header__title">Event detail page &mdash; teal hero, wave, white card straddling the boundary.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> Chicagoland Chamber single-event page (cash flow seminar).</p>
+        <p><strong>Why this is interesting:</strong> the structure is the canonical event-page pattern &mdash; date eyebrow, title, hosted-by line, description, speakers, sponsors, additional info, and a sticky right-rail registration card. It works because every piece of information a registrant needs is above the fold and in a predictable place.</p>
+        <p><strong>Translation:</strong> the source uses a photo background behind the hero. We use a flat <code>--brand-teal-deep</code> band with the homepage&rsquo;s wave at the bottom edge &mdash; same wave shape, inverted, flowing into <code>--color-surface-aqua-soft</code>. The white content card (no shadow) straddles the hero/body boundary so the page feels anchored. Right-rail registration card reuses the corner-fold + slab accent treatment from Clip 04. The "Upcoming Events" strip below reuses the same card pattern.</p>
+        <p><strong>Note:</strong> larger clip than 01-04 because it&rsquo;s a full page rather than a section. Worth treating it as a template, not a section.</p>
+      </div>
+    </header>
+
+    <section class="clip05">
+
+      <!-- Hero band -->
+      <div class="clip05__hero">
+        <nav class="clip05__hero-crumbs" aria-label="Breadcrumb">
+          <a href="#">ACOCI</a>
+          <span aria-hidden="true">&nbsp;/&nbsp;</span>
+          <a href="#">Events</a>
+          <span aria-hidden="true">&nbsp;/&nbsp;</span>
+          <span>Managing cash flow: practical problem solving</span>
+        </nav>
+
+        <!-- Wave at the bottom of the hero, fill = aqua-soft -->
+        <div class="clip05__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z"
+                  fill="#E8F6F4"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- White content card straddling the hero/body boundary -->
+      <div class="clip05__card">
+
+        <!-- Main column -->
+        <div class="clip05__main">
+          <p class="clip05__date">
+            <span>Thursday, May 14, 2026</span>
+            <span class="clip05__date-dot" aria-hidden="true"></span>
+            <span>10:00 AM &ndash; 11:00 AM</span>
+          </p>
+
+          <h1 class="clip05__title">Managing cash flow: practical problem solving for Anguilla&rsquo;s small businesses.</h1>
+
+          <p class="clip05__hosted">
+            Hosted by the <a href="#">Anguilla Small Business Development Council</a>
+            at the Anguilla Chamber of Commerce &amp; Industry.
+          </p>
+
+          <p class="clip05__lede">
+            This module focuses on cash flow management as an essential competency
+            of business ownership. Practical tools, real numbers, and the kind of
+            advice that comes from operators who have actually run the gauntlet
+            on a small island economy.
+          </p>
+
+          <h2 class="clip05__section-title">Featured speakers</h2>
+          <ul class="clip05__speakers" role="list">
+            <li class="clip05__speaker">
+              <div class="clip05__speaker-avatar" aria-hidden="true">
+                <img src="assets/images/clips-speaker-banker.jpg" alt="">
+              </div>
+              <div>
+                <p class="clip05__speaker-name">Speaker name</p>
+                <p class="clip05__speaker-role">Relationship Manager &middot; Caribbean Commercial Bank</p>
+              </div>
+            </li>
+            <li class="clip05__speaker">
+              <div class="clip05__speaker-avatar" aria-hidden="true">
+                <img src="assets/images/clips-speaker-advisor.jpg" alt="">
+              </div>
+              <div>
+                <p class="clip05__speaker-name">Speaker name</p>
+                <p class="clip05__speaker-role">SBDC Business Advisor &middot; ACOCI</p>
+              </div>
+            </li>
+          </ul>
+
+          <p class="clip05__hosted-block">
+            This event is hosted by the Anguilla Chamber of Commerce &amp;
+            Industry and our SBDC partners. <a href="#">Learn more about our
+            small business services</a>.
+          </p>
+
+          <div class="clip05__sponsors" aria-label="Hosted by">
+            <span class="clip05__sponsor-logo">SBDC&nbsp;Anguilla</span>
+            <span class="clip05__sponsor-logo">ACOCI</span>
+          </div>
+
+          <p class="clip05__presenting-label">Presenting sponsor</p>
+          <div class="clip05__presenting-logo">Sponsor wordmark</div>
+
+          <h2 class="clip05__section-title">Additional information</h2>
+          <div class="clip05__additional">
+            <p>
+              <strong>Interested in joining ACOCI?</strong>
+              Prospective members can reach out to
+              <a href="mailto:membership@anguillachamber.com">membership@anguillachamber.com</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right-rail registration -->
+        <aside class="clip05__rail" aria-label="Registration">
+          <div class="clip05__reg">
+            <h3 class="clip05__reg-format">In-person event</h3>
+            <p class="clip05__reg-note">Registration is required to attend.</p>
+            <dl class="clip05__reg-row">
+              <dt>Registration</dt>
+              <dd>Free for members</dd>
+            </dl>
+            <a class="btn btn--primary" href="#register">Register now</a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Upcoming events strip -->
+      <div class="clip05__upcoming">
+        <h2 class="clip05__upcoming-title">Upcoming events</h2>
+        <ul class="clip05__upcoming-grid" role="list">
+
+          <li>
+            <article class="clip05__event-card clip05__event-card--variant-1">
+              <div class="clip05__event-media" aria-hidden="true">
+                <img src="assets/images/clips-event-taste-showcase.jpg" alt="">
+              </div>
+              <div class="clip05__event-body">
+                <p class="clip05__event-date">Jun 12, Fri &middot; 10:30 AM &ndash; 2:45 PM</p>
+                <h3 class="clip05__event-title">Taste of Anguilla &mdash; small business showcase</h3>
+                <a class="btn btn--tertiary clip05__event-link" href="#">Register now</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="clip05__event-card clip05__event-card--variant-2">
+              <div class="clip05__event-media" aria-hidden="true">
+                <img src="assets/images/clips-event-members-mixer.jpg" alt="">
+              </div>
+              <div class="clip05__event-body">
+                <p class="clip05__event-date">Jun 30, Tue &middot; 4:30 PM &ndash; 7:30 PM</p>
+                <h3 class="clip05__event-title">Members&rsquo; mixer at the Old Customs House</h3>
+                <a class="btn btn--tertiary clip05__event-link" href="#">Register now</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="clip05__event-card clip05__event-card--variant-3">
+              <div class="clip05__event-media" aria-hidden="true">
+                <img src="assets/images/clips-event-ai-workshop.jpg" alt="">
+              </div>
+              <div class="clip05__event-body">
+                <p class="clip05__event-date">Jun 24, Wed &middot; 9:00 AM &ndash; 12:00 PM</p>
+                <h3 class="clip05__event-title">Bridging the AI gap: practical tools for small operators</h3>
+                <a class="btn btn--tertiary clip05__event-link" href="#">Register now</a>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+        <div class="clip05__upcoming-actions">
+          <a class="btn btn--primary" href="#events">View all events</a>
+        </div>
+      </div>
+
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 06 — Event detail page (ACA-style variant)
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 06</p>
+        <h2 class="clip-header__title">Event detail &mdash; geometric hero, structured sidebar.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> Anguilla Compliance Association event page (built by the user for a different site).</p>
+        <p><strong>Why this is interesting:</strong> a more "professional services" take on the same problem Clip 05 solves. The hero uses a flat color band with a diagonal geometric overlay instead of a wave &mdash; cleaner, less tropical. The sidebar is structured as a vertical key/value list (When &middot; Where &middot; Contact &middot; Register) instead of one registration card &mdash; gives every detail a clear home and the registration link sits at the bottom where the eye naturally lands. Speakers are a 2-up grid with logo-plus-name-plus-role, which is more useful than avatar circles when the speakers represent organizations. A "Back to Events" link sits above the content and a share row sits below.</p>
+        <p><strong>Translated:</strong> blue/cyan hero &rarr; <code>--brand-blue-mid</code> with a <code>--brand-sail</code> diagonal overlay, both from the Mission gradient family (no new colors). Yellow CTA &rarr; <code>--color-cta</code> (sunset). Sidebar gets the Clip 04 corner-fold + slab accent treatment so it ties into the rest of the design system. Date/time is echoed in both the hero and the sidebar When section &mdash; per spec.</p>
+        <p><strong>Vs Clip 05:</strong> these are alternatives, not stacking. Clip 05 leans warmer (teal hero + wave). Clip 06 leans cooler (blue hero + diagonal). Pick the one that fits ACOCI&rsquo;s tone &mdash; or use Clip 06&rsquo;s sidebar pattern with Clip 05&rsquo;s wave hero.</p>
+      </div>
+    </header>
+
+    <section class="clip06">
+
+      <!-- Geometric hero -->
+      <div class="clip06__hero">
+        <div class="clip06__hero-inner">
+          <div>
+            <p class="clip06__hero-date">Wednesday, May 25, 2026</p>
+            <h1 class="clip06__hero-title">Goods and Services Tax briefing with Inland Revenue and the AFSC.</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="clip06__body">
+
+        <p class="clip06__back" style="grid-column: 1 / -1;"><a href="#events">Back to events</a></p>
+
+        <!-- Main column -->
+        <div class="clip06__main">
+
+          <section class="clip06__section">
+            <h2 class="clip06__section-title">Details</h2>
+            <p class="clip06__lede">
+              ACOCI members are invited to engage in an interactive discussion
+              about the Goods and Services Tax with representatives from the
+              Inland Revenue Department and the Anguilla Financial Services
+              Commission. Practical guidance for licensed businesses preparing
+              for the next reporting cycle.
+            </p>
+          </section>
+
+          <section class="clip06__section">
+            <h2 class="clip06__section-title">Guest speakers</h2>
+            <ul class="clip06__speakers" role="list">
+              <li class="clip06__speaker">
+                <div class="clip06__speaker-logo" aria-hidden="true">IRD</div>
+                <div>
+                  <p class="clip06__speaker-name">Speaker name</p>
+                  <p class="clip06__speaker-role">Deputy Comptroller, Inland Revenue Department</p>
+                </div>
+              </li>
+              <li class="clip06__speaker">
+                <div class="clip06__speaker-logo" aria-hidden="true">AFSC</div>
+                <div>
+                  <p class="clip06__speaker-name">Anguilla Financial Services Commission</p>
+                  <p class="clip06__speaker-role">Regulator</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <div class="clip06__share">
+            <span class="clip06__share-label">Share this event</span>
+            <ul class="clip06__share-icons" role="list">
+              <li><a href="#" aria-label="Share on Twitter">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 5.92a8.2 8.2 0 0 1-2.36.65 4.13 4.13 0 0 0 1.81-2.27 8.22 8.22 0 0 1-2.6 1A4.1 4.1 0 0 0 11.85 9 11.65 11.65 0 0 1 3.39 4.7a4.1 4.1 0 0 0 1.27 5.47 4.07 4.07 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.4a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67l-.01-.53A8.3 8.3 0 0 0 22 5.92z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Share on Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88V14.9H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.9h-2.33v6.98A10 10 0 0 0 22 12z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Share via email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .25v.32l8 5.43 8-5.43V6.25L12 11.5 4 6.25zM4 9v9h16V9l-8 5.43L4 9z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Share on LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 18H5.5v-8H8v8zM6.75 8.7A1.46 1.46 0 1 1 6.75 5.8a1.46 1.46 0 0 1 0 2.9zM18.5 18H16v-4.34c0-1.04-.02-2.37-1.45-2.37-1.45 0-1.67 1.13-1.67 2.3V18H10.4v-8h2.4v1.1h.04c.33-.62 1.15-1.27 2.36-1.27 2.53 0 3 1.66 3 3.83V18z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Share on WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.27-.13-1.59-.78-1.84-.87-.25-.09-.43-.13-.6.14-.18.27-.7.87-.86 1.05-.16.18-.31.2-.59.07a7.4 7.4 0 0 1-2.16-1.34 8.16 8.16 0 0 1-1.5-1.86c-.16-.27-.02-.41.12-.55.12-.12.27-.31.4-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.13-.6-1.45-.83-1.99-.22-.52-.44-.45-.6-.46l-.51-.01a.97.97 0 0 0-.7.33c-.25.27-.94.91-.94 2.22 0 1.31.96 2.58 1.1 2.76.13.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.22.17 1.68.1.51-.07 1.59-.65 1.81-1.27.22-.62.22-1.16.16-1.27-.07-.11-.25-.18-.52-.31zM12 3a9 9 0 0 0-7.7 13.7L3 21l4.46-1.27A9 9 0 1 0 12 3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="clip06__rail" aria-label="Event details">
+          <div class="clip06__details">
+
+            <div class="clip06__detail-block">
+              <h3 class="clip06__detail-title">When</h3>
+              <p>Wednesday, May 25, 2026</p>
+              <p>10:00 AM &ndash; 11:00 AM</p>
+            </div>
+
+            <div class="clip06__detail-block">
+              <h3 class="clip06__detail-title">Where</h3>
+              <p>Online, on Zoom</p>
+            </div>
+
+            <div class="clip06__detail-block">
+              <h3 class="clip06__detail-title">Contact</h3>
+              <p>Tirichmir Gumbs</p>
+              <p><a href="mailto:events@anguillachamber.com">events@anguillachamber.com</a></p>
+            </div>
+
+            <div class="clip06__detail-block">
+              <h3 class="clip06__detail-title">Register</h3>
+              <p><a href="#login">Log in to register</a></p>
+              <p class="clip06__detail-or">or</p>
+              <a class="btn btn--primary" href="#join">Become a member</a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Membership CTA panel -->
+      <aside class="clip06__membership" aria-label="Membership prompt" id="clip06-membership">
+        <div class="clip06__membership-inner">
+          <div class="clip06__membership-copy">
+            <h3>Interested in membership?</h3>
+            <p>
+              Find out how joining ACOCI can help your business grow. Members get
+              direct input on policy, access to events and programs, and the
+              network of operators shaping Anguilla&rsquo;s economy.
+            </p>
+            <a class="btn btn--primary" href="#join" style="align-self: flex-start;">Become a member</a>
+          </div>
+          <div class="clip06__membership-media" aria-hidden="true">
+            <img src="assets/images/clips-membership-storefront.jpg" alt="">
+          </div>
+        </div>
+      </aside>
+
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 07 — Hero variants library
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 07</p>
+        <h2 class="clip-header__title">Hero library &mdash; wave + colored band, two types.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Two types:</strong></p>
+        <p><strong>Type A &mdash; Anchor heroes (decorative).</strong> Tall colored band + wave bottom. The page&rsquo;s content sits on top in a white card that straddles the boundary &mdash; same pattern as Clip 05. The hero itself only holds an optional breadcrumb. Use for structured detail pages (event, member profile, news article).</p>
+        <p><strong>Type B &mdash; Content heroes.</strong> Same band + wave, but the hero holds eyebrow + page title + lede. Page content flows normally below. Use for landing pages (Members, News, Events index, About).</p>
+        <p><strong>Color slots:</strong> teal-deep (Membership), sail (Advocacy), blue-mid (Events), Mission gradient (News/featured), aqua (Member directory), aqua-soft (About). All sampled from existing palette &mdash; no new tokens.</p>
+        <p><strong>Wave behavior:</strong> Type A waves are filled white (the card sits over them). Type B waves are filled aqua-soft (the page background &mdash; content flows naturally beneath).</p>
+      </div>
+    </header>
+
+    <section class="clip07">
+
+      <!-- ═══ TYPE A — ANCHOR HEROES ═══ -->
+
+      <!-- A1: Teal-deep / Membership -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-a">Type A &middot; Anchor</span>
+        <span class="clip07__label-name">A1 &middot; Teal-deep</span>
+        <span class="clip07__label-purpose">&mdash; Membership pages (single member, application, renewal)</span>
+      </div>
+      <div class="c7hero c7hero--anchor c7hero--teal-deep">
+        <div class="c7hero__inner">
+          <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <a href="#">Membership</a> / <span>Member profile</span></p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--teal-deep" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7anchor-card">
+        <h3 class="c7anchor-card__title">Member profile / detail page content goes here.</h3>
+        <p class="c7anchor-card__body">The white card sits on top of the wave, straddling the hero/body boundary. This is the same pattern as Clip 05. The hero anchors the page visually without competing with the content.</p>
+      </div>
+
+      <!-- A2: Sail blue / Advocacy -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-a">Type A &middot; Anchor</span>
+        <span class="clip07__label-name">A2 &middot; Sail blue</span>
+        <span class="clip07__label-purpose">&mdash; Advocacy &amp; Policy detail pages (position papers, committee reports)</span>
+      </div>
+      <div class="c7hero c7hero--anchor c7hero--sail">
+        <div class="c7hero__inner">
+          <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <a href="#">Advocacy</a> / <span>Position paper</span></p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--sail" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7anchor-card">
+        <h3 class="c7anchor-card__title">Position paper detail page content goes here.</h3>
+        <p class="c7anchor-card__body">Sail blue is the lighter, friendlier of the dark variants &mdash; better for content-heavy pages where the hero shouldn&rsquo;t feel oppressive.</p>
+      </div>
+
+      <!-- A3: Blue-mid / Events -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-a">Type A &middot; Anchor</span>
+        <span class="clip07__label-name">A3 &middot; Blue-mid</span>
+        <span class="clip07__label-purpose">&mdash; Events detail pages (single event, paired with Clip 05/06)</span>
+      </div>
+      <div class="c7hero c7hero--anchor c7hero--blue-mid">
+        <div class="c7hero__inner">
+          <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <a href="#">Events</a> / <span>Event title</span></p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--blue-mid" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7anchor-card">
+        <h3 class="c7anchor-card__title">Event detail content goes here.</h3>
+        <p class="c7anchor-card__body">Blue-mid is the deepest of the standalone surface colors. Use sparingly &mdash; reserve for pages that benefit from gravitas (annual general meeting, signature events).</p>
+      </div>
+
+      <!-- A4: Mission gradient / News -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-a">Type A &middot; Anchor</span>
+        <span class="clip07__label-name">A4 &middot; Mission gradient</span>
+        <span class="clip07__label-purpose">&mdash; News articles, featured stories, hero feature pages</span>
+      </div>
+      <div class="c7hero c7hero--anchor c7hero--mission">
+        <div class="c7hero__inner">
+          <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <a href="#">News</a> / <span>Article title</span></p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--mission" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7anchor-card">
+        <h3 class="c7anchor-card__title">Article content goes here.</h3>
+        <p class="c7anchor-card__body">The Mission gradient is the most dramatic option. Reserve for stories that warrant the weight &mdash; chairman&rsquo;s annual letter, major announcements, multi-part features.</p>
+      </div>
+
+      <!-- ═══ TYPE B — CONTENT HEROES ═══ -->
+
+      <!-- B1: Teal-deep / Membership index -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Type B &middot; Content</span>
+        <span class="clip07__label-name">B1 &middot; Teal-deep</span>
+        <span class="clip07__label-purpose">&mdash; Membership landing page</span>
+      </div>
+      <div class="c7hero c7hero--teal-deep">
+        <div class="c7hero__inner">
+          <p class="c7hero__eyebrow">Membership</p>
+          <h1 class="c7hero__title">Join Anguilla&rsquo;s business community.</h1>
+          <p class="c7hero__lede">
+            ACOCI represents licensed businesses across the island &mdash; from
+            sole traders to the largest employers. Every member gets a seat at
+            the table.
+          </p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--aqua-soft" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7below"><div class="c7below__inner">Page content flows here, on the aqua-soft body background.</div></div>
+
+      <!-- B2: Sail / Advocacy index -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Type B &middot; Content</span>
+        <span class="clip07__label-name">B2 &middot; Sail blue</span>
+        <span class="clip07__label-purpose">&mdash; Advocacy landing page</span>
+      </div>
+      <div class="c7hero c7hero--sail">
+        <div class="c7hero__inner">
+          <p class="c7hero__eyebrow">Advocacy</p>
+          <h1 class="c7hero__title">Speaking up for Anguilla business.</h1>
+          <p class="c7hero__lede">
+            From licensing reform to import duties, ACOCI brings the operator&rsquo;s
+            perspective to the regulators and lawmakers shaping the island&rsquo;s
+            commercial environment.
+          </p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--aqua-soft" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7below"><div class="c7below__inner">Page content flows here.</div></div>
+
+      <!-- B3: Mission gradient / News index -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Type B &middot; Content</span>
+        <span class="clip07__label-name">B3 &middot; Mission gradient</span>
+        <span class="clip07__label-purpose">&mdash; News index, featured story landings</span>
+      </div>
+      <div class="c7hero c7hero--mission">
+        <div class="c7hero__inner">
+          <p class="c7hero__eyebrow">Newsroom</p>
+          <h1 class="c7hero__title">News, announcements, and member stories.</h1>
+          <p class="c7hero__lede">
+            Updates from the chamber, policy briefings, and the operators
+            shaping Anguilla&rsquo;s economy.
+          </p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--aqua-soft" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7below"><div class="c7below__inner">Filter chips + article grid flows here (per Clip 04).</div></div>
+
+      <!-- B4: Aqua / Member directory -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Type B &middot; Content</span>
+        <span class="clip07__label-name">B4 &middot; Aqua (light)</span>
+        <span class="clip07__label-purpose">&mdash; Member directory, programs index</span>
+      </div>
+      <div class="c7hero c7hero--aqua">
+        <div class="c7hero__inner">
+          <p class="c7hero__eyebrow">Member directory</p>
+          <h1 class="c7hero__title">Find a member business.</h1>
+          <p class="c7hero__lede">
+            Browse the businesses that make up the Anguilla Chamber of Commerce
+            &amp; Industry &mdash; by sector, by location, or by name.
+          </p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--aqua-soft" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c7below"><div class="c7below__inner">Search + filters + directory grid flows here.</div></div>
+
+      <!-- B5: Aqua-soft / About -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Type B &middot; Content</span>
+        <span class="clip07__label-name">B5 &middot; Aqua-soft (lightest)</span>
+        <span class="clip07__label-purpose">&mdash; About page, Contact, quiet content pages</span>
+      </div>
+      <div class="c7hero c7hero--aqua-soft">
+        <div class="c7hero__inner">
+          <p class="c7hero__eyebrow">About</p>
+          <h1 class="c7hero__title">The Anguilla Chamber of Commerce &amp; Industry.</h1>
+          <p class="c7hero__lede">
+            For more than forty years, ACOCI has united and advocated for the
+            licensed businesses of Anguilla. This is who we are, what we do,
+            and how we work.
+          </p>
+        </div>
+        <div class="c7hero__wave c7hero__wave--aqua-soft" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div style="background:#fff; padding: var(--space-xl) 0;"><div class="c7below__inner">Content flows here on plain white &mdash; the aqua-soft hero into white reads as a soft section break, not a hard one.</div></div>
+
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 08 — Article / blog post template
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 08</p>
+        <h2 class="clip-header__title">Article post template &mdash; image straddles the wave.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Sources:</strong> TrueAnguilla article (title + tags layout) and Chicagoland Chamber post (image-as-featured-block + author/share placement).</p>
+        <p><strong>Pattern:</strong> hero band holds tags, title, and dek in the colored zone. The featured image takes the place of the white card from the anchor pattern (Clip 07 / Type A) &mdash; it straddles the wave/body boundary, with the same <code>--c7hero-wave-h</code> + <code>--c7hero-overlap</code> math so the image&rsquo;s top edge lands exactly <code>--space-xl</code> below the hero title. Image is wider than the body (960px image, 720px body) for a magazine-style hierarchy.</p>
+        <p><strong>Below the image:</strong> author + share row in a 720px column with hairline borders top and bottom. Then the article body, also 720px, in a comfortable reading size and line-height.</p>
+        <p><strong>Hero variant:</strong> shown here on the Mission gradient (most dramatic option, suits feature stories). Easy to swap to teal-deep (chamber news), sail (advocacy posts), or blue-mid (events recap) by changing the surface class.</p>
+      </div>
+    </header>
+
+    <section class="clip08">
+
+      <!-- Hero with tags + title + dek -->
+      <div class="clip08__hero">
+        <div class="clip08__hero-inner">
+
+          <ul class="clip08__tags" role="list">
+            <li><a href="#">Chamber News</a></li>
+            <li><a href="#">SBDC</a></li>
+            <li><a href="#">Small Business</a></li>
+            <li><a href="#">Programs</a></li>
+          </ul>
+
+          <h1 class="clip08__title">Chamber pitch night returns May 22, with $25,000 in catalytic funding on the table.</h1>
+
+          <p class="clip08__dek">
+            ACOCI&rsquo;s Small Business Development Council brings back its
+            annual capital readiness showcase &mdash; six member businesses,
+            one panel of regional investors, and the kind of feedback you
+            usually have to leave the island to get.
+          </p>
+
+        </div>
+
+        <div class="clip08__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Featured image — straddles wave/body boundary -->
+      <figure class="clip08__featured">
+        <div class="clip08__featured-img" role="img" aria-label="Featured image placeholder"></div>
+      </figure>
+
+      <!-- Author + share row -->
+      <div class="clip08__meta">
+        <div class="clip08__author">
+          <div class="clip08__author-avatar" aria-hidden="true"></div>
+          <div>
+            <p class="clip08__author-name">Damian Richardson</p>
+            <p class="clip08__author-meta">May 9, 2026 &middot; 5 min read</p>
+          </div>
+        </div>
+        <div class="clip08__share">
+          <span class="clip08__share-label">Share</span>
+          <ul class="clip08__share-icons" role="list">
+            <li><a href="#" aria-label="Share on Twitter">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 5.92a8.2 8.2 0 0 1-2.36.65 4.13 4.13 0 0 0 1.81-2.27 8.22 8.22 0 0 1-2.6 1A4.1 4.1 0 0 0 11.85 9 11.65 11.65 0 0 1 3.39 4.7a4.1 4.1 0 0 0 1.27 5.47 4.07 4.07 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.4a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67l-.01-.53A8.3 8.3 0 0 0 22 5.92z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Share on Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88V14.9H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.9h-2.33v6.98A10 10 0 0 0 22 12z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Share via email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .25v.32l8 5.43 8-5.43V6.25L12 11.5 4 6.25zM4 9v9h16V9l-8 5.43L4 9z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 18H5.5v-8H8v8zM6.75 8.7A1.46 1.46 0 1 1 6.75 5.8a1.46 1.46 0 0 1 0 2.9zM18.5 18H16v-4.34c0-1.04-.02-2.37-1.45-2.37-1.45 0-1.67 1.13-1.67 2.3V18H10.4v-8h2.4v1.1h.04c.33-.62 1.15-1.27 2.36-1.27 2.53 0 3 1.66 3 3.83V18z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Article body -->
+      <div class="clip08__body">
+        <p>
+          The Anguilla Chamber of Commerce &amp; Industry will host the
+          fourth annual <strong>Small Business Capital Readiness Pitch
+          Night</strong> on Thursday, May 22 at the Hansa Bank conference
+          centre. Six pre-screened ACOCI member businesses will present
+          investment-ready pitches to a panel of regional capital providers,
+          competing for a share of $25,000 in catalytic funding contributed
+          by the chamber&rsquo;s sponsors.
+        </p>
+
+        <p>
+          The funding is structured as zero-interest, milestone-tied capital
+          rather than equity &mdash; the kind of bridge financing that&rsquo;s
+          notoriously hard to secure for small operators on the island.
+          &ldquo;Banks want collateral, equity investors want scale we
+          don&rsquo;t have yet,&rdquo; says <strong>Damian Richardson</strong>,
+          who chairs the Chamber&rsquo;s SBDC working group. &ldquo;Pitch Night
+          is for the in-between &mdash; the businesses that have proven the
+          model and just need runway to grow it.&rdquo;
+        </p>
+
+        <h2>What&rsquo;s changed this year</h2>
+
+        <p>
+          The 2026 cohort has been narrowed from twelve applicants to six,
+          following two months of advisory sessions with the SBDC team. Three
+          of the six are returning from previous cohorts &mdash; not as
+          repeat applicants, but as <em>businesses that previously won and
+          have hit their stage-one milestones</em>. They&rsquo;ll pitch for
+          stage-two extension funding alongside the new entrants.
+        </p>
+
+        <p>
+          The investor panel has also expanded. In addition to the chamber&rsquo;s
+          longstanding partners at Caribbean Commercial Bank and the Anguilla
+          Development Board, this year&rsquo;s panel includes representatives
+          from the OECS Business Council and a discretionary observer from
+          the regional Caribbean Development Bank. <a href="#">The full panel
+          and judging criteria are published here</a>.
+        </p>
+
+        <h2>Why it matters for ACOCI members</h2>
+
+        <p>
+          Pitch Night is one of the few moments in the chamber&rsquo;s calendar
+          where the gap between policy work and operator outcomes closes
+          completely. The funding is real, the feedback is on-the-record, and
+          the businesses pitching are the same operators who sit on
+          ACOCI&rsquo;s committees and respond to its consultations the rest
+          of the year.
+        </p>
+
+        <p>
+          Members who aren&rsquo;t pitching are encouraged to attend. The
+          format includes a 30-minute networking reception before the pitches
+          begin, and a debrief panel afterwards where the investors discuss
+          what separated the strongest applications from the rest &mdash; the
+          kind of inside read that&rsquo;s usually only available to people
+          already in the room.
+        </p>
+
+        <h2>How to attend</h2>
+
+        <p>
+          Registration is free for ACOCI members and $35 for non-members. The
+          event runs 5:30&ndash;8:30 PM. Members can register through the
+          chamber portal; non-members can register at the door pending
+          capacity. If your business is interested in being considered for
+          the 2027 cohort, the SBDC team will be taking expressions of
+          interest at the post-event reception.
+        </p>
+      </div>
+
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 09 — Triangle decoration on hero variants
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 09</p>
+        <h2 class="clip-header__title">Triangle decoration &mdash; the brand graphic in heroes.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> ACOCI brand kit triangle SVGs (<code>Triangles-01/02/03.svg</code>) &mdash; the canonical graphic element with a fixed angle (~66&deg; from horizontal). Same shape used in the Chicagoland Chamber heroes for inspiration, but here in the actual ACOCI form.</p>
+        <p><strong>Mechanism:</strong> the SVGs are loaded as CSS <code>mask-image</code>, so the fill color is set via <code>background-color</code> in the stylesheet. That means we can use any palette token without editing the source SVGs &mdash; one set of files, infinite color combinations.</p>
+        <p><strong>Three approaches shown</strong> on three different hero surfaces. Each approach preserves the brand angle by always using the actual SVG paths &mdash; only opacity, size, position, and rotation change.</p>
+        <p><strong>Approach A:</strong> subtle white-on-color backdrop. Reads as texture, doesn&rsquo;t compete with the title.</p>
+        <p><strong>Approach B:</strong> stronger brand-color cluster, top-right. One large triangle bleeding off the corner, one smaller triangle rotated 180&deg; for visual rhythm.</p>
+        <p><strong>Approach C:</strong> uses the composite SVG (Triangles-01) which preserves the canonical two-triangle relationship from the brand kit, then adds a small sunset accent for a punch of CTA color used decoratively.</p>
+      </div>
+    </header>
+
+    <section class="clip09">
+
+      <!-- Approach A on Mission gradient -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Approach A</span>
+        <span class="clip07__label-name">White-on-color subtle backdrop &middot; Mission gradient</span>
+      </div>
+      <div class="c9hero c9hero--mission c9hero--approach-a">
+        <div class="c9hero__decor" aria-hidden="true">
+          <span class="tri tri--big"></span>
+          <span class="tri tri--small"></span>
+        </div>
+        <div class="c9hero__inner">
+          <p class="c9hero__eyebrow">Newsroom</p>
+          <h1 class="c9hero__title">News, announcements, and member stories.</h1>
+          <p class="c9hero__lede">
+            Updates from the chamber, policy briefings, and the operators
+            shaping Anguilla&rsquo;s economy.
+          </p>
+        </div>
+        <div class="c9hero__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Approach B on Teal-deep -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Approach B</span>
+        <span class="clip07__label-name">Brand-color cluster top-right &middot; Teal-deep</span>
+      </div>
+      <div class="c9hero c9hero--teal-deep c9hero--approach-b">
+        <div class="c9hero__decor" aria-hidden="true">
+          <span class="tri tri--big"></span>
+          <span class="tri tri--small"></span>
+        </div>
+        <div class="c9hero__inner">
+          <p class="c9hero__eyebrow">Membership</p>
+          <h1 class="c9hero__title">Join Anguilla&rsquo;s business community.</h1>
+          <p class="c9hero__lede">
+            ACOCI represents licensed businesses across the island &mdash; from
+            sole traders to the largest employers. Every member gets a seat at
+            the table.
+          </p>
+        </div>
+        <div class="c9hero__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Approach C on Sail blue -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Approach C</span>
+        <span class="clip07__label-name">Composite + sunset accent &middot; Sail blue</span>
+      </div>
+      <div class="c9hero c9hero--sail c9hero--approach-c">
+        <div class="c9hero__decor" aria-hidden="true">
+          <span class="tri tri--pair"></span>
+          <span class="tri tri--small"></span>
+        </div>
+        <div class="c9hero__inner">
+          <p class="c9hero__eyebrow">Advocacy</p>
+          <h1 class="c9hero__title">Speaking up for Anguilla business.</h1>
+          <p class="c9hero__lede">
+            From licensing reform to import duties, ACOCI brings the
+            operator&rsquo;s perspective to the regulators and lawmakers
+            shaping the island&rsquo;s commercial environment.
+          </p>
+        </div>
+        <div class="c9hero__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Approach B on Aqua (light) — dark triangles on light bg -->
+      <div class="clip07__label">
+        <span class="clip07__label-tag clip07__label-tag--type-b">Approach B</span>
+        <span class="clip07__label-name">Brand-color cluster &middot; Aqua light (dark text)</span>
+      </div>
+      <div class="c9hero c9hero--aqua c9hero--approach-b">
+        <div class="c9hero__decor" aria-hidden="true">
+          <span class="tri tri--big"></span>
+          <span class="tri tri--small"></span>
+        </div>
+        <div class="c9hero__inner">
+          <p class="c9hero__eyebrow">Member directory</p>
+          <h1 class="c9hero__title">Find a member business.</h1>
+          <p class="c9hero__lede">
+            Browse the businesses that make up the Anguilla Chamber of Commerce
+            &amp; Industry &mdash; by sector, by location, or by name.
+          </p>
+        </div>
+        <div class="c9hero__wave" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+  </article>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP 10
+       ════════════════════════════════════════════════════════ -->
+  <article class="clip">
+    <header class="clip-header">
+      <div>
+        <p class="clip-header__index">Clip 10</p>
+        <h2 class="clip-header__title">Become a Member &mdash; full-bleed CTA strip with watermark.</h2>
+      </div>
+      <div class="clip-header__body">
+        <p><strong>Source:</strong> ACOCI's existing &ldquo;Become a Member&rdquo; band &mdash; centered copy on a flat teal field, primary + ghost buttons, faint chamber-mark watermark behind the type.</p>
+        <p><strong>What changed:</strong> the flat teal background is replaced with the mission gradient (teal&nbsp;&rarr;&nbsp;blue&nbsp;&rarr;&nbsp;navy) so it slots into the system's single dark-surface treatment. Primary action moves to sunset (the only place that color appears); the second button inverts to a white-outline ghost on the dark surface.</p>
+        <p><strong>Watch out:</strong> the watermark must stay quiet (opacity ~10%) so the mark reads as texture, not as a second logo competing with the headline.</p>
+      </div>
+    </header>
+
+    <section class="clip10">
+      <div class="clip10__variant">
+        <p class="clip10__variant-label">Variant A &mdash; logo contained</p>
+        <div class="clip10__card clip10__card--contained on-dark">
+          <div class="clip10__watermark" aria-hidden="true">
+            <img src="assets/images/logo/ACOCI_LOGO_ICON-WHT.svg" alt="">
+          </div>
+          <div class="clip10__inner">
+            <h2 class="clip10__title">Become a Member</h2>
+            <p class="clip10__copy">
+              The Anguilla Chamber of Commerce and Industry is committed to promoting
+              a healthy environment to create strong, vibrant local businesses.
+            </p>
+            <p class="clip10__copy">
+              Find out how you can take advantage of Chamber resources.
+            </p>
+            <div class="clip10__actions">
+              <a class="btn btn--primary" href="#join">Join the Chamber</a>
+              <a class="btn btn--secondary on-dark" href="#membership">Find out more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clip10__variant">
+        <p class="clip10__variant-label">Variant B &mdash; logo oversized &amp; clipped</p>
+        <div class="clip10__card clip10__card--bleed on-dark">
+          <div class="clip10__watermark" aria-hidden="true">
+            <img src="assets/images/logo/ACOCI_LOGO_ICON-WHT.svg" alt="">
+          </div>
+          <div class="clip10__inner">
+            <h2 class="clip10__title">Become a Member</h2>
+            <p class="clip10__copy">
+              The Anguilla Chamber of Commerce and Industry is committed to promoting
+              a healthy environment to create strong, vibrant local businesses.
+            </p>
+            <p class="clip10__copy">
+              Find out how you can take advantage of Chamber resources.
+            </p>
+            <div class="clip10__actions">
+              <a class="btn btn--primary" href="#join">Join the Chamber</a>
+              <a class="btn btn--secondary on-dark" href="#membership">Find out more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+
+</body>
+</html>

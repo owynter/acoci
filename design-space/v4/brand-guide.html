@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Style Guide — ACOCI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* ===== Brand-guide-specific layout =====
+     Reuses .page / .section / .inner from styles.css and the token palette.
+     Mission gradient is the dark-surface treatment (replaces rejected ink). */
+
+  :root {
+    --c-gradient: linear-gradient(135deg, #41BBB3 0%, #0074B7 55%, #003B73 100%);
+  }
+
+  body { background: #fff; color: var(--c-ink); }
+
+  .bg-header {
+    background: var(--c-gradient);
+    color: #fff;
+    padding-block: clamp(64px, 9vw, 112px);
+    position: relative;
+    overflow: hidden;
+  }
+  .bg-header::after {
+    content: "";
+    position: absolute;
+    inset: auto -10% -60% auto;
+    width: 720px;
+    height: 720px;
+    background: radial-gradient(circle, rgba(65,187,179,.20), transparent 65%);
+    pointer-events: none;
+  }
+  .bg-header .eyebrow {
+    background: rgba(65,187,179,.18);
+    color: var(--c-teal);
+    margin-bottom: var(--space-md);
+  }
+  .bg-header h1 {
+    color: #fff;
+    font-size: var(--heading-display);
+    font-variation-settings: "wdth" 110, "opsz" 96;
+    margin-bottom: var(--space-md);
+  }
+  .bg-header p {
+    color: rgba(255,255,255,.78);
+    max-width: 56ch;
+    font-size: var(--body-lg);
+  }
+  .bg-header .meta {
+    margin-top: var(--space-lg);
+    font-size: var(--body-xs);
+    color: rgba(255,255,255,.5);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* Section frame */
+  .bg-section {
+    padding-block: clamp(64px, 8vw, 112px);
+    border-top: 1px solid var(--c-rule);
+  }
+  .bg-section:first-of-type { border-top: 0; }
+
+  .bg-section-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+    margin-bottom: var(--space-xl);
+  }
+  .bg-section-head .num {
+    font-family: var(--f-head);
+    font-variation-settings: "wdth" 105, "opsz" 72;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--c-ink);
+  }
+  .bg-section-head .num span { color: var(--c-teal); }
+  .bg-section-head h2 {
+    font-size: var(--heading-2);
+    margin-bottom: var(--space-sm);
+  }
+  .bg-section-head p {
+    max-width: 60ch;
+    color: var(--c-ink);
+    font-size: var(--body-base);
+  }
+  @media (max-width: 720px) {
+    .bg-section-head { grid-template-columns: 1fr; gap: var(--space-sm); }
+    .bg-section-head .num { font-size: 40px; }
+  }
+
+  /* ===== Logo cards ===== */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  .logo-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) {
+    .logo-grid, .logo-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .logo-grid, .logo-grid--3 { grid-template-columns: 1fr; }
+  }
+
+  .logo-card {
+    border: 1px solid var(--c-rule);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #fff;
+  }
+  .logo-card .stage {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+  }
+  .logo-card .stage.dark   { background: var(--c-gradient); }
+  .logo-card .stage.light  { background: #fff; }
+  .logo-card .stage.cream  { background: var(--c-cream); }
+  .logo-card .stage.aqua-soft { background: var(--c-aqua-soft); }
+  .logo-card .stage.aqua-mid  { background: var(--c-aqua-mid); }
+  .logo-card .stage.teal      { background: var(--c-teal); }
+  .logo-card .stage.teal-deep { background: var(--c-teal-deep); }
+  .logo-card .stage img       { max-width: 100%; max-height: 160px; width: auto; height: auto; }
+  .logo-card .stage.icon img  { max-height: 120px; }
+  .logo-card .label {
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--c-rule);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--body-xs);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--c-ink);
+  }
+  .logo-card .label .file {
+    font-family: ui-monospace, monospace;
+    color: var(--c-muted);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    text-align: right;
+  }
+
+  .lockup-callout {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--c-cream);
+    border: 1px solid var(--c-rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--body-sm);
+    color: var(--c-muted);
+  }
+  .lockup-callout strong { color: var(--c-ink); }
+
+  /* ===== Color swatches ===== */
+  .palette-block { margin-bottom: var(--space-xl); }
+  .palette-block h3 {
+    font-family: var(--f-head);
+    font-variation-settings: "wdth" 105, "opsz" 28;
+    font-size: var(--body-xl);
+    color: var(--c-ink);
+    margin-bottom: var(--space-xs);
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 700;
+  }
+  .palette-block .lede {
+    color: var(--c-muted);
+    font-size: var(--body-sm);
+    margin-bottom: var(--space-md);
+    max-width: 60ch;
+  }
+
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+  }
+  @media (max-width: 900px) { .swatch-grid { grid-template-columns: repeat(2, 1fr); } }
+  .swatch {
+    border: 1px solid var(--c-rule);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #fff;
+  }
+  .swatch .chip {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-sm);
+    color: #fff;
+    font-size: var(--body-xs);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .swatch .chip.light { color: var(--c-ink); }
+  .swatch .meta {
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--c-rule);
+    font-size: var(--body-xs);
+    line-height: 1.6;
+  }
+  .swatch .meta .name {
+    font-weight: 700;
+    color: var(--c-ink);
+    font-size: var(--body-sm);
+    margin-bottom: 6px;
+  }
+  .swatch .meta .role {
+    color: var(--c-muted);
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .swatch .meta .vals {
+    font-family: ui-monospace, monospace;
+    color: var(--c-muted);
+    font-size: 11px;
+  }
+  .swatch .meta .vals div { margin-bottom: 2px; }
+
+  /* Color ratio bar */
+  .ratio-bar {
+    display: flex;
+    height: 56px;
+    border: 1px solid var(--c-rule);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-top: var(--space-md);
+  }
+  .ratio-bar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: var(--body-xs);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    padding-inline: 6px;
+  }
+  .ratio-bar .b-white { background: #fff; color: var(--c-ink); flex: 48; border-right: 1px solid var(--c-rule); }
+  .ratio-bar .b-aqua  { background: var(--c-aqua-soft); color: var(--c-teal-deep); flex: 24; }
+  .ratio-bar .b-teal  { background: var(--c-teal); flex: 14; }
+  .ratio-bar .b-ink   { background: var(--c-gradient); flex: 7; }
+  .ratio-bar .b-sail  { background: var(--c-sail); flex: 4; }
+  .ratio-bar .b-sun   { background: var(--c-sun); color: var(--c-ink); flex: 3; }
+
+  /* ===== Typography samples ===== */
+  .type-stack > * + * { margin-top: var(--space-md); }
+  .type-stack .row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    border-bottom: 1px solid var(--c-rule);
+    align-items: baseline;
+  }
+  .type-stack .row .label {
+    font-size: var(--body-xs);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+    font-family: ui-monospace, monospace;
+  }
+  .type-stack .row .sample { color: var(--c-ink); }
+
+  .display-sample {
+    font-family: var(--f-head);
+    font-variation-settings: "wdth" 110, "opsz" 96;
+    font-size: var(--heading-display);
+    line-height: 1.05;
+    color: var(--c-ink);
+    margin-bottom: var(--space-lg);
+    text-wrap: balance;
+  }
+
+  /* ===== Component samples ===== */
+  .sample-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+    padding: var(--space-md);
+    background: var(--c-cream);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--c-rule);
+  }
+  .sample-row + .sample-row { margin-top: var(--space-sm); }
+  .sample-row.dark { background: var(--c-gradient); }
+  .sample-row.aqua { background: var(--c-aqua-soft); }
+
+  /* Radius / shadow chips */
+  .chip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-md);
+  }
+  .chip-grid .chip {
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--space-sm);
+    font-size: var(--body-xs);
+    color: var(--c-muted);
+    font-family: ui-monospace, monospace;
+  }
+  .chip-grid .chip.r-xs   { border-radius: var(--radius-xs); }
+  .chip-grid .chip.r-sm   { border-radius: var(--radius-sm); }
+  .chip-grid .chip.r-md   { border-radius: var(--radius-md); }
+  .chip-grid .chip.r-lg   { border-radius: var(--radius-lg); }
+  .chip-grid .chip.r-xl   { border-radius: var(--radius-xl); }
+  .chip-grid .chip.r-full { border-radius: var(--radius-full); }
+
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--c-cream);
+    border-radius: var(--radius-sm);
+  }
+  .shadow-grid .chip {
+    background: #fff;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-sm);
+    font-size: var(--body-xs);
+    color: var(--c-muted);
+    font-family: ui-monospace, monospace;
+  }
+  .shadow-grid .chip.s-xs { box-shadow: var(--shadow-xs); }
+  .shadow-grid .chip.s-sm { box-shadow: var(--shadow-sm); }
+  .shadow-grid .chip.s-md { box-shadow: var(--shadow-md); }
+  .shadow-grid .chip.s-lg { box-shadow: var(--shadow-lg); }
+  .shadow-grid .chip.s-xl { box-shadow: var(--shadow-xl); }
+
+  /* TOC */
+  .bg-toc {
+    background: var(--c-cream);
+    border-block: 1px solid var(--c-rule);
+    padding-block: var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .bg-toc nav {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    font-size: var(--body-sm);
+  }
+  .bg-toc a {
+    color: var(--c-muted);
+    font-weight: 600;
+    transition: color .15s;
+  }
+  .bg-toc a:hover { color: var(--c-teal-deep); }
+
+  /* Sail link demo */
+  .link-demo {
+    padding: var(--space-md);
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--body-base);
+    color: var(--c-ink);
+    line-height: 1.7;
+  }
+  .link-demo a {
+    color: var(--c-sail);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    transition: color .15s;
+  }
+  .link-demo a:hover { color: var(--c-teal-deep); }
+
+  .info-callout {
+    background: rgba(72,168,224,.08);
+    border-left: 3px solid var(--c-sail);
+    padding: var(--space-md);
+    border-radius: var(--radius-xs);
+    margin-top: var(--space-sm);
+    font-size: var(--body-sm);
+    color: var(--c-ink);
+  }
+  .info-callout strong { color: var(--c-sail); }
+
+  .footer-mini {
+    background: var(--c-gradient);
+    color: rgba(255,255,255,.6);
+    padding-block: var(--space-lg);
+    font-size: var(--body-sm);
+  }
+  .footer-mini a { color: var(--c-teal); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="bg-header">
+    <div class="inner">
+      <span class="eyebrow">Anguilla Chamber of Commerce &amp; Industry</span>
+      <h1>Brand Style Guide</h1>
+      <p>The voice and visual identity of ACOCI — the rules, ratios, and reasons behind every page on anguillachamber.com.</p>
+      <div class="meta">v4.1 · Issued 2026 · Internal Use</div>
+    </div>
+  </header>
+
+  <!-- ── TOC ── -->
+  <nav class="bg-toc">
+    <div class="inner">
+      <nav>
+        <a href="#logo">01 Logo</a>
+        <a href="#color">02 Color</a>
+        <a href="#typography">03 Typography</a>
+        <a href="#radius">04 Radius</a>
+        <a href="#shadow">05 Shadow</a>
+        <a href="#buttons">06 Buttons</a>
+        <a href="#voice">07 Voice</a>
+      </nav>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── 01 Logo ── -->
+    <section class="bg-section" id="logo">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">01<span>.</span></div>
+          <div>
+            <h2>The mark</h2>
+            <p>The ACOCI logo comes in three lockups (horizontal, vertical, icon) and two color treatments (full-color and white). All canonical brand colors are sampled from the horizontal full-color SVG. Use SVG everywhere on the web — PNG (LO) fallbacks are bundled for legacy contexts only.</p>
+          </div>
+        </div>
+
+        <!-- Horizontal lockups -->
+        <div class="palette-block">
+          <h3>Horizontal lockup — primary use</h3>
+          <p class="lede">The default signature. Use in headers, footers, letterheads, and wherever there is room for the wordmark to breathe.</p>
+          <div class="logo-grid">
+            <div class="logo-card">
+              <div class="stage light"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-CLR.svg" alt="ACOCI horizontal logo on white"></div>
+              <div class="label"><span>On white</span><span class="file">HORIZ-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage cream"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-CLR.svg" alt="ACOCI horizontal logo on cream"></div>
+              <div class="label"><span>On cream</span><span class="file">HORIZ-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage aqua-soft"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-CLR.svg" alt="ACOCI horizontal logo on aqua soft"></div>
+              <div class="label"><span>On aqua soft</span><span class="file">HORIZ-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage dark"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-WHT.svg" alt="ACOCI horizontal logo on ink"></div>
+              <div class="label"><span>On ink</span><span class="file">HORIZ-WHT.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage teal"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-WHT.svg" alt="ACOCI horizontal logo on teal"></div>
+              <div class="label"><span>On teal</span><span class="file">HORIZ-WHT.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage teal-deep"><img src="assets/images/logo/ACOCI_LOGO_HORIZ-WHT.svg" alt="ACOCI horizontal logo on teal deep"></div>
+              <div class="label"><span>On teal deep</span><span class="file">HORIZ-WHT.svg</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical lockups -->
+        <div class="palette-block">
+          <h3>Vertical lockup — square contexts</h3>
+          <p class="lede">Use when width is constrained: social profile cards, certificates, square ad placements, and hero panels with portrait composition.</p>
+          <div class="logo-grid logo-grid--3">
+            <div class="logo-card">
+              <div class="stage light"><img src="assets/images/logo/ACOCI_LOGO_VERT-CLR.svg" alt="ACOCI vertical logo on white"></div>
+              <div class="label"><span>On white</span><span class="file">VERT-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage aqua-soft"><img src="assets/images/logo/ACOCI_LOGO_VERT-CLR.svg" alt="ACOCI vertical logo on aqua soft"></div>
+              <div class="label"><span>On aqua soft</span><span class="file">VERT-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage dark"><img src="assets/images/logo/ACOCI_LOGO_VERT-WHT.svg" alt="ACOCI vertical logo on ink"></div>
+              <div class="label"><span>On ink</span><span class="file">VERT-WHT.svg</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Icon lockups -->
+        <div class="palette-block">
+          <h3>Icon — favicon, app, badge</h3>
+          <p class="lede">For favicons, app icons, social avatars, and tight badge contexts. Never use the icon as a substitute for the wordmark in primary brand surfaces.</p>
+          <div class="logo-grid logo-grid--3">
+            <div class="logo-card">
+              <div class="stage light icon"><img src="assets/images/logo/ACOCI_LOGO_ICON-CLR.svg" alt="ACOCI icon on white"></div>
+              <div class="label"><span>On white</span><span class="file">ICON-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage aqua-soft icon"><img src="assets/images/logo/ACOCI_LOGO_ICON-CLR.svg" alt="ACOCI icon on aqua soft"></div>
+              <div class="label"><span>On aqua soft</span><span class="file">ICON-CLR.svg</span></div>
+            </div>
+            <div class="logo-card">
+              <div class="stage dark icon"><img src="assets/images/logo/ACOCI_LOGO_ICON-WHT.svg" alt="ACOCI icon on ink"></div>
+              <div class="label"><span>On ink</span><span class="file">ICON-WHT.svg</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lockup-callout">
+          <strong>File set.</strong> 12 files total: 6 SVG (horizontal, vertical, icon × CLR + WHT) and 6 LO PNG fallbacks. No DRK variants — the WHT lockup handles all dark-background contexts, and CSS handles transparency.
+          Asset path: <code>assets/images/logo/</code>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 Color ── -->
+    <section class="bg-section" id="color">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">02<span>.</span></div>
+          <div>
+            <h2>Color</h2>
+            <p>Every color is sampled directly from the horizontal full-color logo SVG — these are the canonical values, not interpretations. The palette reads as <em>shades of blue</em>: a teal family that does most of the lifting, a sail blue for links and information, ink for spine, sun for spark, and cream for breathing room.</p>
+          </div>
+        </div>
+
+        <!-- Brand primitives -->
+        <div class="palette-block">
+          <h3>Brand primitives</h3>
+          <p class="lede">All values sampled from <code>ACOCI_LOGO_HORIZ-CLR.svg</code>. Refer to brand tokens (<code>--brand-*</code>) only when defining new components — application code should use the semantic Layer 2 tokens (<code>--color-primary</code>, etc.).</p>
+
+          <!-- Teal family -->
+          <h3 style="margin-top:var(--space-lg); font-size:var(--body-base); color:var(--c-muted); text-transform:uppercase; letter-spacing:.08em; font-weight:700;">Teal family</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="chip" style="background:#41BBB3">teal</div>
+              <div class="meta">
+                <div class="name">Teal · Primary</div>
+                <div class="role">CTAs, brand accents, primary buttons</div>
+                <div class="vals">
+                  <div>HEX  #41BBB3</div>
+                  <div>VAR  --brand-primary</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#0E8B85">teal deep</div>
+              <div class="meta">
+                <div class="name">Teal Deep · Press</div>
+                <div class="role">Hover/active states, link-on-hover</div>
+                <div class="vals">
+                  <div>HEX  #0E8B85</div>
+                  <div>VAR  --brand-primary-dark</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#67CCD3">aqua mid</div>
+              <div class="meta">
+                <div class="name">Aqua Mid</div>
+                <div class="role">Section bands, illustration mid-tones</div>
+                <div class="vals">
+                  <div>HEX  #67CCD3</div>
+                  <div>VAR  --brand-aqua-mid</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip light" style="background:#9DDEDB">aqua light</div>
+              <div class="meta">
+                <div class="name">Aqua Light</div>
+                <div class="role">Soft tinted backgrounds, decorative shapes</div>
+                <div class="vals">
+                  <div>HEX  #9DDEDB</div>
+                  <div>VAR  --brand-aqua-light</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip light" style="background:#E8F6F4">aqua soft</div>
+              <div class="meta">
+                <div class="name">Aqua Soft</div>
+                <div class="role">Eyebrow pills, hairline rules, subtle tint</div>
+                <div class="vals">
+                  <div>HEX  #E8F6F4</div>
+                  <div>VAR  --brand-aqua-soft</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Identity accents -->
+          <h3 style="margin-top:var(--space-lg); font-size:var(--body-base); color:var(--c-muted); text-transform:uppercase; letter-spacing:.08em; font-weight:700;">Identity accents</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="chip" style="background:#48A8E0">sail</div>
+              <div class="meta">
+                <div class="name">Sail · Link / Info</div>
+                <div class="role">Inline links, info callouts, data-viz accent</div>
+                <div class="vals">
+                  <div>HEX  #48A8E0</div>
+                  <div>VAR  --brand-sail</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#F69F3E">sun</div>
+              <div class="meta">
+                <div class="name">Sun · Accent</div>
+                <div class="role">Highlights, sparing — never CTAs</div>
+                <div class="vals">
+                  <div>HEX  #F69F3E</div>
+                  <div>VAR  --brand-accent</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark surface + neutrals -->
+          <h3 style="margin-top:var(--space-lg); font-size:var(--body-base); color:var(--c-muted); text-transform:uppercase; letter-spacing:.08em; font-weight:700;">Dark surface &amp; neutrals</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="chip" style="background:linear-gradient(135deg, #41BBB3 0%, #0074B7 55%, #003B73 100%)">gradient</div>
+              <div class="meta">
+                <div class="name">Mission Gradient · Dark surface</div>
+                <div class="role">Header, footer, dark sections, hero bands &mdash; replaces flat ink</div>
+                <div class="vals">
+                  <div>STOPS  #41BBB3 &rarr; #0074B7 &rarr; #003B73</div>
+                  <div>VAR  --gradient-mission</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#131A22">ink</div>
+              <div class="meta">
+                <div class="name">Ink · Body text</div>
+                <div class="role">Headings and body type on light surfaces. <strong>Not used as a surface color</strong> &mdash; gradient owns dark.</div>
+                <div class="vals">
+                  <div>HEX  #131A22</div>
+                  <div>VAR  --brand-neutral-dark</div>
+                </div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#4A5568">muted</div>
+              <div class="meta">
+                <div class="name">Muted · Secondary text</div>
+                <div class="role">Captions, metadata, secondary copy</div>
+                <div class="vals">
+                  <div>HEX  #4A5568</div>
+                  <div>VAR  --brand-neutral-mid</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sail blue role -->
+        <div class="palette-block">
+          <h3>Sail blue — its role</h3>
+          <p class="lede">Sail (<code>#48A8E0</code>) appears in the logo as a single bright accent. To stop it competing with teal as a CTA color, it has one job on the website: <strong>information and navigation that isn't a primary action</strong>. Inline links, breadcrumb links, info banners, and chart accents.</p>
+          <div class="link-demo">
+            ACOCI publishes <a href="#">monthly economic briefings</a> alongside its <a href="#">annual Anguilla Business Outlook</a>. Members can also access the <a href="#">private directory</a> for verified contact details.
+            <div class="info-callout">
+              <strong>Heads up.</strong> Member registration closes the 15th of each month. Apply early to avoid the manual review queue.
+            </div>
+          </div>
+        </div>
+
+        <!-- Usage ratio -->
+        <div class="palette-block">
+          <h3>Usage ratio</h3>
+          <p class="lede">Roughly how the palette should distribute across a page. White dominates; teal does the brand work; gradient anchors dark surfaces; sail and sun appear sparingly.</p>
+          <div class="ratio-bar">
+            <div class="b-white">White  48%</div>
+            <div class="b-aqua">Aqua  24%</div>
+            <div class="b-teal">Teal  14%</div>
+            <div class="b-ink">Gradient  7%</div>
+            <div class="b-sail">Sail  4%</div>
+            <div class="b-sun">Sun  3%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 Typography ── -->
+    <section class="bg-section" id="typography">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">03<span>.</span></div>
+          <div>
+            <h2>Typography</h2>
+            <p><strong>Bricolage Grotesque</strong> for headings (variable axes: <code>wdth</code> 100–110, <code>opsz</code> matched to size). <strong>Hanken Grotesk</strong> for body. The type scale is fluid — every step interpolates from a 1.25 ratio at 360px to a 1.5 ratio at 1340px.</p>
+          </div>
+        </div>
+
+        <p class="display-sample">A stronger Anguilla economy, together.</p>
+
+        <div class="type-stack">
+          <div class="row">
+            <span class="label">Display · h1</span>
+            <h1 class="sample" style="font-family:var(--f-head); font-variation-settings:'wdth' 110, 'opsz' 72; font-weight:700; font-size:var(--heading-1); line-height:1.08; letter-spacing:-.03em;">Display heading</h1>
+          </div>
+          <div class="row">
+            <span class="label">Heading 2</span>
+            <h2 class="sample">Section heading</h2>
+          </div>
+          <div class="row">
+            <span class="label">Heading 3</span>
+            <h3 class="sample" style="font-family:var(--f-head); font-variation-settings:'wdth' 105, 'opsz' 32; font-weight:700; font-size:var(--heading-3); color:var(--c-ink); text-transform:none; letter-spacing:0;">Card heading</h3>
+          </div>
+          <div class="row">
+            <span class="label">Body XL</span>
+            <p class="sample" style="font-size:var(--body-xl); color:var(--c-ink);">Lead paragraphs and pull quotes use a heavier body size to anchor the page.</p>
+          </div>
+          <div class="row">
+            <span class="label">Body base</span>
+            <p class="sample" style="font-size:var(--body-base); color:var(--c-muted);">The default reading size. Hanken Grotesk at 400 weight, 1.65 line-height, on a comfortable measure of about 65 characters.</p>
+          </div>
+          <div class="row">
+            <span class="label">Body sm</span>
+            <p class="sample" style="font-size:var(--body-sm); color:var(--c-muted);">Captions, metadata, and dense lists.</p>
+          </div>
+          <div class="row">
+            <span class="label">Eyebrow</span>
+            <span class="sample eyebrow eyebrow--teal">The voice of Anguilla business</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 04 Radius ── -->
+    <section class="bg-section" id="radius">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">04<span>.</span></div>
+          <div>
+            <h2>Border radius</h2>
+            <p>All corner radii are derived from <code>--space-sm</code>, so they scale with spacing density. Use <code>--radius-sm</code> for buttons and form inputs, <code>--radius-md</code> for cards and photos, and <code>--radius-full</code> for pill shapes.</p>
+          </div>
+        </div>
+
+        <div class="chip-grid">
+          <div class="chip r-xs">--radius-xs</div>
+          <div class="chip r-sm">--radius-sm</div>
+          <div class="chip r-md">--radius-md</div>
+          <div class="chip r-lg">--radius-lg</div>
+          <div class="chip r-xl">--radius-xl</div>
+          <div class="chip r-full">--radius-full</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 05 Shadow ── -->
+    <section class="bg-section" id="shadow">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">05<span>.</span></div>
+          <div>
+            <h2>Elevation</h2>
+            <p>Shadows are tinted toward the canonical logo teal (<code>hsl(176deg 47% 49%)</code>) so depth feels of-a-piece with the palette. Use lightly — most surfaces sit on the page with a hairline rule, not a shadow.</p>
+          </div>
+        </div>
+
+        <div class="shadow-grid">
+          <div class="chip s-xs">--shadow-xs</div>
+          <div class="chip s-sm">--shadow-sm</div>
+          <div class="chip s-md">--shadow-md</div>
+          <div class="chip s-lg">--shadow-lg</div>
+          <div class="chip s-xl">--shadow-xl</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 06 Buttons ── -->
+    <section class="bg-section" id="buttons">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">06<span>.</span></div>
+          <div>
+            <h2>Buttons</h2>
+            <p>Square-ish corners, bold weight, optional arrow. Primary is teal — reserve it for the single most important action on a page. Secondary patterns are ghost (on light), outline (on light), light (on dark), and white (on photos or teal panels).</p>
+          </div>
+        </div>
+
+        <div class="sample-row">
+          <a class="btn btn--primary" href="#">Become a Member <span class="arrow">&rarr;</span></a>
+          <a class="btn btn--ghost" href="#">Find a Business</a>
+          <a class="btn btn--outline" href="#">Learn More</a>
+          <a class="link-arrow" href="#">Read more <span class="arrow">&rarr;</span></a>
+        </div>
+        <div class="sample-row dark">
+          <a class="btn btn--white" href="#">Apply for membership <span class="arrow">&rarr;</span></a>
+          <a class="btn btn--light" href="#">Read the letter</a>
+        </div>
+        <div class="sample-row aqua">
+          <a class="btn btn--primary" href="#">Become a Member <span class="arrow">&rarr;</span></a>
+          <a class="btn btn--outline" href="#">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 07 Voice ── -->
+    <section class="bg-section" id="voice">
+      <div class="inner">
+        <div class="bg-section-head">
+          <div class="num">07<span>.</span></div>
+          <div>
+            <h2>Voice</h2>
+            <p>ACOCI speaks like a trusted Chamber chairperson — warm but precise, grounded in Anguilla, oriented to outcomes. Headlines do the work; subtext earns the click.</p>
+          </div>
+        </div>
+
+        <div class="palette-block">
+          <h3>Do</h3>
+          <p class="lede">Plainspoken, action-oriented, specific to Anguilla.</p>
+          <ul style="display:flex; flex-direction:column; gap:var(--space-sm); padding-left: var(--space-md); list-style:disc; color:var(--c-ink);">
+            <li>"Building a stronger Anguilla economy, together."</li>
+            <li>"Connect with fellow members, government officials, and regional partners."</li>
+            <li>"Get found by residents, visitors, and investors."</li>
+          </ul>
+        </div>
+
+        <div class="palette-block">
+          <h3>Don't</h3>
+          <p class="lede">Avoid corporate filler, vague abstractions, and superlatives without proof.</p>
+          <ul style="display:flex; flex-direction:column; gap:var(--space-sm); padding-left: var(--space-md); list-style:disc; color:var(--c-muted);">
+            <li>"Leveraging synergies to unlock value across the ecosystem."</li>
+            <li>"World-class. Best-in-class. Industry-leading."</li>
+            <li>"At the end of the day, we're committed to excellence."</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-mini">
+    <div class="inner">
+      <p>ACOCI Brand Style Guide v4.1 · For internal use · <a href="index.html">← Back to homepage</a></p>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+/* ============================================================
+   DESIGN TOKENS — v3.2 (ACOCI)
+   ============================================================
+   Tuned from the canonical at ~/projects/static-html/colombo-group/assets/variables.css.
+   Project-specific changes are confined to:
+     - Section 4 (Layer 1 brand primitives)
+     - Section 10 (semantic --container-inner / --container-outer)
+   Everything else mirrors the canonical so engine behavior is portable.
+
+   Sections:
+   1.  Fluid Engine      — shared interpolation config
+   2.  Type Scale        — modular scale engine + step tokens
+   3.  Spacing           — fluid base unit + derived scale
+   4.  Colors            — brand primitives + semantic roles
+   5.  Typography        — heading and body text tokens
+   6.  Border Radius     — derived from spacing
+   7.  Shadows           — elevation layer
+   8.  Transitions       — easing curves and durations
+   9.  Z-Index           — stacking layer scale
+   10. Layout            — containers, section gaps, hero sizing
+   ============================================================ */
+
+
+/* ────────────────────────────────────────────────────────────
+   1. FLUID ENGINE
+   Single interpolator shared by type and spacing.
+   --fluid-progress scales from 0rem → 1rem as the viewport
+   moves from --vp-min to --vp-max.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --vp-min: 360;   /* Minimum viewport width (px, unitless) */
+  --vp-max: 1340;  /* Maximum viewport width (px, unitless) */
+
+  --fluid-progress: clamp(
+    0rem,
+    (100vw - (var(--vp-min) * 1px)) / (var(--vp-max) - var(--vp-min)),
+    1rem
+  );
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   2. TYPE SCALE
+   Modular scale driven by four config values.
+   ACOCI: restrained ratio — warm editorial feel, not aggressive.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --fluid-min-size:  16;   /* Base font size at min viewport (px, unitless) */
+  --fluid-max-size:  18;   /* Base font size at max viewport (px, unitless) */
+  --fluid-min-ratio: 1.25; /* Modular scale ratio at min viewport           */
+  --fluid-max-ratio: 1.5;  /* Modular scale ratio at max viewport           */
+}
+
+/* ── Scale Engine — no need to edit below ─────────────────── */
+
+:root {
+  /* Step 0 — true base */
+  --size-min-0: calc(var(--fluid-min-size) / 16);
+  --size-max-0: calc(var(--fluid-max-size) / 16);
+  --step-0: calc((var(--size-min-0) * 1rem) + (var(--size-max-0) - var(--size-min-0)) * var(--fluid-progress));
+
+  /* Step −1 */
+  --size-min--1: calc(var(--size-min-0) / var(--fluid-min-ratio));
+  --size-max--1: calc(var(--size-max-0) / var(--fluid-max-ratio));
+  --step--1: calc((var(--size-min--1) * 1rem) + (var(--size-max--1) - var(--size-min--1)) * var(--fluid-progress));
+
+  /* Step −2 */
+  --size-min--2: calc(var(--size-min--1) / var(--fluid-min-ratio));
+  --size-max--2: calc(var(--size-max--1) / var(--fluid-max-ratio));
+  --step--2: calc((var(--size-min--2) * 1rem) + (var(--size-max--2) - var(--size-min--2)) * var(--fluid-progress));
+
+  /* Step 1 */
+  --size-min-1: calc(var(--size-min-0) * var(--fluid-min-ratio));
+  --size-max-1: calc(var(--size-max-0) * var(--fluid-max-ratio));
+  --step-1: calc((var(--size-min-1) * 1rem) + (var(--size-max-1) - var(--size-min-1)) * var(--fluid-progress));
+
+  /* Step 2 */
+  --size-min-2: calc(var(--size-min-1) * var(--fluid-min-ratio));
+  --size-max-2: calc(var(--size-max-1) * var(--fluid-max-ratio));
+  --step-2: calc((var(--size-min-2) * 1rem) + (var(--size-max-2) - var(--size-min-2)) * var(--fluid-progress));
+
+  /* Step 3 */
+  --size-min-3: calc(var(--size-min-2) * var(--fluid-min-ratio));
+  --size-max-3: calc(var(--size-max-2) * var(--fluid-max-ratio));
+  --step-3: calc((var(--size-min-3) * 1rem) + (var(--size-max-3) - var(--size-min-3)) * var(--fluid-progress));
+
+  /* Step 4 */
+  --size-min-4: calc(var(--size-min-3) * var(--fluid-min-ratio));
+  --size-max-4: calc(var(--size-max-3) * var(--fluid-max-ratio));
+  --step-4: calc((var(--size-min-4) * 1rem) + (var(--size-max-4) - var(--size-min-4)) * var(--fluid-progress));
+
+  /* Step 5 */
+  --size-min-5: calc(var(--size-min-4) * var(--fluid-min-ratio));
+  --size-max-5: calc(var(--size-max-4) * var(--fluid-max-ratio));
+  --step-5: calc((var(--size-min-5) * 1rem) + (var(--size-max-5) - var(--size-min-5)) * var(--fluid-progress));
+
+  /* Step 6 */
+  --size-min-6: calc(var(--size-min-5) * var(--fluid-min-ratio));
+  --size-max-6: calc(var(--size-max-5) * var(--fluid-max-ratio));
+  --step-6: calc((var(--size-min-6) * 1rem) + (var(--size-max-6) - var(--size-min-6)) * var(--fluid-progress));
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   3. SPACING
+   All spacing derived from a single fluid base unit.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --sp-min: 1;  /* Base spacing unit at min viewport (rem, unitless) */
+  --sp-max: 2;  /* Base spacing unit at max viewport (rem, unitless) */
+
+  --base-sp: calc(
+    var(--sp-min) * 1rem +
+    (var(--sp-max) - var(--sp-min)) * var(--fluid-progress)
+  );
+}
+
+:root {
+  /* At 360px: base = 16px  ·  At 1340px: base = 32px */
+  --space-xs:  calc(var(--base-sp) * 0.25);  /*   4 →   8px */
+  --space-sm:  calc(var(--base-sp) * 0.5);   /*   8 →  16px */
+  --space-md:  var(--base-sp);               /*  16 →  32px */
+  --space-lg:  calc(var(--base-sp) * 2);     /*  32 →  64px */
+  --space-xl:  calc(var(--base-sp) * 3);     /*  48 →  96px */
+  --space-2xl: calc(var(--base-sp) * 4.5);   /*  72 → 144px */
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   4. COLORS
+   Two-layer system:
+     Layer 1 — Brand primitives (swap these per project)
+     Layer 2 — Semantic roles (stable across projects)
+
+   Layer 1: ACOCI palette — teal / sun / cream / ink
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* Layer 1: Brand primitives — ACOCI
+     All teals/aquas/sail/sun are sampled from ACOCI_LOGO_HORIZ-CLR.svg (canonical). */
+  --brand-primary:        #41BBB3;               /* Teal — primary action/accent  */
+  --brand-primary-dark:   #0E8B85;               /* Teal deep — hover/press       */
+  --brand-aqua-mid:       #67CCD3;               /* Aqua mid — section bands      */
+  --brand-aqua-light:     #9DDEDB;               /* Aqua light — soft tint        */
+  --brand-aqua-soft:      #E8F6F4;               /* Aqua soft — hairline / rules  */
+  --brand-sail:           #48A8E0;               /* Sail blue — links / info      */
+  --brand-accent:         #F69F3E;               /* Sun — warm accent             */
+  --brand-neutral-dark:   #131A22;               /* Ink — headings, dark sections */
+  --brand-neutral-deep:   #0D1219;               /* Ink deep — footer base        */
+  --brand-neutral-mid:    #4A5568;               /* Body text                     */
+  --brand-surface:        #FAFAF8;               /* Cream — soft page tint        */
+  --brand-surface-raised: #FFFFFF;               /* White                         */
+  --brand-border:         rgba(19, 26, 34, 0.10); /* Hairline rule               */
+  --brand-accent-subtle:  rgba(65, 187, 179, 0.12); /* Transparent teal          */
+  --brand-overlay:        rgba(13, 18, 25, 0.52); /* Dark overlay for dark cards  */
+}
+
+:root {
+  /* Layer 2: Semantic roles — reference these in all stylesheets */
+  --color-primary:        var(--brand-primary);
+  --color-primary-hover:  var(--brand-primary-dark);
+  --color-primary-dark:   var(--brand-primary-dark);
+  --color-primary-light:  var(--brand-aqua-soft);
+  --color-secondary:      var(--brand-neutral-dark);
+  --color-secondary-deep: var(--brand-neutral-deep);
+  --color-accent:         var(--brand-accent);
+  --color-link:           var(--brand-sail);
+  --color-info:           var(--brand-sail);
+  --color-dark:           var(--brand-neutral-dark);
+
+  --color-text:           var(--brand-neutral-dark);
+  --color-text-muted:     var(--brand-neutral-mid);
+  --color-text-subtle:    var(--brand-aqua-soft);
+  --color-heading:        var(--brand-neutral-dark);
+
+  --color-surface:        var(--brand-surface-raised);
+  --color-surface-base:   var(--brand-surface);
+  --color-surface-alt:    var(--brand-surface);
+  --color-surface-raised: var(--brand-surface-raised);
+  --color-surface-aqua:   var(--brand-aqua-soft);
+  --color-surface-aqua-mid:  var(--brand-aqua-mid);
+  --color-border:         var(--brand-border);
+  --color-accent-subtle:  var(--brand-accent-subtle);
+  --color-overlay:        var(--brand-overlay);
+
+  /* Shadow color — tinted toward canonical logo teal hsl(176 47% 49%) */
+  --shadow-color: 176deg, 47%, 49%;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY
+   Two namespaces: --heading-* and --body-*.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --heading-display: var(--step-5);
+  --heading-1:       var(--step-4);
+  --heading-2:       var(--step-3);
+  --heading-3:       var(--step-2);
+  --heading-4:       var(--step-1);
+  --heading-5:       var(--step-0);
+
+  --body-xl:   var(--step-1);
+  --body-lg:   calc(var(--step-0) * 1.125);
+  --body-base: var(--step-0);
+  --body-sm:   var(--step--1);
+  --body-xs:   var(--step--2);
+  --body-2xs:  calc(var(--step--2) * 0.85);
+}
+
+body {
+  font-size: var(--body-base);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   6. BORDER RADIUS
+   Derived from --space-sm so corners scale with spatial density.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --radius-xs:   calc(var(--space-sm) * 0.5);
+  --radius-sm:   calc(var(--space-sm) * 0.85);
+  --radius-md:   calc(var(--space-sm) * 1.325);
+  --radius-lg:   calc(var(--space-sm) * 2);
+  --radius-xl:   calc(var(--space-sm) * 3);
+  --radius-full: 9999px;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   7. SHADOWS
+   Tinted shadows automatically reflect the brand palette.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --shadow-xs:    0 1px 2px 0 hsl(var(--shadow-color) / 0.05);
+  --shadow-sm:    0 1px 3px 0 hsl(var(--shadow-color) / 0.10),
+                  0 1px 2px -1px hsl(var(--shadow-color) / 0.10);
+  --shadow-md:    0 4px 6px -1px hsl(var(--shadow-color) / 0.10),
+                  0 2px 4px -2px hsl(var(--shadow-color) / 0.10);
+  --shadow-lg:    0 10px 15px -3px hsl(var(--shadow-color) / 0.10),
+                  0 4px 6px -4px hsl(var(--shadow-color) / 0.10);
+  --shadow-xl:    0 20px 25px -5px hsl(var(--shadow-color) / 0.10),
+                  0 8px 10px -6px hsl(var(--shadow-color) / 0.10);
+  --shadow-inner: inset 0 2px 4px 0 hsl(var(--shadow-color) / 0.05);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   8. TRANSITIONS & ANIMATION
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast:   100ms;
+  --duration-base:   200ms;
+  --duration-slow:   300ms;
+  --duration-slower: 500ms;
+
+  --transition-fast:   var(--duration-fast)   var(--ease-out);
+  --transition-base:   var(--duration-base)   var(--ease-out);
+  --transition-slow:   var(--duration-slow)   var(--ease-out);
+  --transition-spring: var(--duration-slow)   var(--ease-spring);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   9. Z-INDEX
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   10. LAYOUT
+   --container-inner is the main content rail (1344px).
+   --container-outer caps the .page at ultra-wide (2200px).
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* Containers — generic scale */
+  --container-xs:  30rem;  /*  480px */
+  --container-sm:  40rem;  /*  640px */
+  --container-md:  48rem;  /*  768px */
+  --container-lg:  64rem;  /* 1024px */
+  --container-xl:  80rem;  /* 1280px */
+  --container-2xl: 90rem;  /* 1440px */
+
+  /* Containers — semantic (ACOCI)
+     1344px content rail — wide without going edge-to-edge on 1440 screens. */
+  --container-inner: 84rem;    /* 1344px — main content rail */
+  --container-outer: 137.5rem; /* 2200px — ultra-wide page cap */
+  --container-prose: 45rem;    /*  720px — reading column */
+
+  /* Structural layout tokens */
+  --section-gap:     calc(var(--base-sp) * 4.5);  /* 72 → 144px */
+  --section-gap-lg:  calc(var(--base-sp) * 7);    /* 112 → 224px */
+  --hero-min-height: calc(var(--base-sp) * 16);
+  --hero-offset:     calc(var(--base-sp) * 10);
+}

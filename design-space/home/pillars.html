@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Pillar Color Palette</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  /* ──────────────────────────────────────────────────────────
+     PILLAR COLOR PALETTE — exploration page
+     A library of candidate hero colors named for Anguillian
+     places. Pick four to assign to the four pillars
+     (Membership, News & Events, Resources, Your Chamber).
+     ────────────────────────────────────────────────────────── */
+
+  /* ── Candidate palette ──
+     All colors traceable to the brand kit. The logo SVG itself
+     contains 5 fills (teal #41BBB3, aqua-mid #67CCD3, aqua-light
+     #9DDEDB, sail #48A8E0, sun #F69F3E). The deeper tones
+     (teal-deep, blue-mid, blue-deep) come from the v4 brand-guide
+     tokens and Mission gradient stops — established but not
+     directly logo-sampled.
+  */
+  :root {
+    /* Strictly logo-sampled */
+    --pillar-rendezvous:       #9DDEDB;  /* = brand-aqua-light  — palest soft teal       */
+    --pillar-shoal-bay:        #67CCD3;  /* = brand-aqua-mid    — bright soft aqua       */
+    --pillar-meads-bay:        #41BBB3;  /* = brand-teal        — primary teal           */
+    --pillar-prickly-pear:     #48A8E0;  /* = brand-sail        — offshore sail blue     */
+
+    /* Brand-token established (in v4 variables.css) */
+    --pillar-crocus-bay:       #0E8B85;  /* = brand-teal-deep   — secondary/hover teal   */
+
+    /* Project-extended (Mission gradient stops) */
+    --pillar-the-valley:       #0074B7;  /* = brand-blue-mid    — gradient stop          */
+    --pillar-sombrero:         #003B73;  /* = brand-blue-deep   — gradient stop          */
+
+    --pillar-mission-grad:     linear-gradient(135deg, #41BBB3 0%, #0074B7 55%, #003B73 100%);
+  }
+
+  body {
+    background: var(--color-surface-page);
+  }
+
+  /* ── Page intro ── */
+  .pillars-page__intro {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+  }
+  .pillars-page__intro h1 {
+    font-size: var(--heading-1);
+    margin: 0 0 var(--space-md);
+    letter-spacing: -0.02em;
+  }
+  .pillars-page__intro p {
+    color: var(--color-text-muted);
+    max-width: 60ch;
+    line-height: 1.6;
+    font-size: var(--body-lg);
+  }
+  .pillars-page__intro p + p { margin-top: var(--space-md); }
+
+  /* ── Swatch + hero pair ── */
+  .pillar {
+    position: relative;
+    margin-bottom: var(--space-2xl);
+  }
+  .pillar__label {
+    max-width: var(--container-inner);
+    margin: 0 auto var(--space-sm);
+    padding: 0 var(--space-lg);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .pillar__chip {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-sm);
+    flex: none;
+    border: 1px solid var(--color-border);
+  }
+  .pillar__name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--heading-4);
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .pillar__hex {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    color: var(--color-text-muted);
+    background: var(--color-surface-aqua-soft);
+    padding: 0.15em 0.55em;
+    border-radius: var(--radius-xs);
+    letter-spacing: 0.05em;
+  }
+  .pillar__note {
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+  }
+
+  /* ── Hero shape (mirrors Clip 07's Type B) ── */
+  :root {
+    --p-wave-h: 9rem;
+    --p-overlap: var(--space-xl);
+  }
+
+  .phero {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0
+             calc(var(--p-wave-h) + var(--p-overlap));
+  }
+  .phero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .phero__decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .phero__eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 var(--space-md);
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .phero__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-lg);
+    max-width: 22ch;
+  }
+  .phero__lede {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  .phero__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--p-wave-h);
+    line-height: 0;
+    z-index: 3;
+    pointer-events: none;
+    color: var(--color-surface-page);  /* white, since body is white */
+  }
+  .phero__wave svg { display: block; width: 100%; height: 100%; }
+
+  /* ── Triangle decoration (Approach B from Clip 09) ── */
+  .ptri {
+    position: absolute;
+    pointer-events: none;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+  .ptri--big {
+    -webkit-mask-image: url("assets/images/triangles/Triangles-02.svg");
+    mask-image: url("assets/images/triangles/Triangles-02.svg");
+    aspect-ratio: 675.86 / 1514.8;
+    color: rgba(255, 255, 255, 0.13);
+    height: 200%;
+    right: -10%;
+    top: -55%;
+  }
+  .ptri--small {
+    -webkit-mask-image: url("assets/images/triangles/Triangles-03.svg");
+    mask-image: url("assets/images/triangles/Triangles-03.svg");
+    aspect-ratio: 271.09 / 930.91;
+    color: rgba(255, 255, 255, 0.22);
+    height: 110%;
+    right: 6%;
+    top: -20%;
+    transform: rotate(180deg);
+  }
+
+  /* ── Color application — one class per swatch ── */
+  .phero--rendezvous       { background: var(--pillar-rendezvous); }
+  .phero--shoal-bay        { background: var(--pillar-shoal-bay); }
+  .phero--meads-bay        { background: var(--pillar-meads-bay); }
+  .phero--crocus-bay       { background: var(--pillar-crocus-bay); }
+  .phero--prickly-pear     { background: var(--pillar-prickly-pear); }
+  .phero--the-valley       { background: var(--pillar-the-valley); }
+  .phero--sombrero         { background: var(--pillar-sombrero); }
+  .phero--mission          { background: var(--pillar-mission-grad); }
+
+  /* Light variants need dark text — Rendezvous (#9DDEDB) and
+     Shoal Bay (#67CCD3) are too light for white text contrast. */
+  .phero--rendezvous,
+  .phero--shoal-bay { color: var(--color-text); }
+  .phero--rendezvous .phero__title,
+  .phero--shoal-bay .phero__title { color: var(--color-heading); }
+  .phero--rendezvous .phero__eyebrow,
+  .phero--shoal-bay .phero__eyebrow { color: var(--color-primary-deep); }
+  .phero--rendezvous .phero__lede,
+  .phero--shoal-bay .phero__lede { color: var(--color-text-muted); }
+  .phero--rendezvous .ptri--big,
+  .phero--shoal-bay .ptri--big { color: rgba(0, 60, 80, 0.12); }
+  .phero--rendezvous .ptri--small,
+  .phero--shoal-bay .ptri--small { color: rgba(0, 60, 80, 0.20); }
+
+  /* ── Content area below each hero (white per spec) ── */
+  .pillar__below {
+    background: var(--color-surface-page);
+    padding: var(--space-xl) 0 var(--space-2xl);
+  }
+  .pillar__below-inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--body-sm);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+  <header class="pillars-page__intro">
+    <p class="eyebrow">Color exploration</p>
+    <h1>Pillar color palette</h1>
+    <p>
+      Eight candidate hero colors named for Anguillian places, organised
+      lightest to deepest. Every color is traceable to a brand source &mdash;
+      either directly logo-sampled, or an established secondary token from
+      the v4 brand guide, or a Mission gradient stop. Nothing invented.
+    </p>
+    <p>
+      Each shown as a hero band with the standard wave and a sample title,
+      eyebrow, and lede &mdash; the same chrome the pillar landing pages
+      will use. Body content sits on white below the wave (per spec).
+    </p>
+    <p>
+      Pick four to assign to the four pillars: <strong>Membership</strong>,
+      <strong>News &amp; Events</strong>, <strong>Resources</strong>, and
+      <strong>Your Chamber</strong>. Anything you don&rsquo;t pick can still
+      live in the palette as a token for accent use.
+    </p>
+  </header>
+
+  <!-- ─── 01. RENDEZVOUS — palest soft teal (logo-sampled) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-rendezvous)"></span>
+      <h2 class="pillar__name">Rendezvous</h2>
+      <span class="pillar__hex">#9DDEDB</span>
+      <span class="pillar__note">&mdash; palest soft teal &middot; <em>brand aqua-light, logo-sampled</em></span>
+    </header>
+    <section class="phero phero--rendezvous">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white &mdash; sub-page cards, listings, etc.</div></div>
+  </article>
+
+  <!-- ─── 02. SHOAL BAY — bright soft aqua (logo-sampled) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-shoal-bay)"></span>
+      <h2 class="pillar__name">Shoal Bay</h2>
+      <span class="pillar__hex">#67CCD3</span>
+      <span class="pillar__note">&mdash; bright soft aqua &middot; <em>brand aqua-mid, logo-sampled</em></span>
+    </header>
+    <section class="phero phero--shoal-bay">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 03. MEADS BAY — primary teal (logo-sampled) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-meads-bay)"></span>
+      <h2 class="pillar__name">Meads Bay</h2>
+      <span class="pillar__hex">#41BBB3</span>
+      <span class="pillar__note">&mdash; primary teal &middot; <em>brand teal, logo-sampled</em></span>
+    </header>
+    <section class="phero phero--meads-bay">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 04. CROCUS BAY — deep teal (brand teal-deep) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-crocus-bay)"></span>
+      <h2 class="pillar__name">Crocus Bay</h2>
+      <span class="pillar__hex">#0E8B85</span>
+      <span class="pillar__note">&mdash; deep teal &middot; <em>brand teal-deep, established secondary</em></span>
+    </header>
+    <section class="phero phero--crocus-bay">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 05. PRICKLY PEAR — sail blue (logo-sampled) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-prickly-pear)"></span>
+      <h2 class="pillar__name">Prickly Pear</h2>
+      <span class="pillar__hex">#48A8E0</span>
+      <span class="pillar__note">&mdash; offshore-cay blue &middot; <em>brand sail, logo-sampled</em></span>
+    </header>
+    <section class="phero phero--prickly-pear">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 06. THE VALLEY — sky blue (Mission gradient stop) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-the-valley)"></span>
+      <h2 class="pillar__name">The Valley</h2>
+      <span class="pillar__hex">#0074B7</span>
+      <span class="pillar__note">&mdash; sky over the capital &middot; <em>brand blue-mid, Mission gradient stop</em></span>
+    </header>
+    <section class="phero phero--the-valley">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 07. SOMBRERO — deep navy (Mission gradient stop) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-sombrero)"></span>
+      <h2 class="pillar__name">Sombrero</h2>
+      <span class="pillar__hex">#003B73</span>
+      <span class="pillar__note">&mdash; deep navy &middot; open ocean off the lighthouse cay &middot; <em>brand blue-deep, Mission gradient stop</em></span>
+    </header>
+    <section class="phero phero--sombrero">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+  <!-- ─── 11. MISSION GRADIENT (bonus) ─── -->
+  <article class="pillar">
+    <header class="pillar__label">
+      <span class="pillar__chip" style="background: var(--pillar-mission-grad)"></span>
+      <h2 class="pillar__name">Trade Winds</h2>
+      <span class="pillar__hex">gradient</span>
+      <span class="pillar__note">&mdash; the Mission gradient (teal &rarr; blue &rarr; navy) &middot; the most kinetic option</span>
+    </header>
+    <section class="phero phero--mission">
+      <div class="phero__decor" aria-hidden="true">
+        <span class="ptri ptri--big"></span>
+        <span class="ptri ptri--small"></span>
+      </div>
+      <div class="phero__inner">
+        <p class="phero__eyebrow">Pillar name</p>
+        <h2 class="phero__title">Headline that fills two lines comfortably.</h2>
+        <p class="phero__lede">A supporting line of body copy that introduces the pillar to first-time visitors and members alike.</p>
+      </div>
+      <div class="phero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+    <div class="pillar__below"><div class="pillar__below-inner">Body content sits on white.</div></div>
+  </article>
+
+</body>
+</html>

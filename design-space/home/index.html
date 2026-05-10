@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Anguilla Chamber of Commerce &amp; Industry</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!--
+    Section roadmap (in build order):
+      1. Hero          ✓ this commit
+      2. About         (v4)
+      3. News          (v2 + cta.org compact list, tightened)
+      4. President     (v2, soft bg, no shadow)
+      5. Decision      (v1, 4 cards)
+      6. Members       (v4 "What membership unlocks", landscape photo)
+      7. Events        (v1+v2 hybrid, circle date bubble)
+      8. Join / CTA    (v1, contained, overlap footer)
+      9. Footer        (uses --gradient-mission, same as Join/CTA)
+  -->
+
+  <!-- ── Site header / nav ── -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav__brand" href="/">
+        <img src="assets/images/logo/ACOCI_LOGO_HORIZ-CLR.svg" alt="ACOCI" height="48">
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#directory">Directory</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#news">News</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn btn--primary" href="#join">Join Today</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── 1. Hero ── -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">The Voice of Anguilla Business</p>
+          <h1>Building a stronger Anguilla economy, together.</h1>
+          <p class="hero__lede">
+            The Anguilla Chamber of Commerce &amp; Industry unites, supports, and advocates
+            for licensed businesses across the island — for over forty years.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#join">Become a Member</a>
+            <a class="btn btn--tertiary" href="#directory">Find a business</a>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__photo-wrap">
+            <img class="hero__photo"
+                 src="assets/images/acoci-hero.jpg"
+                 alt="ACOCI members at a chamber event"
+                 loading="eager">
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave at the bottom of the hero. Fill = aqua so it reveals the
+           aqua section (About) sitting behind. The same wave is reused
+           inverted at the top of the footer. -->
+      <div class="hero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z"
+                fill="#D4EEE9"/>
+        </svg>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>

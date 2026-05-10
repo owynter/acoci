@@ -1,0 +1,394 @@
+/* ============================================================
+   ACOCI HOME — Stylesheet
+   ============================================================
+   Companion to: assets/css/variables.css
+   Status: foundation only. Sections ported in sequence —
+   Hero → Decision → About → News → President → Members
+   → Events → Join/CTA → Footer.
+
+   This stylesheet is opinionated. It bakes in:
+   - Sunset (#F69F3E) as the only CTA color
+   - A unified 3-tier button system (no per-section variants)
+   - Plain-text eyebrows (no capsules, no soft-tint backgrounds)
+   - Gradient-only dark surfaces (no flat ink)
+
+   When a section needs its own block, append it under "SECTIONS"
+   at the bottom — never override the foundation.
+   ============================================================ */
+
+
+/* ────────────────────────────────────────────────────────────
+   RESET & BASE
+   ──────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--body-base);
+  line-height: 1.55;
+  color: var(--color-text);
+  background: var(--color-surface-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { color: var(--color-link-hover); }
+
+button { font: inherit; cursor: pointer; }
+
+ul, ol { padding-left: 1.25em; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; margin: 0; }
+
+
+/* ────────────────────────────────────────────────────────────
+   TYPOGRAPHY
+   ──────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-md);
+}
+
+h1 { font-size: var(--heading-1); }
+h2 { font-size: var(--heading-2); }
+h3 { font-size: var(--heading-3); }
+h4 { font-size: var(--heading-4); }
+h5 { font-size: var(--heading-5); }
+
+p { margin: 0 0 var(--space-md); }
+p:last-child { margin-bottom: 0; }
+
+
+/* ────────────────────────────────────────────────────────────
+   EYEBROWS — plain text only.
+   Single consistent color across the page.
+   No capsule backgrounds. No per-section tinting.
+   ──────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--body-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-deep);
+  margin: 0 0 var(--space-sm);
+}
+
+/* On dark surfaces, eyebrow flips to a lighter teal/aqua so the
+   single-color rule is preserved within its surface context. */
+.on-dark .eyebrow,
+.eyebrow--on-dark {
+  color: var(--brand-aqua-light);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   BUTTON SYSTEM — three tiers, one source of truth.
+   primary  = sunset solid     (the CTA — the one place sun lives)
+   secondary = teal outline    (alternative action)
+   tertiary  = inline text+arrow (low-emphasis link-like action)
+   ──────────────────────────────────────────────────────────── */
+
+.btn {
+  --btn-pad-y: 0.875rem;
+  --btn-pad-x: 1.5rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  font-family: var(--font-body);
+  font-size: var(--body-base);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);    /* rectangular with soft corner — not a capsule */
+  cursor: pointer;
+  transition: background var(--transition-base),
+              color      var(--transition-base),
+              border     var(--transition-base),
+              transform  var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 3px solid var(--brand-sail); outline-offset: 3px; }
+
+/* Primary — sunset. The CTA. */
+.btn--primary {
+  background: var(--color-cta);
+  color: #FFFFFF;
+}
+.btn--primary:hover {
+  background: var(--color-cta-hover);
+  color: #FFFFFF;
+}
+
+/* Secondary — teal outline on light backgrounds. */
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary-deep);
+  border-color: var(--color-primary-deep);
+}
+.btn--secondary:hover {
+  background: var(--color-primary-deep);
+  color: #FFFFFF;
+}
+
+/* On dark — secondary inverts to a white outline. */
+.on-dark .btn--secondary,
+.btn--secondary.on-dark {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.on-dark .btn--secondary:hover,
+.btn--secondary.on-dark:hover {
+  background: #FFFFFF;
+  color: var(--brand-blue-deep);
+  border-color: #FFFFFF;
+}
+
+/* Tertiary — text + arrow. No pill, no border. */
+.btn--tertiary {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-link);
+  border-radius: 0;
+  font-weight: 600;
+}
+.btn--tertiary::after {
+  content: "→";
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+.btn--tertiary:hover {
+  color: var(--color-link-hover);
+}
+.btn--tertiary:hover::after {
+  transform: translateX(2px);
+}
+
+/* ────────────────────────────────────────────────────────────
+   LAYOUT PRIMITIVES
+   ──────────────────────────────────────────────────────────── */
+
+.page {
+  max-width: var(--container-outer);
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-gap);
+}
+
+.section--tight { padding-block: calc(var(--section-gap) * 0.65); }
+.section--lg    { padding-block: var(--section-gap-lg); }
+
+
+/* ────────────────────────────────────────────────────────────
+   SURFACE UTILITIES
+   ──────────────────────────────────────────────────────────── */
+
+.surface-white     { background: var(--color-surface-page); }
+.surface-aqua      { background: var(--color-surface-aqua); }       /* section bg — #D4EEE9 */
+.surface-aqua-soft { background: var(--color-surface-aqua-soft); }  /* tint — #E8F6F4 */
+
+/* Dark surface — single treatment, used on Mission, Join/CTA, and Footer. */
+.surface-dark {
+  background: var(--gradient-mission);
+  color: var(--color-text-on-dark);
+}
+.surface-dark h1,
+.surface-dark h2,
+.surface-dark h3,
+.surface-dark h4,
+.surface-dark h5,
+.surface-dark h6 {
+  color: var(--color-text-on-dark);
+}
+.surface-dark p { color: var(--color-text-on-dark-muted); }
+
+
+/* ────────────────────────────────────────────────────────────
+   SITE HEADER / NAV
+   Transparent over the hero. Links pushed right toward the CTA
+   (auto-margin sits on the brand, not on the links).
+   ──────────────────────────────────────────────────────────── */
+
+.site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: var(--z-sticky);
+  background: transparent;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding: var(--space-md) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* Brand: holds the auto-margin so everything else clusters to the right. */
+.nav__brand { margin-right: auto; }
+.nav__brand img { height: 3rem; width: auto; display: block; }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: 0 var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__links a {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.nav__links a:hover { color: var(--color-primary-deep); }
+
+/* Mobile: hide the link list. Logo + Join Today only.
+   A real mobile menu (hamburger + drawer) gets designed as its own component. */
+@media (max-width: 720px) {
+  .nav__links { display: none; }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   SECTIONS
+   Order: Hero → Decision → About → News → President
+        → Members → Events → Join/CTA → Footer.
+   ──────────────────────────────────────────────────────────── */
+
+
+/* ── 1. HERO ──
+   Layout: copy-left, photo-right.
+   Nav sits transparently on top of the hero (see .site-header).
+   The wave at the bottom reveals the aqua section behind. The photo's
+   bottom edge aligns to the wave's bottom — the photo overlaps the wave
+   so the two compose as one element.
+   Same wave shape will reappear inverted at the top of the footer. */
+
+:root {
+  --hero-wave-height: 9rem;  /* drives both the wave svg height and the photo overlap */
+  --hero-pad-top:    7rem;   /* room for the transparent nav */
+}
+
+.hero {
+  position: relative;
+  background: var(--color-surface-page);
+  padding-top: var(--hero-pad-top);
+  padding-bottom: var(--hero-wave-height);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: end;          /* photo's align-self:end can now anchor to bottom */
+  width: 100%;
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* Copy sits centered vertically; photo bottom-aligns. */
+.hero__copy { align-self: center; }
+
+@media (max-width: 880px) {
+  .hero__inner { grid-template-columns: 1fr; }
+}
+
+.hero__copy { max-width: 36rem; }
+
+.hero__lede {
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  max-width: 32rem;
+  margin: 0 0 var(--space-lg);
+}
+
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ── Hero photo — 5:4 landscape, bottom-aligned to the wave ──
+   align-self: end keeps it anchored to the bottom of the grid row.
+   The negative margin pulls the photo's bottom edge down so it lands
+   at the hero's bottom (= the wave's bottom), creating the overlap. */
+.hero__media {
+  align-self: end;
+  margin-bottom: calc(-1 * var(--hero-wave-height));
+}
+
+.hero__photo-wrap {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Hero wave — anchored to the bottom of the hero ── */
+.hero__wave {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: var(--hero-wave-height);
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero__wave svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

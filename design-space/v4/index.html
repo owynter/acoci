@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACOCI — Anguilla Chamber of Commerce &amp; Industry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Nav ── -->
+  <header class="site-header">
+    <nav class="nav inner" aria-label="Main navigation">
+      <a class="nav__brand" href="/">
+        <img src="assets/images/acoci-logo.png" alt="ACOCI" width="140" height="52">
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#directory">Directory</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#news">News</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn btn--primary btn--sm" href="#membership">Join Today</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── Section 1: Hero — copy left, photo right ── -->
+    <section class="hero section">
+      <div class="inner">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--teal">The Voice of Anguilla Business</span>
+          <h1>Building a stronger Anguilla economy, together.</h1>
+          <p>The Anguilla Chamber of Commerce &amp; Industry unites, supports, and advocates for licensed businesses across the island — for over forty years.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="#membership">Become a Member <span class="arrow">&rarr;</span></a>
+            <a class="link-arrow" href="#directory">Find a Business <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <div class="hero__photo-wrap">
+            <img class="hero__photo" src="assets/images/acoci-hero.jpg" alt="ACOCI members at a chamber event" loading="eager">
+            <div class="hero__overlay" aria-hidden="true"></div>
+            <div class="hero__quicklinks">
+              <h6 class="hero__quicklinks-heading">Quick Links</h6>
+              <a class="ql-link" href="#membership">
+                <span>Apply for Membership</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="ql-link" href="#directory">
+                <span>Find a Local Business</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="ql-link" href="#resources">
+                <span>Doing Business in Anguilla</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="ql-link" href="#events">
+                <span>Upcoming Events</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Wave at the bottom of the hero. Fill = white so it cuts the aqua
+           hero background into a wave shape. Photo overlaps it via z-index. -->
+      <div class="hero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          <g>
+            <path d="M 0 200 L 0 80 L 0 80 C 10.00 84.12, 40.00 96.88, 60.00 104.72 C 80.00 112.56, 100.00 120.36, 120.00 127.02 C 140.00 133.69, 160.00 139.88, 180.00 144.72 C 200.00 149.56, 220.00 153.54, 240.00 156.08 C 260.00 158.63, 280.00 160.00, 300.00 160.00 C 320.00 160.00, 340.00 158.63, 360.00 156.08 C 380.00 153.54, 400.00 149.56, 420.00 144.72 C 440.00 139.88, 460.00 133.69, 480.00 127.02 C 500.00 120.36, 520.00 112.56, 540.00 104.72 C 560.00 96.88, 580.00 88.24, 600.00 80.00 C 620.00 71.76, 640.00 63.12, 660.00 55.28 C 680.00 47.44, 700.00 39.64, 720.00 32.98 C 740.00 26.31, 760.00 20.12, 780.00 15.28 C 800.00 10.44, 820.00 6.46, 840.00 3.92 C 860.00 1.37, 880.00 0.00, 900.00 0.00 C 920.00 -0.00, 940.00 1.37, 960.00 3.92 C 980.00 6.46, 1000.00 10.44, 1020.00 15.28 C 1040.00 20.12, 1060.00 26.31, 1080.00 32.98 C 1100.00 39.64, 1120.00 47.44, 1140.00 55.28 C 1160.00 63.12, 1190.00 75.88, 1200.00 80.00 L 1200 200 Z" fill="#D4EEE9"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── Section 2: About — copy left, circular seal right ── -->
+    <section class="about-strip section section--pad section--aqua" id="about">
+      <div class="inner">
+        <div class="about-strip__copy">
+          <span class="eyebrow eyebrow--teal">About ACOCI</span>
+          <h2>Representing every licensed business on the island.</h2>
+          <p>Founded in 1981, the Anguilla Chamber of Commerce &amp; Industry is the premier private-sector body on the island. We connect businesses with government, provide resources for growth, and champion a competitive, sustainable economy.</p>
+          <a class="btn btn--outline" href="#about">Learn More</a>
+        </div>
+        <div class="seal-ring">
+          <img src="assets/images/acoci-logo.png" alt="ACOCI seal" width="200">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 3: What We Do — photo left, 3-item list right ── -->
+    <section class="wwd section section--pad section--white" id="membership">
+      <div class="inner">
+        <div class="wwd__photo-wrap">
+          <img class="wwd__photo" src="assets/images/ZWP_7533.jpg" alt="Chamber members networking" loading="lazy">
+        </div>
+        <div class="wwd__content">
+          <h2>What membership unlocks</h2>
+          <ul class="wwd-list" role="list">
+            <li class="wwd-item">
+              <div class="wwd-item__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <h3 class="wwd-item__heading">Business Networking</h3>
+                <p class="wwd-item__body">Connect with fellow members, government officials, and regional partners at curated events throughout the year.</p>
+              </div>
+            </li>
+            <li class="wwd-item">
+              <div class="wwd-item__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <h3 class="wwd-item__heading">Resources &amp; Advocacy</h3>
+                <p class="wwd-item__body">Access guides, templates, and policy support — and have your voice heard at government consultations.</p>
+              </div>
+            </li>
+            <li class="wwd-item">
+              <div class="wwd-item__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h3 class="wwd-item__heading">Directory Listing</h3>
+                <p class="wwd-item__body">Get found by residents, visitors, and investors searching the official ACOCI Business Directory.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 4: President's Card — dark rounded card ── -->
+    <section class="president section section--cream" id="president">
+      <div class="inner">
+        <div class="president__card">
+          <div class="president__copy">
+            <span class="eyebrow eyebrow--inv">From the President</span>
+            <blockquote class="president__quote">"Anguilla's business community has proven its resilience time and again. Now is the moment to build on that foundation — together."</blockquote>
+            <div class="president__attr">
+              <strong>The ACOCI President</strong>
+              <span>Anguilla Chamber of Commerce &amp; Industry</span>
+            </div>
+            <a class="btn btn--light" href="#president">Read the Full Letter</a>
+          </div>
+          <div class="president__portrait-ring">
+            <img class="president__portrait" src="assets/images/anguilla-lim2.jpeg" alt="ACOCI President" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 5: News & Events — copy left, 2×2 photo grid right ── -->
+    <section class="news-events section section--pad section--white" id="news">
+      <div class="inner">
+        <div class="news-events__copy">
+          <span class="eyebrow eyebrow--teal">Latest from ACOCI</span>
+          <h2>Stay connected with the chamber.</h2>
+          <p>From policy updates to member spotlights, our news and events calendar keeps you informed and involved.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="#news">Read the News</a>
+            <a class="btn btn--outline" href="#events">View Events</a>
+          </div>
+          <div class="news-events__teaser">
+            <article class="teaser">
+              <div class="teaser__meta">
+                <time datetime="2025-04-28">Apr 28, 2025</time>
+                <span class="eyebrow eyebrow--teal" style="padding:3px 10px;font-size:.65rem">Policy</span>
+              </div>
+              <h3 class="teaser__title">Chamber meets with Ministry of Finance on new business licensing framework</h3>
+            </article>
+            <article class="teaser">
+              <div class="teaser__meta">
+                <time datetime="2025-04-14">Apr 14, 2025</time>
+                <span class="eyebrow eyebrow--sun" style="padding:3px 10px;font-size:.65rem">Event</span>
+              </div>
+              <h3 class="teaser__title">Annual Banquet &amp; Awards Ceremony — a celebration of Anguilla's best</h3>
+            </article>
+          </div>
+        </div>
+        <div class="ne-grid">
+          <div class="ne-photo ne-photo--tall">
+            <img src="assets/images/ZWP_7146.jpg" alt="Chamber event" loading="lazy">
+          </div>
+          <div class="ne-photo">
+            <img src="assets/images/ZWP_7533.jpg" alt="Members networking" loading="lazy">
+          </div>
+          <div class="ne-photo">
+            <img src="assets/images/acoci-hero.jpg" alt="ACOCI event" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Subscribe strip ── -->
+    <section class="section section--pad-sm section--ink">
+      <div class="inner subscribe__inner">
+        <div class="subscribe__copy">
+          <h2>Stay in the loop.</h2>
+          <p>Chamber news, event invitations, and business resources — straight to your inbox.</p>
+        </div>
+        <form class="subscribe__form" action="#" method="post">
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" class="subscribe__input" type="email" name="email" placeholder="your@email.com" required>
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <img src="assets/images/acoci-logo-white.png" alt="ACOCI" width="130" loading="lazy">
+        <p class="footer__tagline">The Voice of Anguilla Business since 1981.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__col">
+          <h4>Chamber</h4>
+          <ul role="list">
+            <li><a href="#about">About ACOCI</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#president">President's Letter</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <ul role="list">
+            <li><a href="#directory">Business Directory</a></li>
+            <li><a href="#events">Events Calendar</a></li>
+            <li><a href="#resources">Business Resources</a></li>
+            <li><a href="#advocacy">Policy &amp; Advocacy</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul role="list">
+            <li><a href="mailto:info@anguillachamber.com">info@anguillachamber.com</a></li>
+            <li>The Valley, Anguilla BWI</li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="inner">
+        <p>&copy; 2025 Anguilla Chamber of Commerce &amp; Industry. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page -->
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

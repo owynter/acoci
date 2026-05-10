@@ -1,0 +1,338 @@
+/* ============================================================
+   DESIGN TOKENS — ACOCI home/ (2026-05-09)
+   ============================================================
+   Forked from design-space/v4/assets/css/variables.css.
+
+   Decisions encoded here (see docs/PUNCH_LIST.md "Active Decisions"):
+   - Sunset orange (#F69F3E) is the primary CTA. Only place that color appears.
+   - Flat dark ink (#131A22) is rejected. The single dark-surface treatment is
+     the Mission gradient (teal→blue→navy). Footer uses the same gradient.
+   - Palette character is v1's soft teal range (NOT navy). Sail blue stays
+     in links/info. Deep navy appears only inside the Mission gradient.
+   - Two aqua tints: aqua-soft (#E8F6F4) for hairlines, aqua (#D4EEE9) for
+     section backgrounds. Cream is dropped — page background is white.
+   - Buttons are rectangular with soft radius — not capsules.
+   - All teal/aqua/sail/sun values are sampled from ACOCI_LOGO_HORIZ-CLR.svg.
+
+   Sections:
+   1.  Fluid Engine
+   2.  Type Scale
+   3.  Spacing
+   4.  Colors             — brand primitives + semantic roles + gradients
+   5.  Typography
+   6.  Border Radius
+   7.  Shadows
+   8.  Transitions
+   9.  Z-Index
+   10. Layout
+   ============================================================ */
+
+
+/* ────────────────────────────────────────────────────────────
+   1. FLUID ENGINE
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --vp-min: 360;
+  --vp-max: 1340;
+
+  --fluid-progress: clamp(
+    0rem,
+    (100vw - (var(--vp-min) * 1px)) / (var(--vp-max) - var(--vp-min)),
+    1rem
+  );
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   2. TYPE SCALE
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --fluid-min-size:  16;
+  --fluid-max-size:  18;
+  --fluid-min-ratio: 1.25;
+  --fluid-max-ratio: 1.5;
+}
+
+:root {
+  --size-min-0: calc(var(--fluid-min-size) / 16);
+  --size-max-0: calc(var(--fluid-max-size) / 16);
+  --step-0: calc((var(--size-min-0) * 1rem) + (var(--size-max-0) - var(--size-min-0)) * var(--fluid-progress));
+
+  --size-min--1: calc(var(--size-min-0) / var(--fluid-min-ratio));
+  --size-max--1: calc(var(--size-max-0) / var(--fluid-max-ratio));
+  --step--1: calc((var(--size-min--1) * 1rem) + (var(--size-max--1) - var(--size-min--1)) * var(--fluid-progress));
+
+  --size-min--2: calc(var(--size-min--1) / var(--fluid-min-ratio));
+  --size-max--2: calc(var(--size-max--1) / var(--fluid-max-ratio));
+  --step--2: calc((var(--size-min--2) * 1rem) + (var(--size-max--2) - var(--size-min--2)) * var(--fluid-progress));
+
+  --size-min-1: calc(var(--size-min-0) * var(--fluid-min-ratio));
+  --size-max-1: calc(var(--size-max-0) * var(--fluid-max-ratio));
+  --step-1: calc((var(--size-min-1) * 1rem) + (var(--size-max-1) - var(--size-min-1)) * var(--fluid-progress));
+
+  --size-min-2: calc(var(--size-min-1) * var(--fluid-min-ratio));
+  --size-max-2: calc(var(--size-max-1) * var(--fluid-max-ratio));
+  --step-2: calc((var(--size-min-2) * 1rem) + (var(--size-max-2) - var(--size-min-2)) * var(--fluid-progress));
+
+  --size-min-3: calc(var(--size-min-2) * var(--fluid-min-ratio));
+  --size-max-3: calc(var(--size-max-2) * var(--fluid-max-ratio));
+  --step-3: calc((var(--size-min-3) * 1rem) + (var(--size-max-3) - var(--size-min-3)) * var(--fluid-progress));
+
+  --size-min-4: calc(var(--size-min-3) * var(--fluid-min-ratio));
+  --size-max-4: calc(var(--size-max-3) * var(--fluid-max-ratio));
+  --step-4: calc((var(--size-min-4) * 1rem) + (var(--size-max-4) - var(--size-min-4)) * var(--fluid-progress));
+
+  --size-min-5: calc(var(--size-min-4) * var(--fluid-min-ratio));
+  --size-max-5: calc(var(--size-max-4) * var(--fluid-max-ratio));
+  --step-5: calc((var(--size-min-5) * 1rem) + (var(--size-max-5) - var(--size-min-5)) * var(--fluid-progress));
+
+  --size-min-6: calc(var(--size-min-5) * var(--fluid-min-ratio));
+  --size-max-6: calc(var(--size-max-5) * var(--fluid-max-ratio));
+  --step-6: calc((var(--size-min-6) * 1rem) + (var(--size-max-6) - var(--size-min-6)) * var(--fluid-progress));
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   3. SPACING
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --sp-min: 1;
+  --sp-max: 2;
+
+  --base-sp: calc(
+    var(--sp-min) * 1rem +
+    (var(--sp-max) - var(--sp-min)) * var(--fluid-progress)
+  );
+}
+
+:root {
+  --space-xs:  calc(var(--base-sp) * 0.25);
+  --space-sm:  calc(var(--base-sp) * 0.5);
+  --space-md:  var(--base-sp);
+  --space-lg:  calc(var(--base-sp) * 2);
+  --space-xl:  calc(var(--base-sp) * 3);
+  --space-2xl: calc(var(--base-sp) * 4.5);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   4. COLORS
+   Two-layer system. Components reference Layer 2 only.
+
+   Layer 1 — Brand primitives.
+   Layer 2 — Semantic roles + gradient compositions.
+
+   Logo-sampled hexes (do not redefine):
+   teal #41BBB3 · aqua-mid #67CCD3 · aqua-light #9DDEDB · aqua-soft #E8F6F4
+   sail #48A8E0 · sun #F69F3E
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Layer 1: Brand primitives ── */
+
+  /* Teal family — logo-sampled */
+  --brand-teal:           #41BBB3;
+  --brand-teal-deep:      #0E8B85;
+  --brand-aqua-mid:       #67CCD3;
+  --brand-aqua-light:     #9DDEDB;
+  --brand-aqua:           #D4EEE9;  /* aqua — section background          */
+  --brand-aqua-soft:      #E8F6F4;  /* aqua soft — hairline / soft tint   */
+
+  /* Blue family.
+     Sail is the logo-sampled accent (links/info).
+     The mid/deep/navy values exist ONLY as gradient stops for the
+     Mission gradient — they are not standalone surface colors. */
+  --brand-sail:           #48A8E0;
+  --brand-blue-mid:       #0074B7;  /* gradient stop */
+  --brand-blue-deep:      #003B73;  /* gradient stop */
+  --brand-navy:           #002244;  /* gradient stop (deepest) */
+
+  /* Sunset — primary CTA. The only place this color appears. */
+  --brand-sunset:         #F69F3E;
+  --brand-sunset-deep:    #DB851F;  /* hover/press */
+
+  /* Neutrals — note: NO #131A22 ink. Body text is a desaturated slate. */
+  --brand-slate:          #2C3E50;  /* primary text */
+  --brand-slate-mid:      #4A5568;  /* secondary text */
+  --brand-slate-soft:     #6B7280;  /* muted / meta */
+
+  /* Surfaces — page is white. Section breaks use aqua tints, not cream. */
+  --brand-surface-page:   #FFFFFF;
+  --brand-border:         rgba(44, 62, 80, 0.10);
+  --brand-overlay:        rgba(0, 34, 68, 0.55);
+}
+
+:root {
+  /* ── Layer 2: Semantic roles ── */
+
+  /* Action — sunset owns CTAs. */
+  --color-cta:            var(--brand-sunset);
+  --color-cta-hover:      var(--brand-sunset-deep);
+
+  /* Primary brand color (identity / surfaces / accents — NOT actions) */
+  --color-primary:        var(--brand-teal);
+  --color-primary-deep:   var(--brand-teal-deep);
+
+  /* Information / links / blue accents */
+  --color-link:           var(--brand-sail);
+  --color-link-hover:     var(--brand-blue-mid);
+  --color-info:           var(--brand-sail);
+
+  /* Text */
+  --color-text:           var(--brand-slate);
+  --color-text-muted:     var(--brand-slate-mid);
+  --color-text-subtle:    var(--brand-slate-soft);
+  --color-heading:        var(--brand-slate);
+  --color-text-on-dark:   #FFFFFF;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.78);
+
+  /* Surfaces */
+  --color-surface-page:   var(--brand-surface-page);  /* page background — white */
+  --color-surface-aqua:        var(--brand-aqua);     /* section bg — aqua       */
+  --color-surface-aqua-soft:   var(--brand-aqua-soft);/* tint / hairline         */
+  --color-surface-aqua-mid:    var(--brand-aqua-mid);
+  --color-border:         var(--brand-border);
+  --color-overlay:        var(--brand-overlay);
+
+  /* ── Gradient — single dark-surface treatment ──
+     The Mission gradient is the only dark surface in the system.
+     It's used on Mission, Join/CTA, and Footer. There is no separate
+     navy/deep-blue footer gradient. */
+  --gradient-mission:     linear-gradient(120deg,
+                            var(--brand-teal-deep) 0%,
+                            var(--brand-blue-mid) 50%,
+                            var(--brand-blue-deep) 100%);
+
+  /* Vertical variant — same colors, useful on tall containers. */
+  --gradient-mission-vertical: linear-gradient(180deg,
+                            var(--brand-teal-deep) 0%,
+                            var(--brand-blue-mid) 60%,
+                            var(--brand-blue-deep) 100%);
+
+  /* Shadow color — tinted toward logo teal for warmth. */
+  --shadow-color: 176deg, 47%, 49%;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --heading-display: var(--step-5);
+  --heading-1:       var(--step-4);
+  --heading-2:       var(--step-3);
+  --heading-3:       var(--step-2);
+  --heading-4:       var(--step-1);
+  --heading-5:       var(--step-0);
+
+  --body-xl:   var(--step-1);
+  --body-lg:   calc(var(--step-0) * 1.125);
+  --body-base: var(--step-0);
+  --body-sm:   var(--step--1);
+  --body-xs:   var(--step--2);
+  --body-2xs:  calc(var(--step--2) * 0.85);
+
+  /* Font stacks */
+  --font-heading: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-size: var(--body-base);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   6. BORDER RADIUS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --radius-xs:   calc(var(--space-sm) * 0.5);
+  --radius-sm:   calc(var(--space-sm) * 0.85);
+  --radius-md:   calc(var(--space-sm) * 1.325);
+  --radius-lg:   calc(var(--space-sm) * 2);
+  --radius-xl:   calc(var(--space-sm) * 3);
+  --radius-full: 9999px;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   7. SHADOWS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --shadow-xs:    0 1px 2px 0 hsl(var(--shadow-color) / 0.05);
+  --shadow-sm:    0 1px 3px 0 hsl(var(--shadow-color) / 0.10),
+                  0 1px 2px -1px hsl(var(--shadow-color) / 0.10);
+  --shadow-md:    0 4px 6px -1px hsl(var(--shadow-color) / 0.10),
+                  0 2px 4px -2px hsl(var(--shadow-color) / 0.10);
+  --shadow-lg:    0 10px 15px -3px hsl(var(--shadow-color) / 0.10),
+                  0 4px 6px -4px hsl(var(--shadow-color) / 0.10);
+  --shadow-xl:    0 20px 25px -5px hsl(var(--shadow-color) / 0.10),
+                  0 8px 10px -6px hsl(var(--shadow-color) / 0.10);
+  --shadow-inner: inset 0 2px 4px 0 hsl(var(--shadow-color) / 0.05);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   8. TRANSITIONS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast:   100ms;
+  --duration-base:   200ms;
+  --duration-slow:   300ms;
+  --duration-slower: 500ms;
+
+  --transition-fast:   var(--duration-fast)   var(--ease-out);
+  --transition-base:   var(--duration-base)   var(--ease-out);
+  --transition-slow:   var(--duration-slow)   var(--ease-out);
+  --transition-spring: var(--duration-slow)   var(--ease-spring);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   9. Z-INDEX
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   10. LAYOUT
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --container-xs:  30rem;
+  --container-sm:  40rem;
+  --container-md:  48rem;
+  --container-lg:  64rem;
+  --container-xl:  80rem;
+  --container-2xl: 90rem;
+
+  --container-inner: 84rem;    /* 1344px — main content rail */
+  --container-outer: 137.5rem; /* 2200px — ultra-wide page cap */
+  --container-prose: 45rem;    /*  720px — reading column */
+
+  --section-gap:     calc(var(--base-sp) * 4.5);
+  --section-gap-lg:  calc(var(--base-sp) * 7);
+  --hero-min-height: calc(var(--base-sp) * 16);
+}

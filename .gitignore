@@ -1,0 +1,27 @@
+# Local-dev environment file (committed example: .env.example)
+.env
+
+# gstack tooling state
+.gstack/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# WordPress: third-party plugins and uploads are installed via wp-admin
+# inside the container, NOT committed. Only custom theme code and
+# mu-plugins (already in wordpress/themes/ and wordpress/mu-plugins/)
+# go in git.
+wordpress/wp-content/
+wordpress/plugins/
+wordpress/uploads/

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Typography Experiment (scratch)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  /* ──────────────────────────────────────────────────────────
+     TYPOGRAPHY EXPERIMENT — scratch page
+     Loose hard-coded values on purpose so we can land a target
+     before promoting anything to tokens.
+
+     Reference: investor-benefits CTA pattern with oversized
+     headline, generous body lede, image-left + content-right
+     split, accordion list. Goal: see what ACOCI feels like at
+     a much louder typographic register than the current home/
+     scale.
+     ────────────────────────────────────────────────────────── */
+
+  body { background: #FFFFFF; }
+
+  .typo-page__intro {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 64px 48px 32px;
+  }
+  .typo-page__intro p.eyebrow {
+    color: var(--color-text-subtle);
+    margin: 0 0 12px;
+  }
+  .typo-page__intro h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  .typo-page__intro p.lede {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     CLIP T01 — "Why Invest" pattern, ACOCI-ed
+     ────────────────────────────────────────────────────────── */
+  .clip-t01 {
+    max-width: 1800px;     /* wide container, hard-coded */
+    margin: 0 auto;
+    padding: 96px 48px 128px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .clip-t01__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .clip-t01__grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  /* ── Image side ── */
+  .clip-t01__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--color-surface-aqua-mid);
+  }
+  .clip-t01__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .clip-t01__caption {
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
+
+  /* ── Copy side ── */
+  .clip-t01__eyebrow {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-sail);
+    margin: 0 0 20px;
+  }
+  .clip-t01__title {
+    font-family: var(--font-heading);
+    font-size: 84px;          /* OVERSIZED — the experiment */
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    color: var(--brand-sail);  /* sail blue lead, like the reference */
+    margin: 0 0 32px;
+    text-wrap: balance;
+  }
+  .clip-t01__lede {
+    font-family: var(--font-body);
+    font-size: 22px;          /* generous body, hard-coded */
+    line-height: 1.5;
+    color: var(--color-text);
+    margin: 0 0 48px;
+    max-width: 56ch;
+  }
+
+  /* ── Accordion list ── */
+  .clip-t01__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgba(0, 59, 115, 0.18);
+  }
+  .clip-t01__item {
+    border-bottom: 1px solid rgba(0, 59, 115, 0.18);
+  }
+  .clip-t01__item-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 4px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-blue-deep);
+    cursor: pointer;
+    user-select: none;
+  }
+  .clip-t01__item-head::before {
+    content: "✦";
+    color: var(--brand-sail);
+    font-size: 20px;
+    flex: 0 0 auto;
+  }
+  .clip-t01__item--open .clip-t01__item-head::before {
+    content: "✕";
+    color: var(--brand-sail);
+  }
+  .clip-t01__item-body {
+    display: none;
+    padding: 0 4px 28px 36px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+  .clip-t01__item--open .clip-t01__item-body {
+    display: block;
+  }
+  .clip-t01__item-body p {
+    margin: 0 0 16px;
+    max-width: 60ch;
+  }
+  .clip-t01__item-body p:last-child { margin-bottom: 0; }
+  .clip-t01__item-body ul {
+    margin: 12px 0 0;
+    padding: 0 0 0 24px;
+    color: var(--color-text);
+  }
+  .clip-t01__item-body li { margin: 6px 0; }
+
+  /* Mobile tightening — the experiment scales down, but keeps
+     the typographic register noticeably louder than the rest
+     of design-space/home/. */
+  @media (max-width: 720px) {
+    .clip-t01 { padding: 64px 24px 96px; }
+    .clip-t01__title { font-size: 56px; }
+    .clip-t01__lede  { font-size: 19px; }
+    .clip-t01__item-head { font-size: 20px; }
+    .clip-t01__item-body { font-size: 17px; padding-left: 28px; }
+  }
+
+</style>
+</head>
+<body>
+
+  <header class="typo-page__intro">
+    <p class="eyebrow">Scratch</p>
+    <h1>Typography experiment</h1>
+    <p class="lede">
+      A louder typographic register than the rest of <code>design-space/home/</code>.
+      Hard-coded sizes (no token discipline) so we can land a target first, then
+      decide what graduates into <code>variables.css</code>. Reference is the
+      investor-benefits "Why Invest?" pattern — oversize headline in sail blue,
+      generous body lede, image-left + accordion-right.
+    </p>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIP T01 — "Why Invest" / oversized headline split
+       ════════════════════════════════════════════════════════ -->
+  <section class="clip-t01">
+    <div class="clip-t01__grid">
+
+      <figure class="clip-t01__media">
+        <img src="assets/images/clips-membership-storefront.jpg" alt="">
+        <figcaption class="clip-t01__caption">The Valley, Anguilla</figcaption>
+      </figure>
+
+      <div class="clip-t01__copy">
+        <p class="clip-t01__eyebrow">Member Benefits</p>
+        <h2 class="clip-t01__title">Why Join?</h2>
+        <p class="clip-t01__lede">
+          Joining ACOCI gives your business a front-row seat &mdash; and a voice &mdash;
+          in shaping Anguilla's economic future. Here's what you can expect as
+          a member of the Chamber.
+        </p>
+
+        <ul class="clip-t01__list" role="list">
+
+          <li class="clip-t01__item clip-t01__item--open">
+            <div class="clip-t01__item-head">Economic Influence</div>
+            <div class="clip-t01__item-body">
+              <p>A stronger private sector means more opportunity &mdash; for everyone.</p>
+              <ul>
+                <li>Have a say in the policies that shape your operating environment.</li>
+                <li>Connect with the operators, advisors, and institutions running Anguilla's economy.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="clip-t01__item">
+            <div class="clip-t01__item-head">Advocacy &amp; Policy</div>
+            <div class="clip-t01__item-body">
+              <p>The Chamber represents members to government on legislation and regulation that affects how you do business.</p>
+            </div>
+          </li>
+
+          <li class="clip-t01__item">
+            <div class="clip-t01__item-head">Insights &amp; Research</div>
+            <div class="clip-t01__item-body">
+              <p>Quarterly business pulse reports, member surveys, and economic briefings — so you're not flying blind.</p>
+            </div>
+          </li>
+
+          <li class="clip-t01__item">
+            <div class="clip-t01__item-head">Talent &amp; Workforce</div>
+            <div class="clip-t01__item-body">
+              <p>Workshops, training programmes, and the connections to attract and retain skilled people on-island.</p>
+            </div>
+          </li>
+
+          <li class="clip-t01__item">
+            <div class="clip-t01__item-head">Visibility &amp; Engagement</div>
+            <div class="clip-t01__item-body">
+              <p>Member directory listings, event sponsorships, and a platform to be seen by the rest of the Chamber community.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Lightweight accordion — single-open behavior
+    document.querySelectorAll('.clip-t01__item-head').forEach(head => {
+      head.addEventListener('click', () => {
+        const item = head.closest('.clip-t01__item');
+        const list = item.parentElement;
+        list.querySelectorAll('.clip-t01__item--open').forEach(o => {
+          if (o !== item) o.classList.remove('clip-t01__item--open');
+        });
+        item.classList.toggle('clip-t01__item--open');
+      });
+    });
+  </script>
+
+</body>
+</html>
