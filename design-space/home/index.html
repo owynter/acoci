@@ -72,17 +72,40 @@
                  src="assets/images/acoci-hero.jpg"
                  alt="ACOCI members at a chamber event"
                  loading="eager">
+
+            <!-- Quick Links overlay — bottom-left of the photo.
+                 Routes the most common visitor intents directly into
+                 the four pillars. The arrow nudges right on hover. -->
+            <nav class="hero__quicklinks" aria-label="Quick links">
+              <h2 class="hero__quicklinks-heading">Quick links</h2>
+              <a class="hero__ql-link" href="/membership/">
+                <span>Apply for membership</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="hero__ql-link" href="/membership/member-directory/">
+                <span>Find a local business</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="hero__ql-link" href="/news-events/event-calendar/">
+                <span>Upcoming events</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+              <a class="hero__ql-link" href="/resources/doing-business-in-anguilla/">
+                <span>Doing business in Anguilla</span>
+                <svg viewBox="0 0 23 11.5" aria-hidden="true"><path d="M22.5 5.2L17.7 0l-1.1 1.2L20 4.9H0v1.8h19.9l-3.4 3.7 1.1 1.2 4.8-5.2.6-.6-.5-.6z"/></svg>
+              </a>
+            </nav>
           </div>
         </div>
       </div>
 
       <!-- Wave at the bottom of the hero. Fill = aqua so it reveals the
-           aqua section (About) sitting behind. The same wave is reused
-           inverted at the top of the footer. -->
+           aqua About section sitting behind. The same wave shape is
+           reused inverted at the top of the footer for sitewide rhythm. -->
       <div class="hero__wave" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
           <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z"
-                fill="#D4EEE9"/>
+                fill="currentColor" style="color: var(--brand-aqua);"/>
         </svg>
       </div>
     </section>
