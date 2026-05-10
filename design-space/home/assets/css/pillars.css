@@ -151,7 +151,7 @@ body.pillar-your-chamber {
 }
 .phero__quicklinks-heading {
   font-family: var(--font-heading);
-  font-size: var(--body-xs);
+  font-size: var(--body-sm);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -163,11 +163,11 @@ body.pillar-your-chamber {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
-  padding: 0.4em 0;
+  padding: 0.6em 0;
   color: var(--color-text-on-dark);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: var(--body-sm);
+  font-size: var(--body-base);
   letter-spacing: -0.005em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   transition: color var(--transition-fast), border-color var(--transition-fast);
@@ -241,6 +241,7 @@ body.pillar-your-chamber {
 }
 
 .subcard {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--color-surface-page);
@@ -248,6 +249,7 @@ body.pillar-your-chamber {
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   color: var(--color-text);
+  overflow: hidden;
   transition: transform var(--transition-base), border-color var(--transition-fast);
 }
 .subcard:hover {
@@ -256,38 +258,82 @@ body.pillar-your-chamber {
 }
 .subcard:hover .subcard__cta { color: var(--color-cta); }
 .subcard:hover .subcard__cta::after { transform: translateX(3px); }
+.subcard:hover .subcard__decor { opacity: 1; }
+.subcard:hover .subcard__decor .subcard__tri--front { transform: translate(-8%, -6%); }
 
-.subcard__mark {
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-bottom: var(--space-md);
-  background-color: var(--pillar-color);
+/* Decorative triangle composition in the bottom-right corner.
+   Two overlapping triangles in pillar-tinted transparency — reads
+   as graphic texture, not an icon. Bleeds off the corner so the
+   shape is implied beyond the card edge. */
+.subcard__decor {
+  position: absolute;
+  right: -12%;
+  bottom: -10%;
+  width: 60%;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
+}
+.subcard__tri {
+  position: absolute;
+  background-color: currentColor;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   mask-size: contain;
-  -webkit-mask-position: left center;
-  mask-position: left center;
+  -webkit-mask-position: bottom right;
+  mask-position: bottom right;
+}
+/* The big back triangle — uses the composite SVG so the brand
+   angle relationship reads even when both edges bleed off. */
+.subcard__tri--back {
   -webkit-mask-image: url("../images/triangles/Triangles-01.svg");
   mask-image: url("../images/triangles/Triangles-01.svg");
+  inset: 0;
+  color: var(--pillar-color);
+  opacity: 0.10;
 }
-/* For gradient pillar (News & Events), the mask-image can't show
-   a gradient so we fall back to teal-deep. */
-body.pillar-news-events .subcard__mark { background-color: var(--brand-teal-deep); }
+/* The smaller foreground triangle — slightly stronger color,
+   nudges on hover so the cluster has motion. */
+.subcard__tri--front {
+  -webkit-mask-image: url("../images/triangles/Triangles-03.svg");
+  mask-image: url("../images/triangles/Triangles-03.svg");
+  bottom: 0;
+  right: 8%;
+  width: 45%;
+  aspect-ratio: 271.09 / 930.91;
+  color: var(--pillar-color);
+  opacity: 0.18;
+  transition: transform var(--transition-base);
+}
+/* For the gradient pillar (News & Events), pin to a single token
+   color so transparency reads cleanly. */
+body.pillar-news-events .subcard__tri--back,
+body.pillar-news-events .subcard__tri--front {
+  color: var(--brand-teal-deep);
+}
 
 .subcard h3 {
+  position: relative;
+  z-index: 1;
   font-size: var(--heading-3);
   line-height: 1.2;
   letter-spacing: -0.015em;
   margin: 0 0 var(--space-sm);
 }
 .subcard p {
+  position: relative;
+  z-index: 1;
   color: var(--color-text-muted);
   line-height: 1.55;
   margin: 0 0 var(--space-lg);
   flex: 1;
 }
 .subcard__cta {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: var(--body-sm);

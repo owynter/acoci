@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="assets/css/variables.css">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/sections.css">
 </head>
 <body>
 
@@ -111,28 +112,32 @@
     </section>
 
     <!-- ── 2. About ──
-         Continues on aqua surface from the hero wave. Triangle
-         composition on the right replaces the v4 circular seal —
-         more on-brand (uses the canonical ACOCI graphic element)
-         and more confident than a flat logo lockup. -->
-    <section class="about" id="about">
-      <div class="about__inner">
-        <div class="about__copy">
-          <p class="eyebrow">About ACOCI</p>
-          <h2>Representing every licensed business on the island.</h2>
-          <p>
-            Founded in 1981, the Anguilla Chamber of Commerce &amp; Industry is
-            the premier private-sector body on the island. We connect businesses
-            with government, provide resources for growth, and champion a
-            competitive, sustainable economy.
-          </p>
-          <a class="btn btn--secondary" href="/your-chamber/about-us/">Learn more about ACOCI</a>
-        </div>
+         Generic .section + .section__split layout. Triangle figure
+         on the right is a reusable .tri-figure (also used elsewhere). -->
+    <section class="section section--aqua" id="about">
+      <div class="section__inner">
+        <div class="section__split section__split--3-2">
 
-        <div class="about__figure" aria-hidden="true">
-          <span class="about__tri about__tri--big"></span>
-          <span class="about__tri about__tri--mid"></span>
-          <span class="about__tri about__tri--small"></span>
+          <div class="section__copy">
+            <header class="section__head">
+              <p class="eyebrow">About ACOCI</p>
+              <h2 class="section__title">Representing every licensed business on the island.</h2>
+            </header>
+            <p class="section__copy-lede">
+              Founded in 1981, the Anguilla Chamber of Commerce &amp; Industry is
+              the premier private-sector body on the island. We connect businesses
+              with government, provide resources for growth, and champion a
+              competitive, sustainable economy.
+            </p>
+            <a class="btn btn--secondary" href="/your-chamber/about-us/">Learn more about ACOCI</a>
+          </div>
+
+          <div class="section__media section__media--figure tri-figure" aria-hidden="true">
+            <span class="tri-figure__tri tri-figure__tri--1"></span>
+            <span class="tri-figure__tri tri-figure__tri--2"></span>
+            <span class="tri-figure__tri tri-figure__tri--3"></span>
+          </div>
+
         </div>
       </div>
     </section>

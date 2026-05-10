@@ -1,0 +1,292 @@
+/* ============================================================
+   SECTION SYSTEM — shared patterns across the site
+   ============================================================
+   One source of truth for the things every page section needs:
+   container, padding, surface variants, headings, lede.
+
+   Sections never style bare semantic elements (h2, p, etc.).
+   Everything is a class so:
+     - cascade is predictable
+     - sections can be reordered without copy bleeding into eyebrows
+     - the same CSS works whether the markup uses <h2>, <p>, <div>
+
+   Usage:
+
+     <section class="section section--soft">
+       <div class="section__inner">
+
+         <header class="section__head">
+           <p class="eyebrow">About ACOCI</p>
+           <h2 class="section__title">Heading goes here.</h2>
+         </header>
+
+         <div class="section__split section__split--3-2">
+           <div class="section__copy">
+             <p class="section__lede">Body lede text...</p>
+             <a class="btn btn--secondary" href="#">Action</a>
+           </div>
+           <div class="section__media">
+             <!-- photo / triangle / chart -->
+           </div>
+         </div>
+
+       </div>
+     </section>
+
+   ============================================================ */
+
+
+/* ── 1. SECTION SHELL ──────────────────────────────────────── */
+
+.section {
+  background: var(--color-surface-page);
+  padding-block: calc(var(--space-2xl) * 1.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.section__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+/* Surface variants — pick one per section */
+.section--page { background: var(--color-surface-page); }
+.section--soft { background: var(--color-surface-aqua-soft); }
+.section--aqua { background: var(--brand-aqua); }
+.section--mission {
+  background: var(--gradient-mission);
+  color: var(--color-text-on-dark);
+}
+
+
+/* ── 2. SECTION HEAD ───────────────────────────────────────── */
+/*
+   Eyebrow + title pair. Lives in a flex container with a small
+   gap (no margin-bottom on the eyebrow). Optional .section__lede
+   sits below the title.
+*/
+
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+/* When .section__head sits at the top of an .section__inner
+   (not inside a copy block), it gets bottom margin to space the
+   following content. When inside a flex .section__copy, the
+   parent's gap handles spacing — no margin needed. */
+.section__inner > .section__head { margin-bottom: var(--space-xl); }
+
+/* Variant: head as a horizontal split (title left, link right).
+   Used by News, Events, etc. where the head shows "Latest news"
+   on the left and "All news →" on the right. */
+.section__head--split {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.section__head--split .section__head-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* The title — a class, not h2-bound, so the markup can use any
+   semantically appropriate heading level (h1 on a sub-page hero,
+   h2 in a section, h3 in a card). */
+.section__title {
+  font-family: var(--font-heading);
+  font-size: var(--heading-1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+  margin: 0;
+  max-width: 18ch;
+}
+.section__title--md  { font-size: var(--heading-2); max-width: 22ch; }
+.section__title--sm  { font-size: var(--heading-3); max-width: 26ch; }
+.section__title--wide { max-width: none; }
+
+/* Optional supporting copy below the title — body-lg, muted. */
+.section__lede {
+  font-family: var(--font-body);
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 50ch;
+  margin: 0;
+}
+
+
+/* ── 3. SPLIT LAYOUT ───────────────────────────────────────── */
+/*
+   The two-column section layout used everywhere — About,
+   President's Note, Members, the various pillar pages.
+
+   Default = 1:1. Modifiers shift the ratio.
+*/
+
+.section__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: center;
+}
+@media (max-width: 880px) {
+  .section__split { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+.section__split--3-2 { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+.section__split--2-3 { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+.section__split--7-5 { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+.section__split--5-7 { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+
+
+/* ── 4. SECTION COPY BLOCK ────────────────────────────────── */
+/*
+   The text-side of a split layout. Rules ONLY target the explicit
+   sub-classes — no bleed into other <p>s (eyebrows, attribution,
+   meta, etc.) that might live in the same column.
+*/
+
+.section__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.section__copy > .btn { align-self: flex-start; }
+
+/* The narrow opening lede inside a copy block (paragraph-sized). */
+.section__copy-lede {
+  font-family: var(--font-body);
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 50ch;
+  margin: 0;
+}
+
+
+/* ── 5. SECTION MEDIA WRAP ────────────────────────────────── */
+/*
+   Generic frame for the media side of a split section. Photos
+   use --media--photo (with aspect-ratio + radius); triangles use
+   --media--figure (square frame for an aspect-1 graphic).
+*/
+
+.section__media {
+  width: 100%;
+}
+.section__media--photo {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-aqua-mid);
+}
+.section__media--photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.section__media--portrait {
+  aspect-ratio: 4 / 5;
+  max-width: 22rem;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-aqua-mid);
+}
+.section__media--portrait img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.section__media--figure {
+  aspect-ratio: 1 / 1;
+  max-width: 28rem;
+  margin-inline: auto;
+  position: relative;
+}
+
+
+/* ── 6. SECTION HEAD-LINK ─────────────────────────────────── */
+/*
+   The "All news →" / "All events →" arrow link that sits opposite
+   the section title in a head--split. */
+
+.section__head-link {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-cta);
+  font-size: var(--body-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  white-space: nowrap;
+}
+.section__head-link::after {
+  content: "\2192";
+  font-size: 1.1em;
+  transition: transform var(--transition-base);
+}
+.section__head-link:hover { color: var(--color-cta-hover); }
+.section__head-link:hover::after { transform: translateX(3px); }
+
+
+/* ── 7. TRIANGLE FIGURE ───────────────────────────────────── */
+/*
+   Decorative composition of overlapping brand triangles. Used
+   as the media side of any split section that doesn't have a
+   photo (e.g. About, Mission, abstract pillar features).
+
+   Geometry: three triangles, anchored to the figure's frame.
+   Colors are picked from the existing palette via tokens — no
+   need to override per-section.
+*/
+
+.tri-figure {
+  position: relative;
+}
+.tri-figure__tri {
+  position: absolute;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-image: url("../images/triangles/Triangles-02.svg");
+  mask-image: url("../images/triangles/Triangles-02.svg");
+  aspect-ratio: 675.86 / 1514.8;
+}
+
+/* Big back triangle — pillar primary or teal-deep by default. */
+.tri-figure__tri--1 {
+  color: var(--brand-teal-deep);
+  height: 100%;
+  left: 8%;
+  top: 0;
+  opacity: 0.92;
+}
+/* Mid triangle — sail blue, rotated 180 for visual rhythm. */
+.tri-figure__tri--2 {
+  color: var(--brand-sail);
+  height: 80%;
+  left: 32%;
+  top: 12%;
+  opacity: 0.78;
+  transform: rotate(180deg);
+}
+/* Small foreground accent — uses the prow SVG. */
+.tri-figure__tri--3 {
+  -webkit-mask-image: url("../images/triangles/Triangles-03.svg");
+  mask-image: url("../images/triangles/Triangles-03.svg");
+  aspect-ratio: 271.09 / 930.91;
+  color: var(--brand-aqua-light);
+  height: 55%;
+  right: 12%;
+  bottom: 4%;
+}
