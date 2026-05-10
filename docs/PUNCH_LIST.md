@@ -4,13 +4,13 @@ Living record of decisions, success criteria, failure conditions, and deferred i
 
 For "what to do next" in priority order, see [`../NEXT.md`](../NEXT.md).
 
-Last updated: 2026-05-10
+Last updated: 2026-05-10 (session-end)
 
 ---
 
 ## Current State
 
-Static design iterations (v1–v4) live in [`../design-space/`](../design-space/), with v4 as the active working iteration. Brand guide v4.1 is freshly rebuilt against canonical logo colors. WordPress Docker stack is running but the installer hasn't been run; theme stub is unactivated. Repo is not yet under git.
+Static design iterations live in [`../design-space/`](../design-space/). The active iteration is `home/`, which now has a complete homepage (9 sections built and committed individually) and four pillar landing pages (Membership, News & Events, Resources, Your Chamber). Repo is initialized; baseline at commit `35e6c37`. Shared `sections.css` system introduced 2026-05-10 — Section 2 migrated as proof; the rest still need migration (see Deferred Items). WordPress Docker stack is running but the installer hasn't been run; theme stub is unactivated.
 
 ---
 
@@ -31,6 +31,9 @@ Static design iterations (v1–v4) live in [`../design-space/`](../design-space/
 - **Use only LO and SVG logo variants on web; never HI; never DRK.** Decision: permanent. HI is print-grade (too heavy); the WHT lockup handles dark backgrounds.
 - **Design-space v1–v3 kept as historical iterations.** Decision: current phase. Archive only when v4 is fully ported into WordPress and locked.
 - **Third-party WordPress plugins not committed.** Decision: permanent. Installed via wp-admin. Only theme code and mu-plugins are versioned.
+- **CSS architecture: shared section system, never per-section bespoke classes.** Decision: 2026-05-10, permanent. All sections use `.section` / `.section__head` / `.section__title` / `.section__split` / `.section__copy` defined once in `design-space/home/assets/css/sections.css`. No `.about__copy`, `.president__eyebrow`, `.members__item`, etc. Reusable patterns get pattern-named classes (`.events-accordion`, `.featured-card`), never section-named ones. Title is a class, not a tag. Eyebrow is one class. See CLAUDE.md "CSS architecture" rule for the full constraint set, and the autonomous-run section migration plan in NEXT.md.
+- **Pillar colors (provisional, picked 2026-05-10).** Membership = Crocus Bay (`--brand-teal-deep` / `#0E8B85`). News & Events = Trade Winds (Mission gradient). Resources = Prickly Pear (`--brand-sail` / `#48A8E0`). Your Chamber = Sombrero (`--brand-blue-deep` / `#003B73`). All trace to existing brand tokens — no new colors. Tokens at the bottom of `design-space/home/assets/css/variables.css` Layer 2. Easy swap if the user wants different picks after visual review.
+- **Repo initialized.** Decision: 2026-05-10. `git init && git branch -m main` run, baseline committed at `35e6c37`. All design-space + WordPress theme stub + mu-plugins + references + Docker config under version control. `.env`, `.gstack/`, and `wordpress/wp-content/` ignored.
 
 ---
 
@@ -48,15 +51,27 @@ Static design iterations (v1–v4) live in [`../design-space/`](../design-space/
 
 ## Deferred Items
 
-### Git initialization
+### Section CSS migration
 
-**What:** Repository is not yet under version control. No `.git/` directory exists.
+**What:** Sections 3–9 of the homepage and all four pillar pages still carry per-section bespoke CSS (`.president__copy`, `.members__item`, `.news__featured`, `.events__row`, `.decision__card`, `.join__card`, etc.). The shared `sections.css` system is built and Section 2 (About) is migrated as proof.
 
-**Why deferred:** Project root only became writable to the user account on 2026-05-09. Continuity files were the first thing scaffolded; first git commit should include them.
+**Why deferred (briefly):** session-end. Migration is mechanical but each section needs a screenshot before/after to confirm visual parity, so it's per-commit work rather than a single sweep.
 
-**When to address:** Immediately — see priority #2 in NEXT.md. Run `git init && git branch -m main`, then commit current state.
+**When to address:** **Immediate** — first task of next session, before any further design work. Per CLAUDE.md "CSS architecture" rule, leaving the bespoke classes in place is a maintenance trap.
 
-**Files:** entire repo
+**Files:** [`design-space/home/index.html`](../design-space/home/index.html), [`design-space/home/membership.html`](../design-space/home/membership.html), [`design-space/home/news-events.html`](../design-space/home/news-events.html), [`design-space/home/resources.html`](../design-space/home/resources.html), [`design-space/home/your-chamber.html`](../design-space/home/your-chamber.html), [`design-space/home/assets/css/styles.css`](../design-space/home/assets/css/styles.css), [`design-space/home/assets/css/sections.css`](../design-space/home/assets/css/sections.css)
+
+---
+
+### Uncommitted out-of-session work to triage
+
+**What:** Three uncommitted changes on disk at session-end that are NOT from the autonomous build run: `design-space/home/clips.html` (modified, ~3700 inserts / ~2200 deletes), `design-space/home/sample-membership.html` (new, 564 lines), `references/live-site-audit/2026-05-10/` (new directory).
+
+**Why deferred:** unknown provenance. Substantial work that doesn't trace to a session commit message.
+
+**When to address:** Before continuing the section migration. Read each, decide with the user whether to keep, revise, or revert.
+
+**Files:** as listed above
 
 ---
 

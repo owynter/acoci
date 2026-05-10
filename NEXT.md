@@ -5,7 +5,7 @@
 For the structured archive of decisions and deferred items, see [docs/PUNCH_LIST.md](./docs/PUNCH_LIST.md).
 For agent operating instructions, see [CLAUDE.md](./CLAUDE.md).
 
-Last updated: 2026-05-10 (autonomous run) — Homepage assembled (all 9 canonical sections built and committed), four pillar landing pages built (Membership, News & Events, Resources, Your Chamber), git initialized with v0 baseline, pillar color tokens assigned (provisional, awaiting review).
+Last updated: 2026-05-10 (session-end handoff) — `sections.css` shared system introduced and About migrated as proof. The other 8 homepage sections + 4 pillar pages still carry per-section bespoke CSS and need migration before further design work. New session must continue the migration first.
 
 ---
 
@@ -13,24 +13,60 @@ Last updated: 2026-05-10 (autonomous run) — Homepage assembled (all 9 canonica
 
 Currently active work that needs to be finished or handed off.
 
-- **Pillar colors are provisional.** Picks committed to [variables.css](./design-space/home/assets/css/variables.css) on 2026-05-10:
-  - Membership → Crocus Bay (teal-deep `#0E8B85`)
-  - News & Events → Trade Winds (Mission gradient)
-  - Resources → Prickly Pear (sail `#48A8E0`)
-  - Your Chamber → Sombrero (deep navy `#003B73`)
-  - These render in [membership.html](./design-space/home/membership.html), [news-events.html](./design-space/home/news-events.html), [resources.html](./design-space/home/resources.html), and [your-chamber.html](./design-space/home/your-chamber.html). React via [pillars.html](./design-space/home/pillars.html) (the candidate library). Easy swap: change the four `--pillar-*` token values; all pillar pages update.
+### 🚨 PRIORITY: Section CSS migration to shared `sections.css` (in progress)
 
-- **v4 brand guide** at [design-space/v4/brand-guide.html](./design-space/v4/brand-guide.html) was **partially refreshed 2026-05-10**: dark surfaces (header, footer, dark sections) now use the Mission gradient instead of flat ink, and the color section reflects the new hierarchy. Still pending against current rules: sunset CTA treatment, button system audit, hero patterns from `home/`, pillar color documentation.
+**Why this is urgent:** the previous build approach scattered per-section CSS (`.about__copy p`, `.president__eyebrow`, `.members__item`, `.events__row`, `.news__featured`, `.decision__card`, `.join__card`) across the codebase. The user flagged this 2026-05-10 as "phenomenally poor development hygiene" — every site-wide change becomes a grep-and-edit across N files.
+
+**State:**
+- ✅ [sections.css](./design-space/home/assets/css/sections.css) created with the shared system (`.section`, `.section__inner`, `.section__head`, `.section__title`, `.section__split`, `.section__copy`, `.section__media`, `.section__head-link`, `.tri-figure`)
+- ✅ Section 2 (About) **fully migrated** as proof — uses `.section section--aqua`, `.section__split--3-2`, `.section__copy`, `.section__copy-lede`, `.tri-figure`. Old `.about__*` rules deleted from `styles.css`. See commit `f0cb61c`.
+- ❌ Sections 3–9 of the homepage still use bespoke per-section classes
+- ❌ All four pillar pages (membership.html, news-events.html, resources.html, your-chamber.html) still use the old chrome (subcards have been updated for the triangle decoration but other per-section bits remain)
+
+**Migration recipe (apply to each remaining section):**
+1. Find the markup, replace per-section classes with `.section` / `.section__*`
+2. Identify genuinely reusable patterns (events accordion, news featured-card, decision card-grid, members benefit-list, join CTA card) and extract them with pattern-named classes (e.g., `.events-accordion`, `.featured-card`, `.card-grid`, `.benefit-list`, `.join-card`) — NOT `.events__*` style names
+3. Truly one-off chrome (rare — e.g., the President's quote block) becomes a small named pattern (`.pull-quote`) in `sections.css` or a sibling pattern stylesheet
+4. Delete the old per-section CSS block from `styles.css`
+5. Commit per section with `Homepage/<Section>: Migrate to shared section system`
+6. Screenshot before + after to confirm visual parity
+
+**See [memory/feedback_css_section_pattern.md](/home/user/.claude/projects/-home-user-projects-wordpress-builds-acoci/memory/feedback_css_section_pattern.md) for the full architectural rule.**
+
+### Provisional pillar colors (awaiting review)
+
+Picks committed to [variables.css](./design-space/home/assets/css/variables.css) 2026-05-10:
+- Membership → Crocus Bay (teal-deep `#0E8B85`)
+- News & Events → Trade Winds (Mission gradient)
+- Resources → Prickly Pear (sail `#48A8E0`)
+- Your Chamber → Sombrero (deep navy `#003B73`)
+
+Easy swap: change the four `--pillar-*` token values; all pillar pages update.
+
+### Uncommitted work to investigate (NOT from this session)
+
+`git status` shows uncommitted changes from outside the autonomous run that need triage by the next agent:
+- `design-space/home/clips.html` — modified (~3700 insertions / ~2200 deletions). Substantial unknown work.
+- `design-space/home/sample-membership.html` — new file, 564 lines
+- `references/live-site-audit/2026-05-10/` — new directory
+
+Do not assume these are aligned with the rest of the build. **Read first**, then ask the user before continuing on top of them or rolling them back.
+
+### v4 brand guide partial refresh
+
+[design-space/v4/brand-guide.html](./design-space/v4/brand-guide.html) had dark surfaces migrated to Mission gradient on 2026-05-10. Still pending: sunset CTA treatment, button system audit, hero patterns from `home/`, pillar color documentation. Full rebuild deferred until the section migration above is done.
 
 ---
 
 ## Immediate Priorities (next session)
 
-The 1-3 things that should happen next, in priority order.
+In order:
 
-1. **Review the homepage and four pillar landings** at http://localhost:8768/ (homepage), /membership.html, /news-events.html, /resources.html, /your-chamber.html. Tweak copy, swap photos, react to pillar color picks.
-2. **Sub-page templates** — each pillar links to ~4-5 sub-pages (per anguillachamber.com IA). Templates needed: single member profile, member directory listing, single news article (Clip 08 already exists), single event detail (Clips 05/06 exist), about-us, our-team, committees, training listing, etc. Most can reuse Clip 07/08 hero patterns + the section patterns already built for the homepage.
-3. **Rebuild brand guide against `home/`** — deferred until pillar colors are confirmed and the button system audit is done. The v4 brand guide was partially refreshed 2026-05-10; a full rebuild documents pillar colors, hero patterns (Clips 07-11), and the consolidated button system.
+1. **Investigate uncommitted state** (clips.html, sample-membership.html, live-site-audit/) — read, decide with user whether to keep, revise, or revert.
+2. **Finish the section CSS migration.** Sections 3 (News) → 9 (Footer) on the homepage, then the four pillar pages. One commit per section. The hard work (creating `sections.css`, proving the pattern on About) is done — the rest is mechanical.
+3. **Visual review with the user** of homepage + pillar landings once migration is complete. Tweak copy, swap photos, react to pillar colors.
+4. **Sub-page templates** — each pillar links to ~4-5 sub-pages. Templates needed: single member profile, member directory listing, single news article (Clip 08 exists), single event detail (Clips 05/06 exist), about-us, our-team, committees, training listing, etc. Most reuse Clip 07/08 hero patterns + the new shared section system.
+5. **Rebuild brand guide against `home/`** — last; depends on (1)-(4) settling.
 
 ### Canonical homepage sections (built 2026-05-10)
 

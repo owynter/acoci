@@ -60,6 +60,20 @@ ACOCI is the **Anguilla Chamber of Commerce & Industry**. This project is a full
 - **No flat dark ink.** The `#131A22` color is rejected. Dark surfaces use a teal→blue→navy gradient family instead (reference: v1's "Our Mission" / "Join ACOCI" gradients, and the `cta-clone-test` footer gradient `#003B73 → #002244`). See PUNCH_LIST for full decision.
 - **Don't default to "color text on softer-tint background" patterns.** No capsule eyebrows (use plain uppercase text in a single consistent color), no dark-icon-on-soft-tint-square icon boxes. These read as generic AI design.
 
+### CSS architecture — shared section system, never per-section bespoke
+
+This rule is non-negotiable per a 2026-05-10 correction. See full details in [`memory/feedback_css_section_pattern.md`](/home/user/.claude/projects/-home-user-projects-wordpress-builds-acoci/memory/feedback_css_section_pattern.md).
+
+- **All page sections share `.section` / `.section__inner` / `.section__head` / `.section__title` / `.section__split` / `.section__copy` / `.section__media`** — defined once in [`design-space/home/assets/css/sections.css`](./design-space/home/assets/css/sections.css). One place to change site-wide section structure, padding, headings, and split layouts.
+- **Never write per-section classes** like `.about__copy`, `.president__eyebrow`, `.members__item`, `.events__row`, `.news__featured`, `.decision__card`, `.join__card`. They are a maintenance trap — they mean every site-wide change becomes a grep across N files.
+- **Title is a class, not a tag.** Use `<h2 class="section__title">`, not bare `h2 { font-size: ... }`. Heading level lives in markup; size lives in class.
+- **Never style with bare element selectors inside a section** (`.section__copy p { ... }` will bleed into eyebrows and meta paragraphs). Always target explicit sub-classes (`.section__copy-lede`, `.section__lede`).
+- **Eyebrow is one class.** `.eyebrow` works on every surface — there is no `.about__eyebrow`, `.president__eyebrow`, etc. Surface-aware variants use the existing `.on-dark .eyebrow` modifier or `.eyebrow--on-dark`.
+- **Margin-bottom on flex children is wrong.** Let the parent's `gap` handle spacing.
+- **Reusable patterns get pattern-named classes**, not section-named ones. Events accordion → `.events-accordion` (not `.events__row`). News featured-card → `.featured-card`. Triangle composition → `.tri-figure`.
+
+**Migration status as of 2026-05-10:** Section 2 (About) is the proof-of-pattern, fully migrated. Sections 3–9 of homepage + all 4 pillar pages still carry the old bespoke classes — **next agent must continue this migration** before any further design work. See NEXT.md for the migration recipe.
+
 ### Logo assets
 - Use SVG everywhere on the web. LO PNGs are bundled as legacy fallbacks only.
 - Never use `-DRK` variants — they're redundant. Never use the `HI/` versions from the brand kit — too heavy for web.
@@ -72,9 +86,10 @@ ACOCI is the **Anguilla Chamber of Commerce & Industry**. This project is a full
 - Reference material (the original site's mirror + sitemaps) lives in `references/`. **Read-only** — used to inform IA and content choices.
 
 ### Git
-- Repo is **not yet initialized**. The first commit should be a clean baseline of the current state.
-- Once initialized: commit after every logical change. Format: `Component/Feature: Brief description`. Full protocol in [`.agents/workflows/git.md`](./.agents/workflows/git.md).
+- Repo **initialized 2026-05-10**, baseline committed (commit `35e6c37`). All work since lives on `main`.
+- Commit after every logical change. Format: `Component/Feature: Brief description`. Full protocol in [`.agents/workflows/git.md`](./.agents/workflows/git.md).
 - Third-party WordPress plugins are installed via wp-admin and **not committed**. Custom theme code and mu-plugins go in git.
+- `.gitignore` covers `.env`, `.gstack/`, OS cruft, and `wordpress/wp-content/`.
 
 ---
 
