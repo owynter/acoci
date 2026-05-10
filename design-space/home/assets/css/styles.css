@@ -330,13 +330,12 @@ p:last-child { margin-bottom: 0; }
   z-index: 2;
 }
 
-/* Copy sits centered vertically; photo bottom-aligns.
-   Copy block sinks into the wave trough — half the wave height
-   pulls the visual block downward so the headline lands in the
-   wave's curve. */
+/* Copy block sinks into the wave trough — 0.4× wave height pulls
+   the visual block downward so the CTAs land in the wave's curve.
+   align-self removed so copy starts at the top of the row, then
+   sinks from there (was reading too low when centered + sunk). */
 .hero__copy {
-  align-self: center;
-  margin-bottom: calc(-0.5 * var(--hero-wave-height));
+  margin-bottom: calc(-0.4 * var(--hero-wave-height));
 }
 
 @media (max-width: 880px) {
