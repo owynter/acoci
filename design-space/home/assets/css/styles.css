@@ -994,3 +994,80 @@ p:last-child { margin-bottom: 0; }
   transition: color var(--transition-fast);
 }
 .decision__card-cta::after { content: "\2192"; transition: transform var(--transition-base); }
+
+
+/* ────────────────────────────────────────────────────────────
+   6. MEMBERS  ("What membership unlocks" — landscape photo + list)
+   ──────────────────────────────────────────────────────────── */
+
+.members {
+  background: var(--color-surface-aqua-soft);
+  padding-block: calc(var(--space-2xl) * 1.5);
+}
+.members__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .members__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+}
+
+/* Landscape photo (5:4 wide), gentle radius, no shadow. */
+.members__photo {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-aqua-mid);
+}
+.members__photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.members__copy h2 {
+  font-size: var(--heading-1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-lg);
+  max-width: 16ch;
+}
+
+/* Asterisk-bullet list — same three-bar mark as Clip 01 */
+.members__list {
+  list-style: none;
+  margin: 0 0 var(--space-xl);
+  padding: 0;
+  display: grid;
+  gap: var(--space-lg);
+}
+.members__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-md);
+  row-gap: var(--space-xs);
+}
+.members__mark {
+  grid-row: 1 / span 2;
+  width: 1.4em;
+  height: 1.4em;
+  color: var(--color-primary);
+  margin-top: 0.15em;
+  flex: none;
+}
+.members__item h3 {
+  font-size: var(--heading-3);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.members__item p {
+  grid-column: 2;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 36ch;
+}
