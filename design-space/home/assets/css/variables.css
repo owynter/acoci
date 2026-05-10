@@ -212,6 +212,23 @@
                             var(--brand-blue-mid) 60%,
                             var(--brand-blue-deep) 100%);
 
+  /* ── Pillar colors ──
+     Each top-level pillar gets a hero color that extends to its
+     sub-pages. All pillar colors trace to brand tokens.
+     Picked 2026-05-10. Provisional — react via pillars.html. */
+  --pillar-membership:    var(--brand-teal-deep);   /* Crocus Bay #0E8B85 — warm, inviting */
+  --pillar-news-events:   var(--gradient-mission);  /* Trade Winds — kinetic, frequently-updated */
+  --pillar-resources:     var(--brand-sail);        /* Prickly Pear #48A8E0 — info / utility */
+  --pillar-your-chamber:  var(--brand-blue-deep);   /* Sombrero #003B73 — institutional weight */
+
+  /* Wave fill paired with each pillar (matches the band color so the
+     wave reads as the band hanging over content cards, per Clip 07
+     anchor-hero pattern). */
+  --pillar-membership-wave:   var(--brand-teal-deep);
+  --pillar-news-events-wave:  var(--brand-blue-deep);  /* gradient end stop */
+  --pillar-resources-wave:    var(--brand-sail);
+  --pillar-your-chamber-wave: var(--brand-blue-deep);
+
   /* Shadow color — tinted toward logo teal for warmth. */
   --shadow-color: 176deg, 47%, 49%;
 }
