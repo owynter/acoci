@@ -1,0 +1,367 @@
+/* ============================================================
+   PILLAR PAGES — shared patterns
+   ============================================================
+   Loaded alongside styles.css on each pillar page.
+
+   Shape:
+     1. Pillar hero — image-right, Quick Links overlay (homepage
+        hero pattern but with pillar-color band + wave). Page title
+        + lede live in the band.
+     2. Sub-section cards — listing the sub-pages of this pillar.
+     3. Pillar callout — featured story / spotlight in the pillar
+        color, optional.
+
+   Each pillar page sets its own color via a single class on <body>:
+     .pillar-membership      → --pillar-color = teal-deep
+     .pillar-news-events     → --pillar-color = mission gradient
+     .pillar-resources       → --pillar-color = sail
+     .pillar-your-chamber    → --pillar-color = blue-deep
+   ============================================================ */
+
+
+/* ── Nav header on pillar pages ──
+   Pillar pages have a colored hero band that the nav sits on top of.
+   Nav links + brand need to be white for legibility. */
+body[class*="pillar-"] .nav__links a {
+  color: rgba(255, 255, 255, 0.86);
+}
+body[class*="pillar-"] .nav__links a:hover,
+body[class*="pillar-"] .nav__links a[aria-current="page"] {
+  color: var(--brand-aqua-light);
+}
+
+
+/* ── Per-pillar color injection ────────────────────────────── */
+body.pillar-membership {
+  --pillar-color:      var(--pillar-membership);
+  --pillar-wave:       var(--pillar-membership-wave);
+  --pillar-accent:     var(--brand-aqua-light); /* lighter teal for accents */
+}
+body.pillar-news-events {
+  --pillar-color:      var(--pillar-news-events); /* gradient */
+  --pillar-wave:       var(--pillar-news-events-wave);
+  --pillar-accent:     var(--brand-aqua-light);
+}
+body.pillar-resources {
+  --pillar-color:      var(--pillar-resources);
+  --pillar-wave:       var(--pillar-resources-wave);
+  --pillar-accent:     var(--brand-aqua-light);
+}
+body.pillar-your-chamber {
+  --pillar-color:      var(--pillar-your-chamber);
+  --pillar-wave:       var(--pillar-your-chamber-wave);
+  --pillar-accent:     var(--brand-aqua-light);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   1. PILLAR HERO  (image-right, Quick Links overlay)
+   ──────────────────────────────────────────────────────────── */
+
+.phero {
+  position: relative;
+  background: var(--pillar-color);
+  color: var(--color-text-on-dark);
+  padding-top: var(--hero-pad-top);
+  padding-bottom: var(--hero-wave-height);
+  overflow: hidden;
+}
+
+.phero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: end;
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 880px) {
+  .phero__inner { grid-template-columns: 1fr; }
+}
+
+.phero__copy {
+  margin-bottom: calc(-0.4 * var(--hero-wave-height));
+  max-width: 36rem;
+  color: var(--color-text-on-dark);
+}
+.phero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--body-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 var(--space-md);
+}
+.phero__title {
+  font-size: var(--heading-1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text-on-dark);
+  margin: 0 0 var(--space-md);
+  max-width: 22ch;
+}
+.phero__lede {
+  font-size: var(--body-lg);
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.55;
+  max-width: 36rem;
+  margin: 0 0 var(--space-lg);
+}
+
+.phero__media {
+  align-self: end;
+  margin-bottom: calc(-1 * var(--hero-wave-height));
+}
+.phero__photo-wrap {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.phero__photo {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.phero__photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 65%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 34, 68, 0.78) 0%,
+    rgba(0, 34, 68, 0.55) 35%,
+    rgba(0, 34, 68, 0.0)  100%
+  );
+  pointer-events: none;
+}
+
+/* Quick Links overlay — full-width bottom (matches homepage hero) */
+.phero__quicklinks {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) var(--space-lg);
+}
+.phero__quicklinks-heading {
+  font-family: var(--font-heading);
+  font-size: var(--body-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 var(--space-xs);
+}
+.phero__ql-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 0.4em 0;
+  color: var(--color-text-on-dark);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--body-sm);
+  letter-spacing: -0.005em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.phero__ql-link:last-child { border-bottom: none; }
+.phero__ql-link:hover {
+  color: var(--brand-aqua-light);
+  border-bottom-color: rgba(255, 255, 255, 0.40);
+}
+.phero__ql-link svg {
+  width: 1.1em; height: 0.55em; fill: currentColor;
+  transition: transform var(--transition-base);
+}
+.phero__ql-link:hover svg { transform: translateX(3px); }
+
+@media (max-width: 880px) {
+  .phero__photo-wrap::after { display: none; }
+  .phero__quicklinks {
+    position: static;
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-surface-aqua-soft);
+    border-radius: var(--radius-md);
+  }
+  .phero__quicklinks-heading { color: var(--color-primary-deep); }
+  .phero__ql-link {
+    color: var(--color-text);
+    border-bottom-color: var(--color-border);
+  }
+  .phero__ql-link:hover { color: var(--color-primary-deep); }
+}
+
+/* Pillar hero wave — fill is the page surface (white). */
+.phero__wave {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: var(--hero-wave-height);
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.phero__wave svg { width: 100%; height: 100%; display: block; }
+
+
+/* ────────────────────────────────────────────────────────────
+   2. PILLAR SECTION  (intro paragraph below the hero)
+   ──────────────────────────────────────────────────────────── */
+
+.psec {
+  background: var(--color-surface-page);
+  padding-block: calc(var(--space-2xl) * 1.5);
+}
+.psec__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+.psec--soft { background: var(--color-surface-aqua-soft); }
+.psec--aqua { background: var(--color-surface-aqua); }
+
+
+/* ────────────────────────────────────────────────────────────
+   3. SUB-PAGE CARD GRID  (lists this pillar's sub-pages)
+   ──────────────────────────────────────────────────────────── */
+
+.subgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-lg);
+}
+
+.subcard {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-page);
+  border: 1px solid var(--color-border);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: transform var(--transition-base), border-color var(--transition-fast);
+}
+.subcard:hover {
+  transform: translateY(-2px);
+  border-color: var(--pillar-color);
+}
+.subcard:hover .subcard__cta { color: var(--color-cta); }
+.subcard:hover .subcard__cta::after { transform: translateX(3px); }
+
+.subcard__mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: var(--space-md);
+  background-color: var(--pillar-color);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  -webkit-mask-image: url("../images/triangles/Triangles-01.svg");
+  mask-image: url("../images/triangles/Triangles-01.svg");
+}
+/* For gradient pillar (News & Events), the mask-image can't show
+   a gradient so we fall back to teal-deep. */
+body.pillar-news-events .subcard__mark { background-color: var(--brand-teal-deep); }
+
+.subcard h3 {
+  font-size: var(--heading-3);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-sm);
+}
+.subcard p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 var(--space-lg);
+  flex: 1;
+}
+.subcard__cta {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--body-sm);
+  color: var(--color-link);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--transition-fast);
+}
+.subcard__cta::after { content: "\2192"; transition: transform var(--transition-base); }
+
+
+/* ────────────────────────────────────────────────────────────
+   4. PILLAR FEATURE  (highlighted item in pillar color)
+   ──────────────────────────────────────────────────────────── */
+
+.pfeat {
+  background: var(--pillar-color);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-md);
+  padding: calc(var(--space-2xl) * 1.25) var(--space-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pfeat__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--body-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 var(--space-md);
+}
+.pfeat h3 {
+  font-size: var(--heading-2);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-on-dark);
+  margin: 0 0 var(--space-md);
+  max-width: 26ch;
+  margin-inline: auto;
+}
+.pfeat p {
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.55;
+  max-width: 42rem;
+  margin: 0 auto var(--space-lg);
+  font-size: var(--body-lg);
+}
+.pfeat .btn { display: inline-flex; }
+
+
+/* ────────────────────────────────────────────────────────────
+   5. PILLAR INTRO  (h1 + lede, contained 720px column for prose)
+   Used right below the pillar hero for the page's opening prose.
+   ──────────────────────────────────────────────────────────── */
+
+.pintro {
+  max-width: 45rem;
+  margin: 0 auto;
+}
+.pintro h2 {
+  font-size: var(--heading-2);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-lg);
+}
+.pintro p {
+  font-size: var(--body-lg);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 0 var(--space-md);
+}
+.pintro p:last-child { margin-bottom: 0; }
