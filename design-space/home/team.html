@@ -134,50 +134,6 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     FRAME COMPARISON
-     Four quick samples so profile frame color treatments can
-     be judged side by side before one treatment wins.
-     ────────────────────────────────────────────────────────── */
-  .frame-compare {
-    max-width: var(--container-inner);
-    margin: var(--space-2xl) auto 0;
-    padding: 0 var(--space-lg);
-  }
-  .frame-compare__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-  }
-  @media (max-width: 860px) {
-    .frame-compare__grid { grid-template-columns: 1fr; }
-  }
-  .frame-compare__card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-    background: var(--color-surface-page);
-  }
-  .frame-compare__label {
-    font-family: var(--font-heading);
-    font-size: var(--body-sm);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-lg);
-  }
-  @media (max-width: 540px) {
-    .frame-compare__card .member {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-    }
-    .frame-compare__card .member__portrait {
-      max-width: calc(var(--space-2xl) * 2.35);
-    }
-  }
-
-  /* ──────────────────────────────────────────────────────────
      BOARD GRID
      2-column on desktop, 1-column on mobile.
      ────────────────────────────────────────────────────────── */
@@ -195,7 +151,7 @@
      Layout: portrait-left, copy-right, vertical centering.
      The portrait is a layered stack:
        1. circular clipped photo (back)
-       2. profile-outline.svg overlay (front) — provides the
+       2. profile-outline-original.svg overlay (front) — provides the
           profile ring + wave-on-bottom decoration
      ────────────────────────────────────────────────────────── */
   .member {
@@ -306,91 +262,6 @@
   </section>
 
   <!-- ════════════════════════════════════════════════════════
-       PROFILE FRAME COMPARISON
-       ════════════════════════════════════════════════════════ -->
-  <section class="frame-compare" aria-label="Profile frame comparison">
-    <div class="frame-compare__grid">
-
-      <article class="frame-compare__card">
-        <p class="frame-compare__label">1. Original</p>
-        <div class="member">
-          <div class="member__portrait">
-            <div class="member__portrait-img">
-              <img src="assets/images/clips-speaker-banker.jpg" alt="">
-            </div>
-            <div class="member__portrait-frame" aria-hidden="true">
-              <img src="assets/images/profile-outline-original.svg" alt="">
-            </div>
-          </div>
-          <div class="member__copy">
-            <h3 class="member__name">Member Name One</h3>
-            <p class="member__role">Chair</p>
-            <p class="member__org">Director, Sample Business Ltd.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="frame-compare__card">
-        <p class="frame-compare__label">2. Soft orange + teal</p>
-        <div class="member">
-          <div class="member__portrait">
-            <div class="member__portrait-img">
-              <img src="assets/images/clips-speaker-banker.jpg" alt="">
-            </div>
-            <div class="member__portrait-frame" aria-hidden="true">
-              <img src="assets/images/profile-outline.svg" alt="">
-            </div>
-          </div>
-          <div class="member__copy">
-            <h3 class="member__name">Member Name One</h3>
-            <p class="member__role">Chair</p>
-            <p class="member__org">Director, Sample Business Ltd.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="frame-compare__card">
-        <p class="frame-compare__label">3. Original + soft teal</p>
-        <div class="member">
-          <div class="member__portrait">
-            <div class="member__portrait-img">
-              <img src="assets/images/clips-speaker-banker.jpg" alt="">
-            </div>
-            <div class="member__portrait-frame" aria-hidden="true">
-              <img src="assets/images/profile-outline-original-soft-teal.svg" alt="">
-            </div>
-          </div>
-          <div class="member__copy">
-            <h3 class="member__name">Member Name One</h3>
-            <p class="member__role">Chair</p>
-            <p class="member__org">Director, Sample Business Ltd.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="frame-compare__card">
-        <p class="frame-compare__label">4. Solid orange + teal</p>
-        <div class="member">
-          <div class="member__portrait">
-            <div class="member__portrait-img">
-              <img src="assets/images/clips-speaker-banker.jpg" alt="">
-            </div>
-            <div class="member__portrait-frame" aria-hidden="true">
-              <img src="assets/images/profile-outline-orange-solid-teal.svg" alt="">
-            </div>
-          </div>
-          <div class="member__copy">
-            <h3 class="member__name">Member Name One</h3>
-            <p class="member__role">Chair</p>
-            <p class="member__org">Director, Sample Business Ltd.</p>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════════
        EXECUTIVE COMMITTEE
        ════════════════════════════════════════════════════════ -->
   <section class="team-section">
@@ -409,7 +280,7 @@
             <img src="assets/images/clips-speaker-banker.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -425,7 +296,7 @@
             <img src="assets/images/clips-speaker-advisor.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -441,7 +312,7 @@
             <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -457,7 +328,7 @@
             <img src="assets/images/ZWP_7146.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -473,7 +344,7 @@
             <img src="assets/images/ZWP_7533.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -489,7 +360,7 @@
             <img src="assets/images/clips-speaker-banker.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -521,7 +392,7 @@
             <img src="assets/images/clips-speaker-advisor.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -537,7 +408,7 @@
             <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -553,7 +424,7 @@
             <img src="assets/images/ZWP_7146.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
@@ -569,7 +440,7 @@
             <img src="assets/images/ZWP_7533.jpg" alt="">
           </div>
           <div class="member__portrait-frame" aria-hidden="true">
-            <img src="assets/images/profile-outline.svg" alt="">
+            <img src="assets/images/profile-outline-original.svg" alt="">
           </div>
         </div>
         <div class="member__copy">
