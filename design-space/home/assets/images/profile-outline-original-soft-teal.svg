@@ -3,8 +3,8 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #F69F3E;
-        opacity: .45;
+        fill: #00b4b4;
+        opacity: .4;
       }
 
       .cls-2 {
@@ -12,7 +12,7 @@
       }
 
       .cls-3 {
-        fill: #41BBB3;
+        fill: #67CCD3;
       }
     </style>
   </defs>

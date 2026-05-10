@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Board &amp; Team</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  body { background: var(--color-surface-page); }
+
+  /* ──────────────────────────────────────────────────────────
+     WAVE HERO — reuse of clip07 c7hero pattern
+     ────────────────────────────────────────────────────────── */
+  :root {
+    --c7hero-wave-h: 9rem;
+    --c7hero-overlap: var(--space-xl);
+  }
+  .c7hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0 calc(var(--c7hero-wave-h) + var(--c7hero-overlap));
+  }
+  .c7hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .c7hero__crumbs {
+    font-family: var(--font-body);
+    font-size: var(--body-sm);
+    color: var(--color-text-on-dark-muted);
+    margin: 0 0 var(--space-md);
+  }
+  .c7hero__crumbs a {
+    color: var(--color-text-on-dark-muted);
+    text-decoration: none;
+  }
+  .c7hero__crumbs a:hover { color: var(--color-text-on-dark); }
+  .c7hero__eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-aqua-light);
+    margin: 0 0 var(--space-sm);
+  }
+  .c7hero__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    max-width: 22ch;
+  }
+  .c7hero__lede {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 60ch;
+  }
+  .c7hero__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--c7hero-wave-h);
+    line-height: 0;
+    z-index: 1;
+    pointer-events: none;
+    color: var(--color-surface-page);  /* page bg pushes up */
+  }
+  .c7hero__wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .c7hero--sail { background: var(--brand-sail); }
+
+  /* ──────────────────────────────────────────────────────────
+     PAGE INTRO — short paragraph below hero
+     ────────────────────────────────────────────────────────── */
+  .team-intro {
+    max-width: var(--container-inner);
+    margin: var(--space-2xl) auto 0;
+    padding: 0 var(--space-lg);
+  }
+  .team-intro p {
+    font-size: var(--body-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     SECTION HEADERS — for "Executive Committee", "Board" etc.
+     ────────────────────────────────────────────────────────── */
+  .team-section {
+    max-width: var(--container-inner);
+    margin: var(--space-2xl) auto 0;
+    padding: 0 var(--space-lg);
+  }
+  .team-section + .team-section { margin-top: calc(var(--space-2xl) * 1.2); }
+  .team-section__header {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .team-section__title {
+    font-family: var(--font-heading);
+    font-size: var(--heading-2);
+    font-weight: 700;
+    color: var(--brand-blue-deep);
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .team-section__lede {
+    font-size: var(--body-base);
+    color: var(--color-text-muted);
+    margin: var(--space-sm) 0 0;
+    max-width: 55ch;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     FRAME COMPARISON
+     Four quick samples so profile frame color treatments can
+     be judged side by side before one treatment wins.
+     ────────────────────────────────────────────────────────── */
+  .frame-compare {
+    max-width: var(--container-inner);
+    margin: var(--space-2xl) auto 0;
+    padding: 0 var(--space-lg);
+  }
+  .frame-compare__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  @media (max-width: 860px) {
+    .frame-compare__grid { grid-template-columns: 1fr; }
+  }
+  .frame-compare__card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    background: var(--color-surface-page);
+  }
+  .frame-compare__label {
+    font-family: var(--font-heading);
+    font-size: var(--body-sm);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-deep);
+    margin: 0 0 var(--space-lg);
+  }
+  @media (max-width: 540px) {
+    .frame-compare__card .member {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    .frame-compare__card .member__portrait {
+      max-width: calc(var(--space-2xl) * 2.35);
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     BOARD GRID
+     2-column on desktop, 1-column on mobile.
+     ────────────────────────────────────────────────────────── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl) var(--space-xl);
+  }
+  @media (max-width: 720px) {
+    .team-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     MEMBER CARD
+     Layout: portrait-left, copy-right, vertical centering.
+     The portrait is a layered stack:
+       1. circular clipped photo (back)
+       2. profile-outline.svg overlay (front) — provides the
+          profile ring + wave-on-bottom decoration
+     ────────────────────────────────────────────────────────── */
+  .member {
+    display: grid;
+    grid-template-columns: calc(var(--space-2xl) * 3) 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+  @media (max-width: 480px) {
+    .member {
+      grid-template-columns: calc(var(--space-2xl) * 2) 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .member__portrait {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+  /* Layer 1 — circular clipped photo. The outline SVG has a
+     stroke that lives between viewBox radius 482 (inner edge)
+     and 590 (outer edge). To sit cleanly inside, the photo
+     should be ~78% of the container, centered. */
+  .member__portrait-img {
+    position: absolute;
+    inset: 11%;            /* photo sits inside the ring */
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-surface-aqua-mid);
+  }
+  .member__portrait-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Layer 2 — overlay SVG (the brand-mark ring + sunset wave) */
+  .member__portrait-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .member__portrait-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .member__name {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    font-weight: 700;
+    color: var(--brand-blue-deep);
+    margin: 0 0 0.15em;
+    line-height: 1.2;
+  }
+  .member__role {
+    font-family: var(--font-body);
+    font-size: var(--body-base);
+    font-weight: 600;
+    color: var(--color-primary-deep);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .member__org {
+    font-size: var(--body-base);
+    color: var(--color-text-muted);
+    margin: 0.25em 0 0;
+    line-height: 1.4;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       HERO — Type B sail-blue, "Your Chamber"
+       ════════════════════════════════════════════════════════ -->
+  <section class="c7hero c7hero--sail">
+    <div class="c7hero__inner">
+      <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <a href="#">Your Chamber</a> / <span>Board &amp; Team</span></p>
+      <p class="c7hero__eyebrow">Your Chamber</p>
+      <h1 class="c7hero__title">The people behind ACOCI.</h1>
+      <p class="c7hero__lede">
+        ACOCI is governed by a board of directors elected from our member
+        businesses, supported by an executive committee and the chamber team.
+        Together they set the agenda, advocate for the private sector, and
+        run the day-to-day work of the chamber.
+      </p>
+    </div>
+    <div class="c7hero__wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       INTRO
+       ════════════════════════════════════════════════════════ -->
+  <section class="team-intro">
+    <p>
+      The Board of Directors is the volunteer leadership of the Anguilla
+      Chamber of Commerce &amp; Industry. Directors are elected by the
+      membership and serve staggered terms.
+    </p>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       PROFILE FRAME COMPARISON
+       ════════════════════════════════════════════════════════ -->
+  <section class="frame-compare" aria-label="Profile frame comparison">
+    <div class="frame-compare__grid">
+
+      <article class="frame-compare__card">
+        <p class="frame-compare__label">1. Original</p>
+        <div class="member">
+          <div class="member__portrait">
+            <div class="member__portrait-img">
+              <img src="assets/images/clips-speaker-banker.jpg" alt="">
+            </div>
+            <div class="member__portrait-frame" aria-hidden="true">
+              <img src="assets/images/profile-outline-original.svg" alt="">
+            </div>
+          </div>
+          <div class="member__copy">
+            <h3 class="member__name">Member Name One</h3>
+            <p class="member__role">Chair</p>
+            <p class="member__org">Director, Sample Business Ltd.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="frame-compare__card">
+        <p class="frame-compare__label">2. Soft orange + teal</p>
+        <div class="member">
+          <div class="member__portrait">
+            <div class="member__portrait-img">
+              <img src="assets/images/clips-speaker-banker.jpg" alt="">
+            </div>
+            <div class="member__portrait-frame" aria-hidden="true">
+              <img src="assets/images/profile-outline.svg" alt="">
+            </div>
+          </div>
+          <div class="member__copy">
+            <h3 class="member__name">Member Name One</h3>
+            <p class="member__role">Chair</p>
+            <p class="member__org">Director, Sample Business Ltd.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="frame-compare__card">
+        <p class="frame-compare__label">3. Original + soft teal</p>
+        <div class="member">
+          <div class="member__portrait">
+            <div class="member__portrait-img">
+              <img src="assets/images/clips-speaker-banker.jpg" alt="">
+            </div>
+            <div class="member__portrait-frame" aria-hidden="true">
+              <img src="assets/images/profile-outline-original-soft-teal.svg" alt="">
+            </div>
+          </div>
+          <div class="member__copy">
+            <h3 class="member__name">Member Name One</h3>
+            <p class="member__role">Chair</p>
+            <p class="member__org">Director, Sample Business Ltd.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="frame-compare__card">
+        <p class="frame-compare__label">4. Solid orange + teal</p>
+        <div class="member">
+          <div class="member__portrait">
+            <div class="member__portrait-img">
+              <img src="assets/images/clips-speaker-banker.jpg" alt="">
+            </div>
+            <div class="member__portrait-frame" aria-hidden="true">
+              <img src="assets/images/profile-outline-orange-solid-teal.svg" alt="">
+            </div>
+          </div>
+          <div class="member__copy">
+            <h3 class="member__name">Member Name One</h3>
+            <p class="member__role">Chair</p>
+            <p class="member__org">Director, Sample Business Ltd.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       EXECUTIVE COMMITTEE
+       ════════════════════════════════════════════════════════ -->
+  <section class="team-section">
+    <header class="team-section__header">
+      <h2 class="team-section__title">Executive Committee Officers</h2>
+      <p class="team-section__lede">
+        The officers of the board, elected annually by the directors.
+      </p>
+    </header>
+
+    <div class="team-grid">
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-speaker-banker.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name One</h3>
+          <p class="member__role">Chair</p>
+          <p class="member__org">Director, Sample Business Ltd.</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-speaker-advisor.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name Two</h3>
+          <p class="member__role">Vice Chair</p>
+          <p class="member__org">Managing Director, Example Holdings</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name Three</h3>
+          <p class="member__role">Secretary</p>
+          <p class="member__org">Partner, Another Firm &amp; Co.</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/ZWP_7146.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name Four</h3>
+          <p class="member__role">Treasurer</p>
+          <p class="member__org">CEO, Placeholder Group</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/ZWP_7533.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name Five</h3>
+          <p class="member__role">Immediate Past Chair</p>
+          <p class="member__org">Founder, Sample Studio</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-speaker-banker.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Member Name Six</h3>
+          <p class="member__role">Director-at-Large</p>
+          <p class="member__org">President, Yet Another Co.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       BOARD OF DIRECTORS
+       ════════════════════════════════════════════════════════ -->
+  <section class="team-section">
+    <header class="team-section__header">
+      <h2 class="team-section__title">Board of Directors</h2>
+      <p class="team-section__lede">
+        Elected by the ACOCI membership to set the chamber's strategic direction.
+      </p>
+    </header>
+
+    <div class="team-grid">
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-speaker-advisor.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Director Name One</h3>
+          <p class="member__role">Director</p>
+          <p class="member__org">Sample Business Name</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Director Name Two</h3>
+          <p class="member__role">Director</p>
+          <p class="member__org">Sample Business Name</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/ZWP_7146.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Director Name Three</h3>
+          <p class="member__role">Director</p>
+          <p class="member__org">Sample Business Name</p>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member__portrait">
+          <div class="member__portrait-img">
+            <img src="assets/images/ZWP_7533.jpg" alt="">
+          </div>
+          <div class="member__portrait-frame" aria-hidden="true">
+            <img src="assets/images/profile-outline.svg" alt="">
+          </div>
+        </div>
+        <div class="member__copy">
+          <h3 class="member__name">Director Name Four</h3>
+          <p class="member__role">Director</p>
+          <p class="member__org">Sample Business Name</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div style="height: var(--space-2xl)"></div>
+
+</body>
+</html>
