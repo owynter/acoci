@@ -1071,3 +1071,151 @@ p:last-child { margin-bottom: 0; }
   margin: 0;
   max-width: 36ch;
 }
+
+
+/* ────────────────────────────────────────────────────────────
+   7. EVENTS  (accordion-style list, circle date bubble)
+   ──────────────────────────────────────────────────────────── */
+
+.events {
+  background: var(--color-surface-page);
+  padding-block: calc(var(--space-2xl) * 1.5);
+}
+.events__inner {
+  max-width: var(--container-inner);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.events__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+.events__head h2 {
+  font-size: var(--heading-1);
+  margin: 0;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+.events__head-link {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-cta);
+  font-size: var(--body-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  white-space: nowrap;
+}
+.events__head-link::after { content: "\2192"; font-size: 1.1em; transition: transform var(--transition-base); }
+.events__head-link:hover { color: var(--color-cta-hover); }
+.events__head-link:hover::after { transform: translateX(3px); }
+
+.events__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Accordion row */
+.events__row {
+  border-bottom: 1px solid var(--color-border);
+}
+.events__row[open] { background: var(--color-surface-aqua-soft); }
+
+.events__summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-lg);
+  align-items: center;
+  padding: var(--space-lg) var(--space-md);
+  cursor: pointer;
+  list-style: none;
+}
+.events__summary::-webkit-details-marker { display: none; }
+.events__summary:hover .events__title { color: var(--color-primary-deep); }
+
+/* Circle date bubble — thick semi-transparent outline.
+   Inspired by the orange '30 JUN' snippet from the client; using
+   teal here so sunset stays reserved for CTAs. */
+.events__date {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  border: 4px solid rgba(14, 139, 133, 0.28); /* teal-deep at low opacity */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  color: var(--color-primary-deep);
+  text-align: center;
+  line-height: 1;
+}
+.events__date-day {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+.events__date-month {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--body-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 2px;
+}
+
+.events__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--heading-4);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+.events__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--body-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+.events__meta-sep {
+  display: inline-block;
+  width: 3px; height: 3px; border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.events__chev {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-base);
+}
+.events__row[open] .events__chev { transform: rotate(180deg); }
+
+.events__detail {
+  padding: 0 var(--space-md) var(--space-lg) calc(var(--space-md) + 4.25rem + var(--space-lg));
+  color: var(--color-text);
+  line-height: 1.6;
+}
+.events__detail p { margin: 0 0 var(--space-md); max-width: 60ch; }
+.events__detail-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -357,6 +357,146 @@
       </div>
     </section>
 
+    <!-- ── 7. Events ──
+         Accordion-style list of upcoming events. Each row shows a
+         circle date bubble + title + meta + expand chevron. Uses
+         <details>/<summary> for native accordion behaviour (no JS).
+         First item is open by default to demonstrate the pattern. -->
+    <section class="events" id="events">
+      <div class="events__inner">
+
+        <div class="events__head">
+          <h2>Upcoming events</h2>
+          <a class="events__head-link" href="/news-events/event-calendar/">All events</a>
+        </div>
+
+        <ul class="events__list" role="list">
+
+          <li>
+            <details class="events__row" open>
+              <summary class="events__summary">
+                <span class="events__date" aria-hidden="true">
+                  <span class="events__date-day">22</span>
+                  <span class="events__date-month">May</span>
+                </span>
+                <span>
+                  <h3 class="events__title">Small Business Capital Readiness Pitch Night</h3>
+                  <p class="events__meta">
+                    <span>Thu</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>5:30 PM &ndash; 8:30 PM</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>Hansa Bank conference centre</span>
+                  </p>
+                </span>
+                <svg class="events__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="events__detail">
+                <p>
+                  ACOCI&rsquo;s Small Business Development Council brings back its
+                  annual capital readiness showcase &mdash; six member businesses
+                  pitch to a panel of regional investors for a share of $25,000
+                  in catalytic funding. Members attend free.
+                </p>
+                <div class="events__detail-actions">
+                  <a class="btn btn--primary" href="/news-events/event-calendar/pitch-night-2026/">Register now</a>
+                  <a class="btn btn--tertiary" href="/news-events/event-calendar/pitch-night-2026/">Event details</a>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <li>
+            <details class="events__row">
+              <summary class="events__summary">
+                <span class="events__date" aria-hidden="true">
+                  <span class="events__date-day">04</span>
+                  <span class="events__date-month">Jun</span>
+                </span>
+                <span>
+                  <h3 class="events__title">Members&rsquo; mixer at the Old Customs House</h3>
+                  <p class="events__meta">
+                    <span>Wed</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>6:00 PM &ndash; 8:00 PM</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>Sandy Ground</span>
+                  </p>
+                </span>
+                <svg class="events__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="events__detail">
+                <p>Quarterly members&rsquo; mixer. Light catering, open bar for the first hour, and the chance to meet the new exec committee in person.</p>
+                <div class="events__detail-actions">
+                  <a class="btn btn--primary" href="#">Register now</a>
+                  <a class="btn btn--tertiary" href="#">Event details</a>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <li>
+            <details class="events__row">
+              <summary class="events__summary">
+                <span class="events__date" aria-hidden="true">
+                  <span class="events__date-day">18</span>
+                  <span class="events__date-month">Jun</span>
+                </span>
+                <span>
+                  <h3 class="events__title">Workshop: GST module for licensed businesses</h3>
+                  <p class="events__meta">
+                    <span>Wed</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>9:00 AM &ndash; 12:00 PM</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>ACOCI Boardroom</span>
+                  </p>
+                </span>
+                <svg class="events__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="events__detail">
+                <p>Practical session walking through the new GST reporting module. Bring your laptop and your last quarter&rsquo;s books.</p>
+                <div class="events__detail-actions">
+                  <a class="btn btn--primary" href="#">Register now</a>
+                  <a class="btn btn--tertiary" href="#">Event details</a>
+                </div>
+              </div>
+            </details>
+          </li>
+
+          <li>
+            <details class="events__row">
+              <summary class="events__summary">
+                <span class="events__date" aria-hidden="true">
+                  <span class="events__date-day">02</span>
+                  <span class="events__date-month">Jul</span>
+                </span>
+                <span>
+                  <h3 class="events__title">Annual General Meeting 2026</h3>
+                  <p class="events__meta">
+                    <span>Wed</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>5:00 PM</span>
+                    <span class="events__meta-sep" aria-hidden="true"></span>
+                    <span>Members only</span>
+                  </p>
+                </span>
+                <svg class="events__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="events__detail">
+                <p>Year-end review, financials, and election of incoming exec committee members. Open to current ACOCI members in good standing.</p>
+                <div class="events__detail-actions">
+                  <a class="btn btn--primary" href="#">RSVP for AGM</a>
+                  <a class="btn btn--tertiary" href="#">Event details</a>
+                </div>
+              </div>
+            </details>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
   </main>
 
 </div>
