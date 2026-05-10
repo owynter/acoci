@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="ACOCI article image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E8B85"/>
+      <stop offset="0.52" stop-color="#0074B7"/>
+      <stop offset="1" stop-color="#003B73"/>
+    </linearGradient>
+    <linearGradient id="tri" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#41BBB3"/>
+      <stop offset="1" stop-color="#48A8E0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 900 0 530 420 900Z" fill="#41BBB3" opacity=".24"/>
+  <path d="M0 900 0 690 240 900Z" fill="#9DDEDB" opacity=".35"/>
+  <path d="M1180 0H1600V360Z" fill="url(#tri)" opacity=".22"/>
+  <image href="../logo/ACOCI_LOGO_ICON-WHT.svg" x="472" y="122" width="656" height="656" opacity=".24"/>
+</svg>

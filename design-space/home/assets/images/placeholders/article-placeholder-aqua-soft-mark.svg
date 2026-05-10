@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="ACOCI article image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F6F4"/>
+      <stop offset="1" stop-color="#D4EEE9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 0H520L0 540Z" fill="#41BBB3" opacity=".24"/>
+  <path d="M1120 900H1600V360Z" fill="#48A8E0" opacity=".3"/>
+  <path d="M1310 900H1600V610Z" fill="#003B73" opacity=".16"/>
+  <image href="../logo/ACOCI_LOGO_ICON-CLR.svg" x="498" y="104" width="604" height="604" opacity=".16"/>
+</svg>

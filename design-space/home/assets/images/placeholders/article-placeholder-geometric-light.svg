@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="ACOCI article image placeholder">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <rect width="1600" height="900" fill="#E8F6F4"/>
+  <path d="M0 900V0h308Z" fill="#D4EEE9"/>
+  <path d="M0 900h530L308 0Z" fill="#67CCD3" opacity=".34"/>
+  <path d="M1600 0v900h-318Z" fill="#48A8E0" opacity=".2"/>
+  <path d="M1600 900h-520L1282 0Z" fill="#41BBB3" opacity=".18"/>
+  <image href="../logo/ACOCI_LOGO_ICON-CLR.svg" x="550" y="150" width="500" height="500" opacity=".14"/>
+</svg>

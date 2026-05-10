@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Article Image Placeholders</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  body {
+    background: var(--color-surface-page);
+  }
+  .placeholder-page {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg);
+  }
+  .placeholder-page__header {
+    margin-bottom: var(--space-2xl);
+    max-width: var(--container-prose);
+  }
+  .placeholder-page__title {
+    font-size: var(--heading-1);
+    color: var(--color-heading);
+    margin: 0 0 var(--space-md);
+  }
+  .placeholder-page__lede {
+    color: var(--color-text-muted);
+    font-size: var(--body-lg);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+  @media (max-width: 860px) {
+    .placeholder-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .placeholder-card {
+    display: grid;
+    gap: var(--space-md);
+  }
+  .placeholder-card__media {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-aqua-soft);
+  }
+  .placeholder-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .placeholder-card__title {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    color: var(--color-heading);
+    margin: 0;
+  }
+  .placeholder-card__path {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--body-sm);
+    overflow-wrap: anywhere;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <main class="placeholder-page">
+    <header class="placeholder-page__header">
+      <p class="eyebrow">Fallback Images</p>
+      <h1 class="placeholder-page__title">Article image placeholders</h1>
+      <p class="placeholder-page__lede">
+        PNG fallback artwork for articles that do not have a featured image.
+        Editable SVG sources live alongside each export. The usable PNGs bake
+        in the ACOCI icon watermark with gradients, waves, and triangle
+        geometry from the current homepage direction.
+      </p>
+    </header>
+
+    <section class="placeholder-grid" aria-label="Article placeholder options">
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-mission-watermark.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Mission watermark</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-mission-watermark.png</p>
+      </article>
+
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-teal-triangle-frame.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Teal triangle frame</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-teal-triangle-frame.png</p>
+      </article>
+
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-aqua-soft-mark.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Aqua soft mark</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-aqua-soft-mark.png</p>
+      </article>
+
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-sail-ribbon.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Sail ribbon</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-sail-ribbon.png</p>
+      </article>
+
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-deep-cropped-icon.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Deep cropped icon</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-deep-cropped-icon.png</p>
+      </article>
+
+      <article class="placeholder-card">
+        <div class="placeholder-card__media">
+          <img src="assets/images/placeholders/article-placeholder-geometric-light.png" alt="">
+        </div>
+        <h2 class="placeholder-card__title">Geometric light</h2>
+        <p class="placeholder-card__path">assets/images/placeholders/article-placeholder-geometric-light.png</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="ACOCI article image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#48A8E0"/>
+      <stop offset="1" stop-color="#0074B7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 592C190 526 318 526 486 592c173 68 318 68 486 0 177-72 346-72 628 0v308H0Z" fill="#003B73" opacity=".22"/>
+  <path d="M0 668c214-78 360-72 528 0 150 64 304 64 472 0 190-72 360-72 600 0v232H0Z" fill="#41BBB3" opacity=".32"/>
+  <image href="../logo/ACOCI_LOGO_ICON-WHT.svg" x="524" y="84" width="552" height="552" opacity=".22"/>
+</svg>
