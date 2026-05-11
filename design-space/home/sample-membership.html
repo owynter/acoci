@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACOCI — Membership</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  body { background: var(--color-surface-page); }
+
+  /* ──────────────────────────────────────────────────────────
+     WAVE HERO — clip07 c7hero, Type B teal-deep
+     ────────────────────────────────────────────────────────── */
+  :root {
+    --c7hero-wave-h: 9rem;
+    --c7hero-overlap: var(--space-xl);
+  }
+  .c7hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text-on-dark);
+    padding: var(--space-2xl) 0 calc(var(--c7hero-wave-h) + var(--c7hero-overlap));
+  }
+  .c7hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .c7hero__crumbs {
+    font-family: var(--font-body);
+    font-size: var(--body-sm);
+    color: var(--color-text-on-dark-muted);
+    margin: 0 0 var(--space-md);
+  }
+  .c7hero__crumbs a {
+    color: var(--color-text-on-dark-muted);
+    text-decoration: none;
+  }
+  .c7hero__crumbs a:hover { color: var(--color-text-on-dark); }
+  .c7hero__eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--body-sm);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-aqua-light);
+    margin: 0 0 var(--space-sm);
+  }
+  .c7hero__title {
+    color: var(--color-text-on-dark);
+    font-size: var(--heading-1);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    max-width: 22ch;
+  }
+  .c7hero__lede {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 60ch;
+  }
+  .c7hero__wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--c7hero-wave-h);
+    line-height: 0;
+    z-index: 1;
+    pointer-events: none;
+    color: var(--color-surface-page);
+  }
+  .c7hero__wave svg { display: block; width: 100%; height: 100%; }
+  .c7hero--teal-deep { background: var(--brand-teal-deep); }
+
+  /* ──────────────────────────────────────────────────────────
+     "WHY JOIN?" — T01 oversize headline + accordion
+     Hard-coded type sizes carried from the typography experiment.
+     ────────────────────────────────────────────────────────── */
+  .why-join {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 96px 48px 128px;
+  }
+  .why-join__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .why-join__grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .why-join__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--color-surface-aqua-mid);
+  }
+  .why-join__media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .why-join__caption {
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
+  .why-join__eyebrow {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand-sail);
+    margin: 0 0 20px;
+  }
+  .why-join__title {
+    font-family: var(--font-heading);
+    font-size: 84px;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    color: var(--brand-sail);
+    margin: 0 0 32px;
+    text-wrap: balance;
+  }
+  .why-join__lede {
+    font-family: var(--font-body);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--color-text);
+    margin: 0 0 48px;
+    max-width: 56ch;
+  }
+  .why-join__list {
+    margin: 0; padding: 0;
+    list-style: none;
+    border-top: 1px solid rgba(0, 59, 115, 0.18);
+  }
+  .why-join__item { border-bottom: 1px solid rgba(0, 59, 115, 0.18); }
+  .why-join__item-head {
+    display: flex; align-items: center; gap: 16px;
+    padding: 24px 4px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-blue-deep);
+    cursor: pointer;
+    user-select: none;
+  }
+  .why-join__item-head::before {
+    content: "✦";
+    color: var(--brand-sail);
+    font-size: 20px;
+    flex: 0 0 auto;
+  }
+  .why-join__item--open .why-join__item-head::before {
+    content: "✕";
+  }
+  .why-join__item-body {
+    display: none;
+    padding: 0 4px 28px 36px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+  .why-join__item--open .why-join__item-body { display: block; }
+  .why-join__item-body p { margin: 0 0 16px; max-width: 60ch; }
+  .why-join__item-body p:last-child { margin-bottom: 0; }
+  .why-join__item-body ul {
+    margin: 12px 0 0; padding: 0 0 0 24px;
+  }
+  .why-join__item-body li { margin: 6px 0; }
+
+  @media (max-width: 720px) {
+    .why-join { padding: 64px 24px 96px; }
+    .why-join__title { font-size: 56px; }
+    .why-join__lede { font-size: 19px; }
+    .why-join__item-head { font-size: 20px; }
+    .why-join__item-body { font-size: 17px; padding-left: 28px; }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     REASONS GRID — clip02 3-up
+     ────────────────────────────────────────────────────────── */
+  .reasons {
+    background: var(--color-surface-aqua-soft);
+    padding: var(--space-2xl) 0;
+  }
+  .reasons__inner {
+    max-width: var(--container-inner);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+  .reasons__title {
+    font-size: var(--heading-2);
+    text-align: center;
+    margin: 0 0 var(--space-2xl);
+    letter-spacing: -0.02em;
+  }
+  .reasons__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  @media (max-width: 860px) {
+    .reasons__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  }
+  .reason {
+    display: flex; flex-direction: column;
+    text-align: center; align-items: center;
+  }
+  .reason__media {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    background: var(--color-surface-aqua-mid);
+  }
+  .reason__media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .reason h3 {
+    font-size: var(--heading-3);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--space-sm);
+  }
+  .reason p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0 0 var(--space-lg);
+    max-width: 32ch;
+  }
+  .reason .btn { margin-top: auto; }
+
+  /* ──────────────────────────────────────────────────────────
+     TESTIMONIAL — clip02-testimonial card
+     ────────────────────────────────────────────────────────── */
+  .testimonial {
+    background: var(--color-surface-page);
+    padding: var(--space-2xl) var(--space-lg);
+  }
+  .testimonial__card {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: var(--space-xl) calc(var(--space-xl) * 1.25);
+    background: var(--color-surface-page);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  .testimonial__head {
+    display: flex; align-items: center; gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .testimonial__avatar {
+    width: 4rem; height: 4rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-aqua-mid);
+    flex: none; overflow: hidden;
+  }
+  .testimonial__avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .testimonial__name {
+    font-family: var(--font-heading);
+    font-size: var(--heading-4);
+    font-weight: 700;
+    margin: 0; line-height: 1.2;
+  }
+  .testimonial__org {
+    color: var(--color-primary-deep);
+    font-weight: 600;
+    margin: 0;
+    font-size: var(--body-base);
+  }
+  .testimonial blockquote {
+    margin: 0;
+    font-size: var(--body-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+  .testimonial blockquote p { margin: 0 0 var(--space-md); }
+  .testimonial blockquote p:last-child { margin-bottom: 0; }
+
+  /* ──────────────────────────────────────────────────────────
+     JOIN CTA — clip10 contained gradient card
+     ────────────────────────────────────────────────────────── */
+  .join-cta {
+    padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+    background: var(--color-surface-page);
+  }
+  .join-cta__card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    max-width: var(--container-inner);
+    min-height: calc(var(--base-sp) * 28);
+    margin: 0 auto;
+    background: var(--gradient-mission);
+    color: var(--color-text-on-dark);
+    border-radius: var(--radius-md);
+    padding: calc(var(--space-2xl) * 1.25) var(--space-lg);
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+  .join-cta__watermark {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    z-index: var(--z-below);
+    pointer-events: none;
+  }
+  .join-cta__watermark img {
+    width: auto;
+    max-height: calc(var(--base-sp) * 25);
+    opacity: 0.10;
+  }
+  .join-cta__inner {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-md);
+  }
+  .join-cta__title {
+    font-family: var(--font-heading);
+    font-size: var(--heading-2);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-text-on-dark);
+    margin: 0;
+  }
+  .join-cta__copy {
+    color: var(--color-text-on-dark-muted);
+    font-size: var(--body-lg);
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 42rem;
+  }
+  .join-cta__actions {
+    display: flex; flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-sm);
+  }
+  @media (max-width: 30rem) {
+    .join-cta__actions .btn { width: 100%; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       HERO — Type B teal-deep, Membership
+       ════════════════════════════════════════════════════════ -->
+  <section class="c7hero c7hero--teal-deep">
+    <div class="c7hero__inner">
+      <p class="c7hero__crumbs"><a href="#">ACOCI</a> / <span>Membership</span></p>
+      <p class="c7hero__eyebrow">Membership</p>
+      <h1 class="c7hero__title">Join Anguilla&rsquo;s business community.</h1>
+      <p class="c7hero__lede">
+        ACOCI represents licensed businesses across the island &mdash; from
+        sole traders to the largest employers. Every member gets a seat at the
+        table.
+      </p>
+    </div>
+    <div class="c7hero__wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M 0 200 L 0 80 C 10 84, 40 97, 60 105 C 80 113, 100 120, 120 127 C 140 134, 160 140, 180 145 C 200 150, 220 153, 240 156 C 260 159, 280 160, 300 160 C 320 160, 340 159, 360 156 C 380 153, 400 150, 420 145 C 440 140, 460 134, 480 127 C 500 120, 520 113, 540 105 C 560 97, 580 88, 600 80 C 620 72, 640 63, 660 55 C 680 47, 700 40, 720 33 C 740 26, 760 20, 780 15 C 800 10, 820 6, 840 4 C 860 1, 880 0, 900 0 C 920 0, 940 1, 960 4 C 980 6, 1000 10, 1020 15 C 1040 20, 1060 26, 1080 33 C 1100 40, 1120 47, 1140 55 C 1160 63, 1190 76, 1200 80 L 1200 200 Z" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       WHY JOIN? — oversized headline + accordion
+       ════════════════════════════════════════════════════════ -->
+  <section class="why-join">
+    <div class="why-join__grid">
+
+      <figure class="why-join__media">
+        <img src="assets/images/clips-membership-storefront.jpg" alt="">
+        <figcaption class="why-join__caption">The Valley, Anguilla</figcaption>
+      </figure>
+
+      <div>
+        <p class="why-join__eyebrow">Member Benefits</p>
+        <h2 class="why-join__title">Why Join?</h2>
+        <p class="why-join__lede">
+          Joining ACOCI gives your business a front-row seat &mdash; and a voice &mdash;
+          in shaping Anguilla's economic future. Here's what you can expect as
+          a member of the Chamber.
+        </p>
+
+        <ul class="why-join__list" role="list">
+          <li class="why-join__item why-join__item--open">
+            <div class="why-join__item-head">Economic Influence</div>
+            <div class="why-join__item-body">
+              <p>A stronger private sector means more opportunity &mdash; for everyone.</p>
+              <ul>
+                <li>Have a say in the policies that shape your operating environment.</li>
+                <li>Connect with the operators, advisors, and institutions running Anguilla&rsquo;s economy.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="why-join__item">
+            <div class="why-join__item-head">Advocacy &amp; Policy</div>
+            <div class="why-join__item-body">
+              <p>The Chamber represents members to government on legislation and regulation that affects how you do business.</p>
+            </div>
+          </li>
+          <li class="why-join__item">
+            <div class="why-join__item-head">Insights &amp; Research</div>
+            <div class="why-join__item-body">
+              <p>Quarterly business pulse reports, member surveys, and economic briefings &mdash; so you&rsquo;re not flying blind.</p>
+            </div>
+          </li>
+          <li class="why-join__item">
+            <div class="why-join__item-head">Talent &amp; Workforce</div>
+            <div class="why-join__item-body">
+              <p>Workshops, training programmes, and the connections to attract and retain skilled people on-island.</p>
+            </div>
+          </li>
+          <li class="why-join__item">
+            <div class="why-join__item-head">Visibility &amp; Engagement</div>
+            <div class="why-join__item-body">
+              <p>Member directory listings, event sponsorships, and a platform to be seen by the rest of the Chamber community.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       TOP REASONS — 3-up grid
+       ════════════════════════════════════════════════════════ -->
+  <section class="reasons">
+    <div class="reasons__inner">
+      <h2 class="reasons__title">Top reasons to join ACOCI</h2>
+      <ul class="reasons__grid" role="list">
+
+        <li class="reason">
+          <div class="reason__media" aria-hidden="true">
+            <img src="assets/images/clips-membership-policy.jpg" alt="">
+          </div>
+          <h3>Policy &amp; advocacy</h3>
+          <p>ACOCI represents Anguilla&rsquo;s business community to government on the regulations and policies that shape your operating environment.</p>
+          <a class="btn btn--primary" href="#advocacy">Our advocacy work</a>
+        </li>
+
+        <li class="reason">
+          <div class="reason__media" aria-hidden="true">
+            <img src="assets/images/clips-membership-networking.jpg" alt="">
+          </div>
+          <h3>Events &amp; networking</h3>
+          <p>Mixers, member breakfasts, and committee work that put you in the room with the people running Anguilla&rsquo;s economy.</p>
+          <a class="btn btn--primary" href="#events">Browse events</a>
+        </li>
+
+        <li class="reason">
+          <div class="reason__media" aria-hidden="true">
+            <img src="assets/images/clips-membership-workshop.jpg" alt="">
+          </div>
+          <h3>Education &amp; growth</h3>
+          <p>Workshops, training, and access to the network of operators, advisors, and partners that help your business grow.</p>
+          <a class="btn btn--primary" href="#programs">Programs</a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       TESTIMONIAL
+       ════════════════════════════════════════════════════════ -->
+  <section class="testimonial">
+    <div class="testimonial__card">
+      <div class="testimonial__head">
+        <div class="testimonial__avatar">
+          <img src="assets/images/clips-testimonial-portrait.jpg" alt="">
+        </div>
+        <div>
+          <p class="testimonial__name">Member name here</p>
+          <p class="testimonial__org">Member business / sector</p>
+        </div>
+      </div>
+      <blockquote>
+        <p>
+          &ldquo;ACOCI&rsquo;s advocacy is critical to the businesses operating on
+          Anguilla. When the chamber engages on legislation and regulation, the
+          people writing those rules listen &mdash; and the operators they affect
+          actually get a voice.&rdquo;
+        </p>
+        <p>
+          &ldquo;That kind of representation is the difference between a business
+          community that reacts to change and one that helps shape it.&rdquo;
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       JOIN CTA — gradient card with watermark (clip 10 variant A)
+       ════════════════════════════════════════════════════════ -->
+  <section class="join-cta">
+    <div class="join-cta__card on-dark">
+      <div class="join-cta__watermark" aria-hidden="true">
+        <img src="assets/images/logo/ACOCI_LOGO_ICON-WHT.svg" alt="">
+      </div>
+      <div class="join-cta__inner">
+        <h2 class="join-cta__title">Become a Member</h2>
+        <p class="join-cta__copy">
+          The Anguilla Chamber of Commerce and Industry is committed to promoting
+          a healthy environment to create strong, vibrant local businesses.
+        </p>
+        <p class="join-cta__copy">
+          Find out how you can take advantage of Chamber resources.
+        </p>
+        <div class="join-cta__actions">
+          <a class="btn btn--primary" href="#join">Join the Chamber</a>
+          <a class="btn btn--secondary on-dark" href="#contact">Talk to us first</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.why-join__item-head').forEach(head => {
+      head.addEventListener('click', () => {
+        const item = head.closest('.why-join__item');
+        const list = item.parentElement;
+        list.querySelectorAll('.why-join__item--open').forEach(o => {
+          if (o !== item) o.classList.remove('why-join__item--open');
+        });
+        item.classList.toggle('why-join__item--open');
+      });
+    });
+  </script>
+
+</body>
+</html>

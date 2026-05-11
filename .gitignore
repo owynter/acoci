@@ -18,6 +18,10 @@ Thumbs.db
 # Logs
 *.log
 
+# Internal design/research artifacts — not for client demo, not deployed
+design-space/home/clips.html
+references/live-site-audit/
+
 # WordPress: third-party plugins and uploads are installed via wp-admin
 # inside the container, NOT committed. Only custom theme code and
 # mu-plugins (already in wordpress/themes/ and wordpress/mu-plugins/)
